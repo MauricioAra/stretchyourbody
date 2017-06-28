@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_my_program"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="Mis programas"
+            />
+        <item
+            android:id="@+id/menu_dash_board"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="Inicio"
+            />
+    </group>
+    <item
+        android:title="Otras opciones">
+        <menu>
+            <item
+                android:id="@+id/menu_opcion_uno"
+                android:icon="@android:drawable/ic_dialog_info"
+                android:title="Opcion 1"
+                />
+            <item
+                android:id="@+id/menu_opcion_dos"
+                android:icon="@android:drawable/ic_dialog_info"
+                android:title="Opcion 2"
+                />
+        </menu>
+    </item>
+</menu>
