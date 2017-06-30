@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/menu_my_program"
-            android:icon="@android:drawable/ic_dialog_info"
-            android:title="Mis programas"
-            />
-        <item
             android:id="@+id/menu_dash_board"
             android:icon="@android:drawable/ic_dialog_info"
             android:title="Inicio"
+            />
+        <item
+            android:id="@+id/menu_my_program"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="Mis programas"
             />
     </group>
     <item

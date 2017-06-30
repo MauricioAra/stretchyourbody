@@ -1,5 +1,6 @@
 package com.strechyourbody.rammp.stretchbody.Activities;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     private void setFragmentByDefault(){
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new DashBoardFragment()).commit();
 
-        MenuItem item = navigationView.getMenu().getItem(1);
+        MenuItem item = navigationView.getMenu().getItem(0);
         item.setChecked(true);
         getSupportActionBar().setTitle(item.getTitle());
     }
