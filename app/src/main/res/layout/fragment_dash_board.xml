@@ -5,6 +5,7 @@
     tools:context="com.strechyourbody.rammp.stretchbody.Fragments.DashBoardFragment">
 
     <TextView
+        android:id="@+id/accion"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Dashboard"

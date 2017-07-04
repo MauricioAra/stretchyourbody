@@ -9,13 +9,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.strechyourbody.rammp.stretchbody.Fragments.DashBoardFragment;
-import com.strechyourbody.rammp.stretchbody.Fragments.MyProgramFragment;
 import com.strechyourbody.rammp.stretchbody.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DashBoardFragment.OnFragmentAddProgramListener {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -40,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
 
                     case R.id.menu_my_program:
-                        fragment = new MyProgramFragment();
-                        fragmentTransaction = true;
+                        Intent intent = new Intent(MainActivity.this, ProgramActivity.class);
+                        startActivity(intent);
+                        drawerLayout.closeDrawers();
                         break;
                     case R.id.menu_dash_board:
                         fragment = new DashBoardFragment();
@@ -73,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void setFragmentByDefault(){
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new DashBoardFragment()).commit();
-
         MenuItem item = navigationView.getMenu().getItem(0);
         item.setChecked(true);
         getSupportActionBar().setTitle(item.getTitle());
@@ -90,5 +90,10 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void OnRegresar() {
+        Log.d("TAG", "Holis");
     }
 }
