@@ -4,17 +4,27 @@ package com.strechyourbody.rammp.stretchbody.Fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.strechyourbody.rammp.stretchbody.Adapters.ProgramAdapter;
 import com.strechyourbody.rammp.stretchbody.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class DashBoardFragment extends Fragment {
+    private RecyclerView mRecycler;
+    private ProgramAdapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     private OnFragmentAddProgramListener mOnFragmentAddProgramListener;
 
@@ -32,19 +42,33 @@ public class DashBoardFragment extends Fragment {
         setHasOptionsMenu(true);
         //Toolbar toolbar = (Toolbar) view.findViewById(R.id.toobar);
 
-        TextView txtgloba = (TextView) view.findViewById(R.id.accion);
+        List<String> names = new ArrayList<>();
+        names.add("Recomendaciones");
 
-        txtgloba.setOnClickListener(new View.OnClickListener() {
+        mRecycler = (RecyclerView) view.findViewById(R.id.dash_recycler);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mAdapter= new ProgramAdapter(names, R.layout.list_item_dash, new ProgramAdapter.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                //Intent ira = new Intent(getActivity(), AddProgramActivity.class);
-                //startActivity(ira);
-
-                if (mOnFragmentAddProgramListener != null){
-                    mOnFragmentAddProgramListener.OnRegresar();
-                }
+            public void onItemClick(String name, int position) {
+                Toast.makeText(getActivity(),name,Toast.LENGTH_SHORT).show();
             }
         });
+        mRecycler.setLayoutManager(mLayoutManager);
+        mRecycler.setAdapter(mAdapter);
+
+//        TextView txtgloba = (TextView) view.findViewById(R.id.accion);
+//
+//        txtgloba.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //Intent ira = new Intent(getActivity(), AddProgramActivity.class);
+//                //startActivity(ira);
+//
+//                if (mOnFragmentAddProgramListener != null){
+//                    mOnFragmentAddProgramListener.OnRegresar();
+//                }
+//            }
+//        });
         return view;
     }
 
