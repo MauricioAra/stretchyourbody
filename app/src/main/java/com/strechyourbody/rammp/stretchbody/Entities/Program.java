@@ -7,24 +7,20 @@ import com.google.gson.annotations.SerializedName;
  * Created by mbp on 7/1/17.
  */
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Program {
 
-    @Expose
-    private int id;
+    //@SerializedName("_id")
+    //@Expose
+
     private String name;
 
     public Program(){}
-    public Program(int id, String name) {
-        this.id = id;
+
+    public Program(String name) {
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
