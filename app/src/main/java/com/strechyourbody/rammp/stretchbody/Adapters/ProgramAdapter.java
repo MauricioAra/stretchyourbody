@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.strechyourbody.rammp.stretchbody.Entities.Program;
 import com.strechyourbody.rammp.stretchbody.R;
 
 import java.util.List;
@@ -18,12 +19,12 @@ import java.util.List;
 
 public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHolder> {
 
-    private List<String> names;
+    private List<Program> programs;
     private int layout;
     private OnItemClickListener itemClickListener;
 
-    public ProgramAdapter(List<String> names, int layout, OnItemClickListener listener){
-        this.names = names;
+    public ProgramAdapter(List<Program> programs, int layout, OnItemClickListener listener){
+        this.programs = programs;
         this.layout = layout;
         this.itemClickListener = listener;
     }
@@ -37,12 +38,12 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(names.get(position),itemClickListener);
+        holder.bind(programs.get(position),itemClickListener);
     }
 
     @Override
     public int getItemCount() {
-        return names.size();
+        return programs.size();
     }
 
 
@@ -56,12 +57,12 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
         }
 
 
-        public void bind(final String pname,final OnItemClickListener plistener){
-            this.name.setText(pname);
+        public void bind(final Program program,final OnItemClickListener plistener){
+            this.name.setText(program.getName());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    plistener.onItemClick(pname,getAdapterPosition());
+                    plistener.onItemClick(program.getName(),getAdapterPosition());
                 }
             });
         }

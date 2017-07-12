@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.strechyourbody.rammp.stretchbody.Entities.Recommended;
 import com.strechyourbody.rammp.stretchbody.R;
 
 import java.util.List;
@@ -16,12 +17,12 @@ import java.util.List;
 
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.ViewHolder> {
 
-    private List<String> names;
+    private List<Recommended> recommendeds;
     private int layout;
     private DashboardAdapter.OnItemClickListener itemClickListener;
 
-    public DashboardAdapter(List<String> names, int layout, DashboardAdapter.OnItemClickListener listener){
-        this.names = names;
+    public DashboardAdapter(List<Recommended> recommendeds, int layout, DashboardAdapter.OnItemClickListener listener){
+        this.recommendeds = recommendeds;
         this.layout = layout;
         this.itemClickListener = listener;
     }
@@ -35,12 +36,12 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
 
     @Override
     public void onBindViewHolder(DashboardAdapter.ViewHolder holder, int position) {
-        holder.bind(names.get(position),itemClickListener);
+        holder.bind(recommendeds.get(position),itemClickListener);
     }
 
     @Override
     public int getItemCount() {
-        return names.size();
+        return recommendeds.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -52,12 +53,12 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
         }
 
 
-        public void bind(final String pname,final DashboardAdapter.OnItemClickListener plistener){
-            this.name.setText(pname);
+        public void bind(final Recommended recommendeds,final DashboardAdapter.OnItemClickListener plistener){
+            this.name.setText(recommendeds.getName());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    plistener.onItemClick(pname,getAdapterPosition());
+                    plistener.onItemClick(recommendeds.getName(),getAdapterPosition());
                 }
             });
         }

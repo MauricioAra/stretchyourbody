@@ -16,11 +16,13 @@ import com.strechyourbody.rammp.stretchbody.Adapters.ProgramAdapter;
 import com.strechyourbody.rammp.stretchbody.Entities.Program;
 import com.strechyourbody.rammp.stretchbody.R;
 import com.strechyourbody.rammp.stretchbody.Services.ProgramService;
+import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,35 +51,40 @@ public class ProgramListFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_program_list,container,false);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost:9000/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        ProgramService service = retrofit.create(ProgramService.class);
+        String API_BASE_URL = "http://192.168.0.31:8080/api/";
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        Retrofit.Builder builder = RetrofitCliente.getClient(API_BASE_URL);
+        Retrofit retrofit = builder.client(httpClient.build()).build();
+        ProgramService programService =  retrofit.create(ProgramService.class);
 
-       Call<List<Program>> programCall = service.listPrograms();
 
-        programCall.enqueue(new Callback<List<Program>>() {
+        Call<List<Program>> call = programService.listPrograms();
+
+        call.enqueue(new Callback<List<Program>>() {
             @Override
             public void onResponse(Call<List<Program>> call, Response<List<Program>> response) {
-                List<Program> programs = response.body();
-                System.out.println(programs);
+                // The network call was a success and we got a response
+                if(response != null){
+                    buildList(response.body(),view);
+                }
+                // TODO: use the repository list and display it
             }
 
             @Override
             public void onFailure(Call<List<Program>> call, Throwable t) {
-
+                // the network call was a failure
+                // TODO: handle error
             }
         });
 
+        return view;
+    }
 
-        List<String> names = new ArrayList<>();
-        names.add("Rutina especial");
-
+    private void buildList(List<Program> programs,View view){
         mRecycler = (RecyclerView) view.findViewById(R.id.program_recycler);
         mLayoutManager = new LinearLayoutManager(getActivity());
-        mAdapter= new ProgramAdapter(names, R.layout.list_item_program, new ProgramAdapter.OnItemClickListener() {
+        mAdapter= new ProgramAdapter(programs, R.layout.list_item_program, new ProgramAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(String name, int position) {
                 Toast.makeText(getActivity(),name,Toast.LENGTH_SHORT).show();
@@ -85,10 +92,5 @@ public class ProgramListFragment extends Fragment {
         });
         mRecycler.setLayoutManager(mLayoutManager);
         mRecycler.setAdapter(mAdapter);
-        return view;
     }
-
-
-
-
 }

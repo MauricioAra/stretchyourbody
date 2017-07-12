@@ -10,6 +10,7 @@ public class Recommended {
     @Expose
     private int id;
     private String name;
+    private String tag;
 
     public Recommended(){}
     public Recommended(int id, String name) {
@@ -27,6 +28,14 @@ public class Recommended {
 
     public String getName() {
         return name;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     public void setName(String name) {
