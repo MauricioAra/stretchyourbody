@@ -53,9 +53,8 @@ public class DashBoardFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_dash_board,container,false);
         setHasOptionsMenu(true);
 
-        String API_BASE_URL = "http://192.168.40.154:8080/api/app/";
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        Retrofit.Builder builder = RetrofitCliente.getClient(API_BASE_URL);
+        Retrofit.Builder builder = RetrofitCliente.getClient();
         Retrofit retrofit = builder.client(httpClient.build()).build();
         RecommendedService recommendedService =  retrofit.create(RecommendedService.class);
 
