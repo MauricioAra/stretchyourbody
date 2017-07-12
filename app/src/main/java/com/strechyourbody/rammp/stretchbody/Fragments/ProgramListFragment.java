@@ -52,7 +52,7 @@ public class ProgramListFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_program_list,container,false);
 
 
-        String API_BASE_URL = "http://192.168.0.31:8080/api/";
+        String API_BASE_URL = "http://192.168.40.140:8080/api/app/";
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient(API_BASE_URL);
         Retrofit retrofit = builder.client(httpClient.build()).build();
