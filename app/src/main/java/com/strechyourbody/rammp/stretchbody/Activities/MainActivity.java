@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
                         fragmentTransaction = true;
                         break;
                     case R.id.menu_my_profile:
-                        Intent profile = new Intent(MainActivity.this,ProfileActivity.class);
+                        Intent profile = new Intent(MainActivity.this,ProfileUserActivity.class);
                         startActivity(profile);
                         drawerLayout.closeDrawers();
                         break;

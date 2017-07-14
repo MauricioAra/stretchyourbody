@@ -1,22 +1,17 @@
-package com.strechyourbody.rammp.stretchbody.Fragments;
+package com.strechyourbody.rammp.stretchbody.Activities;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.strechyourbody.rammp.stretchbody.Entities.ProfileUser;
-import com.strechyourbody.rammp.stretchbody.Entities.Program;
 import com.strechyourbody.rammp.stretchbody.R;
 import com.strechyourbody.rammp.stretchbody.Services.ProfileService;
-import com.strechyourbody.rammp.stretchbody.Services.ProgramService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
-
-import java.util.List;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -24,26 +19,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class ProfileFragment extends Fragment {
-    static Context _context;
-
-    public ProfileFragment() {
-        // Required empty public constructor
-
-    }
-
-
+public class ProfileUserActivity extends AppCompatActivity {
+    Toolbar toolbar;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_profile,container,false);
-
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_profile_user);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
         Retrofit retrofit = builder.client(httpClient.build()).build();
         ProfileService profileService =  retrofit.create(ProfileService.class);
-
         Call<ProfileUser> myprofile = profileService.findProfile(1);
 
         myprofile.enqueue(new Callback<ProfileUser>() {
@@ -52,6 +38,10 @@ public class ProfileFragment extends Fragment {
                 // The network call was a success and we got a response
                 if(response != null){
                     buildProfile(response.body());
+                    toolbar = (Toolbar) findViewById(R.id.toolbar);
+                    setSupportActionBar(toolbar);
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                    toolbar.setTitle(response.body().getName() +" "+ response.body().getLastName());
                 }
                 // TODO: use the repository list and display it
             }
@@ -63,33 +53,31 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
-        return view;
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
     }
 
     private void buildProfile(ProfileUser profileUser){
-        TextView user_name = (TextView) getActivity().findViewById(R.id.user_name);
-        user_name.setText(profileUser.getName());
 
-        TextView user_lastName = (TextView) getActivity().findViewById(R.id.user_lastName );
-        user_lastName.setText(profileUser.getLastName());
-
-        TextView user_age = (TextView) getActivity().findViewById(R.id.user_age);
+        TextView user_age = (TextView) this.findViewById(R.id.user_age);
         user_age.setText(profileUser.getAge());
 
-        TextView user_gender = (TextView) getActivity().findViewById(R.id.user_gender);
+        TextView user_gender = (TextView) this.findViewById(R.id.user_gender);
         user_gender.setText(profileUser.getGender());
 
-        TextView user_weight = (TextView) getActivity().findViewById(R.id.user_weight);
+        TextView user_weight = (TextView) this.findViewById(R.id.user_weight);
         user_weight.setText(Double.toString(profileUser.getWeight()));
 
-        TextView user_height= (TextView) getActivity().findViewById(R.id.user_height);
+        TextView user_height= (TextView) this.findViewById(R.id.user_height);
         user_height.setText(Double.toString(profileUser.getHeight()));
-//
-//        TextView user_userId= (TextView) getActivity().findViewById(R.id.user_userId);
-//        user_userId.setText(Double.toString(profileUser.getUserId()));
 
-        TextView user_userEmail= (TextView) getActivity().findViewById(R.id.user_userEmail);
+        TextView user_userEmail= (TextView) this.findViewById(R.id.user_userEmail);
         user_userEmail.setText(profileUser.getUserEmail());
 
     }
