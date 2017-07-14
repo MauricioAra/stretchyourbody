@@ -16,6 +16,12 @@
             android:icon="@android:drawable/ic_menu_preferences"
             android:title="Mi perfil"
             />
+
+        <item
+            android:id="@+id/menu_start_exercise"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="Ejercicio rápido"
+            />
     </group>
     <item
         android:title="Otras opciones">

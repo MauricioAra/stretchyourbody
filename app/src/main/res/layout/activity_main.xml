@@ -17,7 +17,17 @@
         <FrameLayout
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" >
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="12dp"
+                android:src="@drawable/ray" />
+        </FrameLayout>
+
     </LinearLayout>
 
     <android.support.design.widget.NavigationView
@@ -28,7 +38,9 @@
         app:headerLayout="@layout/header_navigation_drawer"
         app:menu="@menu/nav_options"
         />
+
 </android.support.v4.widget.DrawerLayout>
+
 
 
 

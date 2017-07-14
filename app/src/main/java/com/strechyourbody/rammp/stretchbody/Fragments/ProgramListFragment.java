@@ -1,6 +1,7 @@
 package com.strechyourbody.rammp.stretchbody.Fragments;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -38,6 +39,7 @@ public class ProgramListFragment extends Fragment {
     private RecyclerView mRecycler;
     private ProgramAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private ProgressDialog progressDialog;
 
     static Context _context;
 
@@ -50,7 +52,10 @@ public class ProgramListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_program_list,container,false);
-
+        progressDialog = new ProgressDialog(view.getContext());
+        progressDialog.setTitle("Hola");
+        progressDialog.setMessage("Hola");
+        progressDialog.show();
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
@@ -66,6 +71,7 @@ public class ProgramListFragment extends Fragment {
                 // The network call was a success and we got a response
                 if(response != null){
                     buildList(response.body(),view);
+                    progressDialog.dismiss();
                 }
                 // TODO: use the repository list and display it
             }
