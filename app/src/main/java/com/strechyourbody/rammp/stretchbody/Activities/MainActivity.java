@@ -2,7 +2,9 @@ package com.strechyourbody.rammp.stretchbody.Activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.strechyourbody.rammp.stretchbody.Fragments.DashBoardFragment;
 import com.strechyourbody.rammp.stretchbody.R;
@@ -19,7 +22,6 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,16 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.navview);
         setFragmentByDefault();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent supercat = new Intent(MainActivity.this,SuperCategoryActivity.class);
+                startActivity(supercat);
+            }
+        });
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
