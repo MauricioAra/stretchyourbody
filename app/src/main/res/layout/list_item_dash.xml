@@ -4,18 +4,14 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="280dp"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
+    android:paddingBottom="8dp"
     android:gravity="center">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="253dp"
-        card_view:cardBackgroundColor="#E2E2E2"
-        card_view:cardCornerRadius="7dp">
+        card_view:cardBackgroundColor="#E5E5E5">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,28 +21,27 @@
                 android:id="@+id/text_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_above="@+id/button_id"
                 android:layout_gravity="left"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
                 android:text=""
                 android:textColor="#333"
-                android:textSize="20sp"
-                android:layout_above="@+id/button_id"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp" />
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/button_id"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
                 android:layout_gravity="bottom"
                 android:background="#a5de37"
                 android:fontFamily=""
-                android:radius="30dp"
                 android:text="DETALLES"
                 android:textColor="#ffffff"
                 android:textSize="16sp"
-                android:visibility="visible"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true" />
+                android:visibility="visible" />
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
