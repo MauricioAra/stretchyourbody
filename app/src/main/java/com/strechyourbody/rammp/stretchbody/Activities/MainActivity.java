@@ -1,5 +1,6 @@
 package com.strechyourbody.rammp.stretchbody.Activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,7 @@ import android.view.MenuItem;
 
 import com.strechyourbody.rammp.stretchbody.Fragments.DashBoardFragment;
 import com.strechyourbody.rammp.stretchbody.R;
+import com.strechyourbody.rammp.stretchbody.Services.SessionManager;
 
 public class MainActivity extends AppCompatActivity implements DashBoardFragment.OnFragmentAddProgramListener {
 
@@ -36,28 +38,37 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
 
                 boolean fragmentTransaction = false;
                 Fragment fragment = null;
+                SessionManager session = new SessionManager(getApplicationContext());
 
-                switch (item.getItemId()){
+                if (session.isLoggedIn()) {
 
-                    case R.id.menu_my_program:
-                        Intent intent = new Intent(MainActivity.this, ProgramActivity.class);
-                        startActivity(intent);
-                        drawerLayout.closeDrawers();
-                        break;
-                    case R.id.menu_dash_board:
-                        fragment = new DashBoardFragment();
-                        fragmentTransaction = true;
-                        break;
+                    switch (item.getItemId()) {
+
+                        case R.id.menu_my_program:
+                            Intent intent = new Intent(MainActivity.this, ProgramActivity.class);
+                            startActivity(intent);
+                            drawerLayout.closeDrawers();
+                            break;
+
+                        case R.id.menu_dash_board:
+                            fragment = new DashBoardFragment();
+                            fragmentTransaction = true;
+                            break;
+
+                        case R.id.logOut:
+                            session.logOut();
+                            break;
+                    }
+                } else {
+                    session.logOut();
                 }
 
-
-                if(fragmentTransaction){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,fragment).commit();
+                if(fragmentTransaction) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
                     item.setChecked(true);
                     getSupportActionBar().setTitle(item.getTitle());
                     drawerLayout.closeDrawers();
                 }
-
 
                 return true;
             }
