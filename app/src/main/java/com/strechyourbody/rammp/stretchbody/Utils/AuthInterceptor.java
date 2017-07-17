@@ -10,7 +10,7 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
-class AuthInterceptor implements Interceptor {
+public class AuthInterceptor implements Interceptor {
 
     private Context context;
 
@@ -22,11 +22,15 @@ class AuthInterceptor implements Interceptor {
         this.context = context;
     }
 
+    public AuthInterceptor(Context ctx) {
+        this.setContext(ctx);
+    }
+
     @Override public Response intercept(Interceptor.Chain chain) throws IOException {
         Request original = chain.request();
         Request request = original.newBuilder()
                 .header("Accept", "application/json")
-                .header("Authorization", new SessionManager(this.getContext()).getJWTToken())
+                .header("Authorization", "Bearer " + new SessionManager(this.getContext()).getJWTToken())
                 .header("Content-Type", "application/json")
                 .method(original.method(),original.body())
                 .build();

@@ -17,4 +17,8 @@
         completions."
     </string>
     <string name="error_network">Lo sentimos, hubo un error con el servidor</string>
+    <string name="loading">Cargando</string>
+    <string name="authenticating">Autenticando credenciales</string>
+    <string name="title_activity_profile_user">ProfileUserActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>

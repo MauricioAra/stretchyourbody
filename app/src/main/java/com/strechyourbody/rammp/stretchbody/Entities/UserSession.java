@@ -19,6 +19,11 @@ public class UserSession {
         this.username = username;
     }
 
+    public UserSession(String token, String username) {
+        this.token = token;
+        this.username = username;
+    }
+
     public String getUsername() {
         return username;
     }

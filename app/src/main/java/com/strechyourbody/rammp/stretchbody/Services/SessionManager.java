@@ -47,6 +47,13 @@ public class SessionManager {
         editor.commit();
     }
 
+    //Creates a new session only with Token
+    public void createSessionWithTokenOnly(String token) {
+        editor.putString(KEY_TOKEN, token);
+        // commit changes
+        editor.commit();
+    }
+
     //Returns the user's session
     public UserSession getUserDetails(){
         UserSession userSession = new UserSession();

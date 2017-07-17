@@ -17,20 +17,19 @@
 
         <!-- Login progress -->
 
-        <ProgressBar
-            android:id="@+id/login_progress"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:visibility="gone" />
+        <!--<ProgressBar-->
+            <!--android:id="@+id/login_progress"-->
+            <!--style="?android:attr/progressBarStyleLarge"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:visibility="gone" />-->
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="255dp"
             android:layout_height="115dp"
             app:srcCompat="@drawable/bamboo"
-            android:layout_below="@+id/login_progress"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="58dp" />
 

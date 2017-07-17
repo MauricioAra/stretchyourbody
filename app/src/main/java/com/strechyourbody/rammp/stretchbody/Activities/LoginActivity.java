@@ -1,8 +1,7 @@
 package com.strechyourbody.rammp.stretchbody.Activities;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
@@ -13,6 +12,7 @@ import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,48 +31,28 @@ import com.strechyourbody.rammp.stretchbody.Services.AuthService;
 import com.strechyourbody.rammp.stretchbody.R;
 import com.strechyourbody.rammp.stretchbody.Services.SessionManager;
 
+import com.strechyourbody.rammp.stretchbody.Utils.AuthInterceptor;
+
 import okhttp3.OkHttpClient;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
-    /**
-     * Id to identity READ_CONTACTS permission request.
-     */
-    private static final int REQUEST_READ_CONTACTS = 0;
-
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
-     */
-   // private UserLoginTask mAuthTask = null;
-    // Session Manager Class
     SessionManager sessionManager;
 
-    private String API_BASE_URL = "http://192.168.1.56:8080";
     private OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-    private Retrofit.Builder builder = RetrofitCliente.getClient(API_BASE_URL);
+    private Retrofit.Builder builder = RetrofitCliente.getClient("http://192.168.1.56:8080");
     private Retrofit retrofit = builder.client(httpClient.build()).build();
+    private Retrofit retrofitAuth = builder.client(httpClient.addInterceptor(new AuthInterceptor(LoginActivity.this)).build()).build();
     private AuthService authService =  retrofit.create(AuthService.class);
+    private AuthService authServiceWithToken =  retrofitAuth.create(AuthService.class);
+    private ProgressDialog progress;
 
     // UI references.
     private EditText mEmailView;
     private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,9 +79,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 attemptLogin();
             }
         });
-
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+        progress = new ProgressDialog(LoginActivity.this);
     }
 
     /**
@@ -151,7 +129,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void handleBadCredentials() {
+        View focusView;
         mEmailView.setError(getString(R.string.error_invalid_credentials));
+        focusView = mEmailView;
+        focusView.requestFocus();
         showProgress(false);
     }
 
@@ -176,20 +157,26 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onFailure(Call<JWTToken> call, Throwable t) {
                 CharSequence text = getString(R.string.error_network);
-                int duration = Toast.LENGTH_SHORT;
+                int duration = Toast.LENGTH_LONG;
                 Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+                toast.setGravity(Gravity.TOP|Gravity.RIGHT, 0, 0);
                 toast.show();
+                showProgress(false);
             }
         });
     }
 
     private void handleToken(final JWTToken token, final String username) {
 
-        Call<Long> call = authService.getUserID(username);
+        sessionManager = new SessionManager(getApplicationContext());
+        sessionManager.createSessionWithTokenOnly(token.getIdToken());
+
+        Call<Long> call = authServiceWithToken.getUserID(username);
         call.enqueue(new Callback<Long>() {
             @Override
             public void onResponse(Call<Long> call, Response<Long> response) {
                 if (response != null) {
+                    sessionManager.logOut();
                     Long userId = response.body();
                     UserSession session = new UserSession(username, userId, token.getIdToken());
                     createSession(session);
@@ -199,9 +186,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onFailure(Call<Long> call, Throwable t) {
                 CharSequence text = getString(R.string.error_network);
-                int duration = Toast.LENGTH_SHORT;
+                int duration = Toast.LENGTH_LONG;
                 Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+                toast.setGravity(Gravity.TOP|Gravity.RIGHT, 0, 0);
                 toast.show();
+                showProgress(false);
             }
         });
     }
@@ -219,34 +208,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
+        progress.setTitle(getString(R.string.loading));
+        progress.setMessage(getString(R.string.authenticating));
+        progress.setCancelable(false);
+        progress.setIndeterminate(true);
 
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-                }
-            });
-
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
+        if (show) {
+            progress.show();
         } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+            progress.dismiss();
         }
     }
 

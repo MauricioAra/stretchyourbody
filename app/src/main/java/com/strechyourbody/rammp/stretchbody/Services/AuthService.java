@@ -16,7 +16,7 @@ import com.strechyourbody.rammp.stretchbody.Entities.UserCredentials;
 
 
 public interface AuthService {
-    @POST("/api/authenticate")
+    @POST("api/authenticate")
     Call<JWTToken> authenticate(@Body UserCredentials userCred);
 
     @GET("api/find-user/{username}")

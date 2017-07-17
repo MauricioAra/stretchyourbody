@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--EMAIL-->
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="41dp"
+            android:background="#fff">
+
+
+            <TextView
+                android:id="@+id/user_userEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="14dp"
+                android:text="Email"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/lblCorreo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/user_userEmail"
+                android:layout_below="@+id/user_userEmail"
+                android:text="Correo"
+                android:textSize="12dp" />
+
+
+        </RelativeLayout>
+
+        <!--AGE-->
+        <RelativeLayout
+            android:id="@+id/relativeLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/relativeLayout2"
+            android:background="#fff">
+
+            <TextView
+                android:id="@+id/user_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/lblage"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="41dp"
+                android:text="txtage"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/lblage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/user_age"
+                android:layout_marginBottom="14dp"
+                android:text="Edad"
+                android:textSize="12dp" />
+
+
+        </RelativeLayout>
+
+        <!--Gender-->
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/relativeLayout3"
+            android:background="#fff">
+
+            <TextView
+                android:id="@+id/user_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="14dp"
+                android:text="txtgender"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/lblgender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/user_gender"
+                android:layout_below="@+id/user_gender"
+                android:text="Género"
+                android:textSize="12dp" />
+
+
+        </RelativeLayout>
+
+        <!--ALTURA-->
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#fff"
+            android:layout_below="@+id/relativeLayout4"
+            android:layout_alignParentStart="true">
+
+            <View
+                android:id="@+id/view21"
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:layout_alignParentTop="true"
+                android:background="#d3d3d3"
+                android:layout_alignStart="@+id/user_height" />
+
+            <TextView
+                android:id="@+id/user_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Altura"
+                android:textSize="18dp"
+                android:layout_below="@+id/view21"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="43dp"
+                android:layout_marginTop="13dp" />
+
+            <TextView
+                android:id="@+id/lblheight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Altura"
+                android:textSize="12dp"
+                android:layout_below="@+id/user_height"
+                android:layout_alignStart="@+id/user_height" />
+
+
+
+
+        </RelativeLayout>
+
+
+        <!--PESO-->
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/relativeLayout5"
+            android:background="#fff">
+
+
+            <TextView
+                android:id="@+id/user_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Peso"
+                android:textSize="18dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="41dp"
+                android:layout_marginTop="13dp" />
+
+            <TextView
+                android:id="@+id/lblweight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Peso"
+                android:textSize="12dp"
+                android:layout_below="@+id/user_weight"
+                android:layout_alignStart="@+id/user_weight" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

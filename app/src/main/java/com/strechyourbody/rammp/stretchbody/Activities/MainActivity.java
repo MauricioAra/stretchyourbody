@@ -1,8 +1,8 @@
 package com.strechyourbody.rammp.stretchbody.Activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.strechyourbody.rammp.stretchbody.Fragments.DashBoardFragment;
 import com.strechyourbody.rammp.stretchbody.R;
@@ -21,16 +22,31 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-
+    private SessionManager session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setToolbar();
+        session = new SessionManager(MainActivity.this);
+        if (!session.isLoggedIn()) {
+            session.logOut();
+            return;
+        } else {
+            setContentView(R.layout.activity_main);
+            setToolbar();
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.navview);
-        setFragmentByDefault();
+            drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            navigationView = (NavigationView) findViewById(R.id.navview);
+            setFragmentByDefault();
+
+            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent supercat = new Intent(MainActivity.this,SuperCategoryActivity.class);
+                    startActivity(supercat);
+                }
+            });
+        }
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -38,27 +54,31 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
 
                 boolean fragmentTransaction = false;
                 Fragment fragment = null;
-                SessionManager session = new SessionManager(getApplicationContext());
 
                 if (session.isLoggedIn()) {
 
-                    switch (item.getItemId()) {
+                switch (item.getItemId()){
 
-                        case R.id.menu_my_program:
-                            Intent intent = new Intent(MainActivity.this, ProgramActivity.class);
-                            startActivity(intent);
-                            drawerLayout.closeDrawers();
-                            break;
+                    case R.id.menu_my_program:
+                        Intent intent = new Intent(MainActivity.this, ProgramActivity.class);
+                        startActivity(intent);
+                        drawerLayout.closeDrawers();
+                        break;
+                    case R.id.menu_dash_board:
+                        fragment = new DashBoardFragment();
+                        fragmentTransaction = true;
+                        break;
+                    case R.id.menu_my_profile:
+                        Intent profile = new Intent(MainActivity.this,ProfileUserActivity.class);
+                        startActivity(profile);
+                        drawerLayout.closeDrawers();
+                        break;
 
-                        case R.id.menu_dash_board:
-                            fragment = new DashBoardFragment();
-                            fragmentTransaction = true;
-                            break;
+                    case R.id.logOut:
+                        session.logOut();
+                        break;
+                }
 
-                        case R.id.logOut:
-                            session.logOut();
-                            break;
-                    }
                 } else {
                     session.logOut();
                 }
@@ -73,7 +93,6 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
                 return true;
             }
         });
-
     }
 
     private void setToolbar(){

@@ -1,6 +1,7 @@
 package com.strechyourbody.rammp.stretchbody.Fragments;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ import com.strechyourbody.rammp.stretchbody.Entities.Program;
 import com.strechyourbody.rammp.stretchbody.R;
 import com.strechyourbody.rammp.stretchbody.Services.ProgramService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
+import com.strechyourbody.rammp.stretchbody.Utils.AuthInterceptor;
 
 
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ public class ProgramListFragment extends Fragment {
     private RecyclerView mRecycler;
     private ProgramAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private ProgressDialog progressDialog;
 
     static Context _context;
 
@@ -50,16 +53,18 @@ public class ProgramListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_program_list,container,false);
+        progressDialog = new ProgressDialog(view.getContext());
+        progressDialog.setTitle("Hola");
+        progressDialog.setMessage("Hola");
+        progressDialog.show();
 
-
-        String API_BASE_URL = "http://192.168.0.31:8080/api/";
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        Retrofit.Builder builder = RetrofitCliente.getClient(API_BASE_URL);
-        Retrofit retrofit = builder.client(httpClient.build()).build();
+        Retrofit.Builder builder = RetrofitCliente.getClient();
+        Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(this.getActivity())).build()).build();
         ProgramService programService =  retrofit.create(ProgramService.class);
 
 
-        Call<List<Program>> call = programService.listPrograms();
+        Call<List<Program>> call = programService.listMyPrograms(1);
 
         call.enqueue(new Callback<List<Program>>() {
             @Override
@@ -67,6 +72,7 @@ public class ProgramListFragment extends Fragment {
                 // The network call was a success and we got a response
                 if(response != null){
                     buildList(response.body(),view);
+                    progressDialog.dismiss();
                 }
                 // TODO: use the repository list and display it
             }
