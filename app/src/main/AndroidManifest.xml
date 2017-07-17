@@ -34,6 +34,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
         </activity>
+
         <activity
             android:name=".Activities.CategoryActivity"
             android:parentActivityName=".Activities.MainActivity"
@@ -64,6 +65,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.BodyPartActivity" />
+        </activity>
+        <activity android:name=".Activities.EditProfileActivity"
+            android:parentActivityName=".Activities.ProfileUserActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ProfileUserActivity" />
+
         </activity>
     </application>
 
