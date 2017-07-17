@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent supercat = new Intent(MainActivity.this,SuperCategoryActivity.class);
+                Intent supercat = new Intent(MainActivity.this,CategoryActivity.class);
                 startActivity(supercat);
             }
         });

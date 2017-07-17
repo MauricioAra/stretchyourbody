@@ -10,10 +10,12 @@
       android:layout_height="match_parent"
       android:orientation="vertical">
 
-    <include android:id="@+id/toobar"
-        layout="@layout/toolbar"/>
+    <include
+        android:id="@+id/toobar"
+        layout="@layout/toolbar_light"/>
 
     <RelativeLayout
+        android:id="@+id/office"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -38,7 +40,7 @@
               android:layout_marginBottom="20dp" />
 
           <Button
-              android:id="@+id/button_id"
+              android:id="@+id/btn_office"
               android:layout_width="match_parent"
               android:layout_height="60dp"
               android:layout_gravity="bottom"
@@ -60,6 +62,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:id="@+id/air"
         android:layout_weight="1">
 
       <RelativeLayout
@@ -75,11 +78,11 @@
             android:text=""
             android:textColor="#333"
             android:textSize="20sp"
-            android:layout_above="@+id/button_id2"
+            android:layout_above="@+id/btn_air"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp" />
         <Button
-            android:id="@+id/button_id2"
+            android:id="@+id/btn_air"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
