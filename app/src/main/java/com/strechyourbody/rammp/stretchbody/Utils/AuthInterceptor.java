@@ -32,6 +32,7 @@ public class AuthInterceptor implements Interceptor {
                 .header("Accept", "application/json")
                 .header("Authorization", "Bearer " + new SessionManager(this.getContext()).getJWTToken())
                 .header("Content-Type", "application/json")
+                .header("AUTHORIZATION_TOKEN", new SessionManager(this.getContext()).getJWTToken())
                 .method(original.method(),original.body())
                 .build();
         return chain.proceed(request);

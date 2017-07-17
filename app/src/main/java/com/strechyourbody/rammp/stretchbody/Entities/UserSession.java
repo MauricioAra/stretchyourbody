@@ -13,10 +13,10 @@ public class UserSession {
     public UserSession() {
     }
 
-    public UserSession(String token, Long userId, String username) {
-        this.token = token;
-        this.userId = userId;
+    public UserSession(String username, Long userId, String token) {
         this.username = username;
+        this.userId = userId;
+        this.token = token;
     }
 
     public UserSession(String token, String username) {
