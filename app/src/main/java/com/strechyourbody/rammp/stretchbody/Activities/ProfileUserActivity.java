@@ -12,6 +12,7 @@ import com.strechyourbody.rammp.stretchbody.Entities.ProfileUser;
 import com.strechyourbody.rammp.stretchbody.R;
 import com.strechyourbody.rammp.stretchbody.Services.ProfileService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
+import com.strechyourbody.rammp.stretchbody.Utils.AuthInterceptor;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -28,7 +29,7 @@ public class ProfileUserActivity extends AppCompatActivity {
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
-        Retrofit retrofit = builder.client(httpClient.build()).build();
+        Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(ProfileUserActivity.this)).build()).build();
         ProfileService profileService =  retrofit.create(ProfileService.class);
         Call<ProfileUser> myprofile = profileService.findProfile(1);
 

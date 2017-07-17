@@ -41,7 +41,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
 
     @Override
     public int getItemCount() {
-        return recommendeds.size();
+        return recommendeds != null ?  recommendeds.size()  : 0;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{

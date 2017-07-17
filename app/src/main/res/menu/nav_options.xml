@@ -7,6 +7,11 @@
             android:title="Inicio"
             />
         <item
+            android:id="@+id/logOut"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="Cerrar sesión"
+            />
+        <item
             android:id="@+id/menu_my_program"
             android:icon="@android:drawable/ic_dialog_info"
             android:title="Mis programas"
