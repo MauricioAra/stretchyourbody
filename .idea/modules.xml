@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/StretchBody.iml" filepath="$PROJECT_DIR$/StretchBody.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/strech.iml" filepath="$PROJECT_DIR$/strech.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stretchyourbody.iml" filepath="$PROJECT_DIR$/stretchyourbody.iml" />
     </modules>
   </component>
 </project>
