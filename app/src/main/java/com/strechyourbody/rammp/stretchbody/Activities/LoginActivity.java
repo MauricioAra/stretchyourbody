@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     SessionManager sessionManager;
 
     private OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-    private Retrofit.Builder builder = RetrofitCliente.getClient("http://192.168.0.12:8080/api/");
+    private Retrofit.Builder builder = RetrofitCliente.getClient("http://192.168.40.97:8080/api/");
     private Retrofit retrofit = builder.client(httpClient.build()).build();
     private Retrofit retrofitAuth = builder.client(httpClient.addInterceptor(new AuthInterceptor(LoginActivity.this)).build()).build();
     private AuthService authService =  retrofit.create(AuthService.class);

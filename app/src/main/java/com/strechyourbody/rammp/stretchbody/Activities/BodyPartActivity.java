@@ -1,5 +1,6 @@
 package com.strechyourbody.rammp.stretchbody.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class BodyPartActivity extends AppCompatActivity implements AdapterView.O
     private String idCategory;
     private BodyPartAdapter bodyPartAdapter;
     private List<BodyPart> globalBodyParts;
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,16 @@ public class BodyPartActivity extends AppCompatActivity implements AdapterView.O
         setContentView(R.layout.activity_body_part);
         idSubCategory = getIntent().getStringExtra("id");
         idCategory = getIntent().getStringExtra("idCat");
-        //Toast.makeText(BodyPartActivity.this,idSubCategory,Toast.LENGTH_SHORT).show();
+
+        // Prgress
+        progress = new ProgressDialog(BodyPartActivity.this);
+        progress.setTitle("Cargando");
+        progress.setMessage("Obteniendo partes del cuerpo...");
+        progress.setCancelable(false);
+        progress.setIndeterminate(true);
+        progress.show();
+
+        // set Toolbar
         setToolbar();
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -60,7 +71,7 @@ public class BodyPartActivity extends AppCompatActivity implements AdapterView.O
                 if(response != null){
                     globalBodyParts = response.body();
                     buildGrid(response.body());
-                    //progressDialog.dismiss();
+                    progress.dismiss();
                 }
                 // TODO: use the repository list and display it
             }

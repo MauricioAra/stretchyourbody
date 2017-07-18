@@ -1,5 +1,6 @@
 package com.strechyourbody.rammp.stretchbody.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,13 +32,26 @@ public class SubCategoryActivity extends AppCompatActivity implements AdapterVie
     private SubCategoryAdapter subCategoryAdapter;
     private String idCategory;
     private List<SubCategory> subCategoriesGlobal;
+    private ProgressDialog progress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_category);
         idCategory = getIntent().getStringExtra("id");
+
+        // Prgress
+        progress = new ProgressDialog(SubCategoryActivity.this);
+        progress.setTitle("Cargando");
+        progress.setMessage("Obteniendo categorías...");
+        progress.setCancelable(false);
+        progress.setIndeterminate(true);
+        progress.show();
+
+        // Set Toolbar
         setToolbar();
 
+        //
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
         Retrofit retrofit = builder.client(httpClient.build()).build();
@@ -52,7 +66,7 @@ public class SubCategoryActivity extends AppCompatActivity implements AdapterVie
                 if(response != null){
                     subCategoriesGlobal = response.body();
                     buildList(response.body());
-                    //progressDialog.dismiss();
+                    progress.dismiss();
                 }
                 // TODO: use the repository list and display it
             }
