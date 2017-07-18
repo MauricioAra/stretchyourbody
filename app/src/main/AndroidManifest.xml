@@ -3,6 +3,10 @@
     package="com.strechyourbody.rammp.stretchbody">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -34,6 +38,47 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
         </activity>
+        <activity android:name=".Activities.CategoryActivity" />
+        <activity
+            android:name=".Activities.SubCategoryActivity"
+            android:parentActivityName=".Activities.CategoryActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.BodyPartActivity"
+            android:parentActivityName=".Activities.SubCategoryActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.SubCategoryActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.ExerciseActivity"
+            android:parentActivityName=".Activities.BodyPartActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.BodyPartActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.EditProfileActivity"
+            android:parentActivityName=".Activities.ProfileUserActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ProfileUserActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".Activities.BasicRegisterActivity"
+            android:label="@string/title_activity_basic_register"
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".Activities.ExerciseDetailActivity"></activity>
     </application>
 
 </manifest>

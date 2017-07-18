@@ -13,16 +13,18 @@
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp">
 
-        <include
-            android:id="@+id/toobar"
-            layout="@layout/toolbar" />
-
         <FrameLayout
             android:id="@+id/content_programs"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
     </LinearLayout>
+
+    <include
+        android:id="@+id/toobar"
+        layout="@layout/toolbar"
+        tools:layout_editor_absoluteX="-32dp"
+        tools:layout_editor_absoluteY="-30dp" />
 
 
 </android.support.constraint.ConstraintLayout>

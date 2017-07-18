@@ -1,5 +1,6 @@
 package com.strechyourbody.rammp.stretchbody.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,7 @@ import com.strechyourbody.rammp.stretchbody.Entities.ProfileUser;
 import com.strechyourbody.rammp.stretchbody.R;
 import com.strechyourbody.rammp.stretchbody.Services.ProfileService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
+import com.strechyourbody.rammp.stretchbody.Utils.AuthInterceptor;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -28,7 +30,7 @@ public class ProfileUserActivity extends AppCompatActivity {
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
-        Retrofit retrofit = builder.client(httpClient.build()).build();
+        Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(ProfileUserActivity.this)).build()).build();
         ProfileService profileService =  retrofit.create(ProfileService.class);
         Call<ProfileUser> myprofile = profileService.findProfile(1);
 
@@ -53,12 +55,12 @@ public class ProfileUserActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.btn_go_edit_profile);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent editProfile = new Intent(ProfileUserActivity.this,EditProfileActivity.class);
+                startActivity(editProfile);
             }
         });
     }

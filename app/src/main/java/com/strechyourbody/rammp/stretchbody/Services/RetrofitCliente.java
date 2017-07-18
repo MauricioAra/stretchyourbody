@@ -10,12 +10,28 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitCliente {
 
     private static Retrofit.Builder retrofit = null;
+<<<<<<< HEAD
     private static String API_BASE_URL = "http://192.168.0.15:8080/api/app/";
+=======
+
+    private static String API_BASE_URL = "http://192.168.0.12:8080/api/app/";
+>>>>>>> f620df3e851939c3e2dcc64fbdda380e8f19a24e
     public static Retrofit.Builder getClient(){
 
         if(retrofit == null){
             retrofit = new Retrofit.Builder()
                     .baseUrl(API_BASE_URL)
+                    .addConverterFactory(
+                            GsonConverterFactory.create());
+        }
+        return retrofit;
+    }
+
+    public static Retrofit.Builder getClient(String url){
+
+        if(retrofit == null){
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(url)
                     .addConverterFactory(
                             GsonConverterFactory.create());
         }

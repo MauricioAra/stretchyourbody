@@ -20,6 +20,7 @@ import com.strechyourbody.rammp.stretchbody.R;
 import com.strechyourbody.rammp.stretchbody.Services.ProgramService;
 import com.strechyourbody.rammp.stretchbody.Services.RecommendedService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
+import com.strechyourbody.rammp.stretchbody.Utils.AuthInterceptor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,7 @@ public class DashBoardFragment extends Fragment {
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
-        Retrofit retrofit = builder.client(httpClient.build()).build();
+        Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(this.getActivity())).build()).build();
         RecommendedService recommendedService =  retrofit.create(RecommendedService.class);
 
         Call<List<Recommended>> call = recommendedService.listRecommended();
