@@ -10,10 +10,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="68dp"
         android:paddingBottom="10dp"
         android:paddingLeft="20dp"
-        android:text="Comida saludable"
+        android:text="Avena"
         android:textColor="#55dae1"
         android:textSize="24sp"
         android:layout_alignParentTop="true"
@@ -27,37 +27,30 @@
         android:layout_gravity="left"
         android:paddingBottom="10dp"
         android:paddingLeft="20dp"
-        android:text="Elije todos los tags para encontrar lo que buscas"
-        android:textColor="#55dae1"
+        android:text="Carbs,facil,rapido"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="16sp"
         android:layout_below="@+id/text_name2"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp">
     </TextView>
 
-    <com.robertlevonyan.views.chip.Chip
-        android:id="@+id/chip"
+    <TextView
+        android:id="@+id/text_name4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/text_name3"
-        android:layout_below="@+id/text_name3"
-        android:layout_marginTop="12dp"
-        android:layout_toStartOf="@+id/text_name2"
-        app:backgroundColor="@color/colorChipBackground"
-        app:chipText="Carbs"
-        app:textColor="@color/colorChipBackgroundClicked" />
-
-    <Button
-        android:id="@+id/button_idtag"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_gravity="bottom"
-        android:background="@color/colorAccent"
-        android:fontFamily=""
-        android:text="LISTO"
-        android:textColor="#ffffff"
-        android:textSize="16sp"
-        android:visibility="visible" />
-
+        android:layout_below="@+id/text_name3"
+        android:layout_gravity="left"
+        android:layout_marginTop="33dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Carbs,facil,rapidoCarbs,facil,rapidoCarbs,facil,rapidoCarbs,facil,rapidoCarbs,facil,rapidrapidoCarbs,rapidoCarbs,facil,rapidoCarbs,facil,rapidoCarbs,facil,rapidfacil,rapidoCarbs,facil,rapidoCarbs,facil,rapidoCarbs,facil,rapidoCarbs,facil,rapidoCarbs,facil,rapidoCarbs,facil,rapidoCarbs,facil,rapidoCarbs,facil,rapidoCarbs,facil,rapidorapidoCarbs,facil,rapidoCarbs,facil,rapidoCarbs,facil,rapid"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="16sp">
+    </TextView>
 </RelativeLayout>
+
+
+
