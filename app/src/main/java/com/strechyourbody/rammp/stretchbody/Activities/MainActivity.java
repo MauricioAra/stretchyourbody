@@ -16,29 +16,38 @@ import android.view.View;
 
 import com.strechyourbody.rammp.stretchbody.Fragments.DashBoardFragment;
 import com.strechyourbody.rammp.stretchbody.R;
+import com.strechyourbody.rammp.stretchbody.Services.SessionManager;
 
 public class MainActivity extends AppCompatActivity implements DashBoardFragment.OnFragmentAddProgramListener {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private SessionManager session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setToolbar();
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.navview);
-        setFragmentByDefault();
+        session = new SessionManager(MainActivity.this);
+        if (!session.isLoggedIn()) {
+            session.logOut();
+            return;
+        } else {
+            setContentView(R.layout.activity_main);
+            setToolbar();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent supercat = new Intent(MainActivity.this,CategoryActivity.class);
-                startActivity(supercat);
-            }
-        });
+            drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            navigationView = (NavigationView) findViewById(R.id.navview);
+            setFragmentByDefault();
+
+            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent supercat = new Intent(MainActivity.this,CategoryActivity.class);
+                    startActivity(supercat);
+                }
+            });
+        }
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -47,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
 
                 boolean fragmentTransaction = false;
                 Fragment fragment = null;
+
+                if (session.isLoggedIn()) {
 
                 switch (item.getItemId()){
 
@@ -64,21 +75,26 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
                         startActivity(profile);
                         drawerLayout.closeDrawers();
                         break;
+
+                    case R.id.log_out:
+                        session.logOut();
+                        break;
                 }
 
+                } else {
+                    session.logOut();
+                }
 
-                if(fragmentTransaction){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,fragment).commit();
+                if(fragmentTransaction) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
                     item.setChecked(true);
                     getSupportActionBar().setTitle(item.getTitle());
                     drawerLayout.closeDrawers();
                 }
 
-
                 return true;
             }
         });
-
     }
 
     private void setToolbar(){

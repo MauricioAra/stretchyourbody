@@ -73,6 +73,19 @@ public class BodyPartActivity extends AppCompatActivity implements AdapterView.O
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent intent = new Intent(BodyPartActivity.this,SubCategoryActivity.class);
+                intent.putExtra("id",idCategory);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     private void buildGrid(List<BodyPart> pbodyParts){
         bodyPartAdapter = new BodyPartAdapter(this, R.layout.grid_item_bodypart, pbodyParts);
         gridViewBodyPart = (GridView) findViewById(R.id.grid_view_body);
@@ -99,16 +112,4 @@ public class BodyPartActivity extends AppCompatActivity implements AdapterView.O
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                Intent intent = new Intent(BodyPartActivity.this,SubCategoryActivity.class);
-                intent.putExtra("id",idCategory);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 }

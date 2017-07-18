@@ -21,4 +21,15 @@ public class RetrofitCliente {
         }
         return retrofit;
     }
+
+    public static Retrofit.Builder getClient(String url){
+
+        if(retrofit == null){
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(url)
+                    .addConverterFactory(
+                            GsonConverterFactory.create());
+        }
+        return retrofit;
+    }
 }
