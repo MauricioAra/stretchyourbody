@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     SessionManager sessionManager;
 
     private OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-    private Retrofit.Builder builder = RetrofitCliente.getClient("http://192.168.1.56:8080");
+    private Retrofit.Builder builder = RetrofitCliente.getClient("http://192.168.0.16:8080");
     private Retrofit retrofit = builder.client(httpClient.build()).build();
     private Retrofit retrofitAuth = builder.client(httpClient.addInterceptor(new AuthInterceptor(LoginActivity.this)).build()).build();
     private AuthService authService =  retrofit.create(AuthService.class);
@@ -77,6 +77,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
                 attemptLogin();
+            }
+        });
+
+        Button mRegisterButton = (Button) findViewById(R.id.getting_started_button);
+        mRegisterButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(LoginActivity.this, BasicRegisterActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                LoginActivity.this.startActivity(i);
             }
         });
         progress = new ProgressDialog(LoginActivity.this);

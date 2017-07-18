@@ -38,7 +38,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
         </activity>
-        <activity android:name=".Activities.SuperCategoryActivity"
+        <activity
+            android:name=".Activities.SuperCategoryActivity"
             android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
@@ -52,6 +53,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
         </activity>
+        <activity
+            android:name=".Activities.BasicRegisterActivity"
+            android:label="@string/title_activity_basic_register"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

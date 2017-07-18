@@ -13,12 +13,16 @@
     <string name="error_invalid_credentials">Correo o contraseña inválida</string>
     <string name="error_invalid_email">Ingrese un correo válido</string>
     <string name="error_field_required">Este campo es requerido</string>
+    <string name="error_field_short_psw">Contraseña muy corta</string>
+    <string name="error_field_not_same_psw">Las contraseñas no son iguales</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
     <string name="error_network">Lo sentimos, hubo un error con el servidor</string>
+    <string name="register_success">Éxito!</string>
     <string name="loading">Cargando</string>
     <string name="authenticating">Autenticando credenciales</string>
     <string name="title_activity_profile_user">ProfileUserActivity</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_basic_register">BasicRegisterActivity</string>
 </resources>
