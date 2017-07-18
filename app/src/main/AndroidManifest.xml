@@ -18,7 +18,6 @@
         <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -38,25 +37,49 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
         </activity>
+
         <activity
-            android:name=".Activities.SuperCategoryActivity"
-            android:parentActivityName=".Activities.MainActivity"
+            android:name=".Activities.CategoryActivity"/>
+
+        <activity
+            android:name=".Activities.SubCategoryActivity"
+            android:parentActivityName=".Activities.CategoryActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
         </activity>
         <activity
-            android:name=".Activities.LoginActivity"
-            android:label="@string/title_activity_login">
+            android:name=".Activities.BodyPartActivity"
+            android:parentActivityName=".Activities.SubCategoryActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.MainActivity" />
+                android:value=".Activities.SubCategoryActivity" />
         </activity>
+        <activity android:name=".Activities.ExerciseActivity"
+            android:parentActivityName=".Activities.BodyPartActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.BodyPartActivity" />
+        </activity>
+        <activity android:name=".Activities.EditProfileActivity"
+            android:parentActivityName=".Activities.ProfileUserActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ProfileUserActivity" />
+        </activity>
+        <activity android:name=".Activities.LoginActivity"
+            android:label="@string/title_activity_login" />
         <activity
             android:name=".Activities.BasicRegisterActivity"
             android:label="@string/title_activity_basic_register"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme">
+
+        </activity>
+
     </application>
 
 </manifest>

@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         session = new SessionManager(MainActivity.this);
         if (!session.isLoggedIn()) {
             session.logOut();
@@ -42,11 +43,12 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent supercat = new Intent(MainActivity.this,SuperCategoryActivity.class);
+                    Intent supercat = new Intent(MainActivity.this,CategoryActivity.class);
                     startActivity(supercat);
                 }
             });
         }
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
                         drawerLayout.closeDrawers();
                         break;
 
-                    case R.id.logOut:
+                    case R.id.log_out:
                         session.logOut();
                         break;
                 }

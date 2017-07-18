@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.strechyourbody.rammp.stretchbody.Entities.JWTToken;
 import com.strechyourbody.rammp.stretchbody.Entities.UserCredentials;
 import com.strechyourbody.rammp.stretchbody.Entities.UserSession;
+import com.strechyourbody.rammp.stretchbody.Entities.UserSingle;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
 import retrofit2.*;
 import com.strechyourbody.rammp.stretchbody.Services.AuthService;
@@ -43,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     SessionManager sessionManager;
 
     private OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-    private Retrofit.Builder builder = RetrofitCliente.getClient("http://192.168.0.16:8080");
+    private Retrofit.Builder builder = RetrofitCliente.getClient("http://192.168.0.12:8080/api/");
     private Retrofit retrofit = builder.client(httpClient.build()).build();
     private Retrofit retrofitAuth = builder.client(httpClient.addInterceptor(new AuthInterceptor(LoginActivity.this)).build()).build();
     private AuthService authService =  retrofit.create(AuthService.class);
@@ -180,8 +181,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         sessionManager = new SessionManager(getApplicationContext());
         sessionManager.createSessionWithTokenOnly(token.getIdToken());
-
-        Call<Long> call = authServiceWithToken.getUserID(username);
+        UserSingle userSingle = new UserSingle();
+        userSingle.setUsername(username);
+        Call<Long> call = authServiceWithToken.getUserID(userSingle);
         call.enqueue(new Callback<Long>() {
             @Override
             public void onResponse(Call<Long> call, Response<Long> response) {
@@ -210,7 +212,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         sessionManager.createLoginSession(session.getUserId(), session.getUsername(), session.getToken());
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
-        finish();
+        //finish();
     }
 
     /**
