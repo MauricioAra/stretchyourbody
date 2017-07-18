@@ -80,6 +80,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 attemptLogin();
             }
         });
+
+        Button mRegisterButton = (Button) findViewById(R.id.getting_started_button);
+        mRegisterButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(LoginActivity.this, BasicRegisterActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                LoginActivity.this.startActivity(i);
+            }
+        });
         progress = new ProgressDialog(LoginActivity.this);
     }
 
