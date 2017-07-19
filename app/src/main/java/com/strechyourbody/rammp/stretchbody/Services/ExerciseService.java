@@ -14,6 +14,6 @@ import retrofit2.http.Path;
  */
 
 public interface ExerciseService {
-    @GET("exercise_by_body/{id}")
+    @GET("api/app/exercise_by_body/{id}")
     Call<List<Exercise>> listExerciseByBody(@Path("id") int id);
 }
