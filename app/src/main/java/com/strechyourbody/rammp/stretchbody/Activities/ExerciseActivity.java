@@ -47,7 +47,7 @@ public class ExerciseActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private ProgressDialog progressDialog;
     private SessionManager session;
-
+    private List<Exercise> globalExercises;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +72,7 @@ public class ExerciseActivity extends AppCompatActivity {
             public void onResponse(Call<List<Exercise>> call, Response<List<Exercise>> response) {
                 // The network call was a success and we got a response
                 if(response != null){
-                    //globalBodyParts = response.body();
+                    globalExercises = response.body();
                     buildList(response.body());
                     //progressDialog.dismiss();
                 }
@@ -141,7 +141,12 @@ public class ExerciseActivity extends AppCompatActivity {
         mAdapter= new ExerciseAdapter(exercises, R.layout.list_item_exercise, new ExerciseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(String name, int position) {
-                Toast.makeText(ExerciseActivity.this,name,Toast.LENGTH_SHORT).show();
+                Long id = globalExercises.get(position).getId();
+                Intent intent = new Intent(ExerciseActivity.this, ExerciseDetailActivity.class);
+                intent.putExtra("idExe",id.toString());
+                intent.putExtra("idBody",idBody.toString());
+                startActivity(intent);
+
             }
         });
         mRecycler.setLayoutManager(mLayoutManager);
