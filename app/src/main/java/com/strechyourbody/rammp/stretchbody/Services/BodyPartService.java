@@ -15,6 +15,6 @@ import retrofit2.http.Path;
 
 public interface BodyPartService {
 
-    @GET("bodyPartBySubcategory/{id}")
+    @GET("api/app/bodyPartBySubcategory/{id}")
     Call<List<BodyPart>> listBodyPart(@Path("id") int id);
 }

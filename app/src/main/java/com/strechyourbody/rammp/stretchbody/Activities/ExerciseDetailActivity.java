@@ -14,6 +14,7 @@ import com.strechyourbody.rammp.stretchbody.Entities.Exercise;
 import com.strechyourbody.rammp.stretchbody.R;
 import com.strechyourbody.rammp.stretchbody.Services.ExerciseService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
+import com.strechyourbody.rammp.stretchbody.Utils.AuthInterceptor;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class ExerciseDetailActivity extends AppCompatActivity {
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
-        Retrofit retrofit = builder.client(httpClient.build()).build();
+        Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(ExerciseDetailActivity.this)).build()).build();
         ExerciseService exerciseService =  retrofit.create(ExerciseService.class);
 
 

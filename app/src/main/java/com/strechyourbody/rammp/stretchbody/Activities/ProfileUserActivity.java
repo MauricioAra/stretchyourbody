@@ -13,6 +13,7 @@ import com.strechyourbody.rammp.stretchbody.Entities.ProfileUser;
 import com.strechyourbody.rammp.stretchbody.R;
 import com.strechyourbody.rammp.stretchbody.Services.ProfileService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
+import com.strechyourbody.rammp.stretchbody.Services.SessionManager;
 import com.strechyourbody.rammp.stretchbody.Utils.AuthInterceptor;
 
 import okhttp3.OkHttpClient;
@@ -23,16 +24,17 @@ import retrofit2.Retrofit;
 
 public class ProfileUserActivity extends AppCompatActivity {
     Toolbar toolbar;
+    SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_user);
-
+        sessionManager = new SessionManager(ProfileUserActivity.this);
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
         Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(ProfileUserActivity.this)).build()).build();
         ProfileService profileService =  retrofit.create(ProfileService.class);
-        Call<ProfileUser> myprofile = profileService.findProfile(1);
+        Call<ProfileUser> myprofile = profileService.findProfile(sessionManager.getUserDetails().getUserId().intValue());
 
         myprofile.enqueue(new Callback<ProfileUser>() {
             @Override

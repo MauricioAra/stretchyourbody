@@ -19,10 +19,10 @@ import com.strechyourbody.rammp.stretchbody.Entities.UserRegister;
 
 
 public interface AuthService {
-    @POST("authenticate")
+    @POST("/api/authenticate")
     Call<JWTToken> authenticate(@Body UserCredentials userCred);
 
-    @POST("find-user")
+    @POST("api/find-user")
     Call<Long> getUserID(@Body UserSingle userSingle);
 
     @POST("api/register")

@@ -32,6 +32,7 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
         setToolbar();
+        session = new SessionManager(CategoryActivity.this);
 
         office = (RelativeLayout) findViewById(R.id.office);
         air = (RelativeLayout) findViewById(R.id.air);

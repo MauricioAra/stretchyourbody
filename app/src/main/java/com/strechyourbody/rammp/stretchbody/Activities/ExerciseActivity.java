@@ -27,6 +27,7 @@ import com.strechyourbody.rammp.stretchbody.Services.BodyPartService;
 import com.strechyourbody.rammp.stretchbody.Services.ExerciseService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
 import com.strechyourbody.rammp.stretchbody.Services.SessionManager;
+import com.strechyourbody.rammp.stretchbody.Utils.AuthInterceptor;
 
 import java.util.List;
 
@@ -53,6 +54,7 @@ public class ExerciseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
         setToolbar();
+        session = new SessionManager(ExerciseActivity.this);
 
         idBody = getIntent().getStringExtra("idBody");
         idSub = getIntent().getStringExtra("idSub");
@@ -61,7 +63,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
-        Retrofit retrofit = builder.client(httpClient.build()).build();
+        Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(ExerciseActivity.this)).build()).build();
         ExerciseService exerciseService =  retrofit.create(ExerciseService.class);
 
 

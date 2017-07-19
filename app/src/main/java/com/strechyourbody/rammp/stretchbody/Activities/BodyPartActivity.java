@@ -20,6 +20,7 @@ import com.strechyourbody.rammp.stretchbody.R;
 import com.strechyourbody.rammp.stretchbody.Services.BodyPartService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
 import com.strechyourbody.rammp.stretchbody.Services.SubCategoryService;
+import com.strechyourbody.rammp.stretchbody.Utils.AuthInterceptor;
 
 import java.util.List;
 
@@ -57,7 +58,7 @@ public class BodyPartActivity extends AppCompatActivity implements AdapterView.O
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
-        Retrofit retrofit = builder.client(httpClient.build()).build();
+        Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(BodyPartActivity.this)).build()).build();
         BodyPartService bodyPartService =  retrofit.create(BodyPartService.class);
 
 

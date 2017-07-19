@@ -10,7 +10,7 @@ import retrofit2.http.Path;
 
 public interface ProgramService {
 
-    @GET("my_programs/{id}")
+    @GET("api/app/my_programs/{id}")
     Call<List<Program>> listMyPrograms(@Path("id") int id);
 
 }

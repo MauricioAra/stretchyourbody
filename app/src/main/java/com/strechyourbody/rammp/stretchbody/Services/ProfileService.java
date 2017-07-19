@@ -20,9 +20,9 @@ import retrofit2.http.Path;
 
 public interface ProfileService {
 
-    @GET("user/{id}")
+    @GET("api/app/user/{id}")
     Call<ProfileUser> findProfile(@Path("id") int id);
 
-    @PUT("updateUser")
+    @PUT("api/app/updateUser")
     Call<ProfileUser> saveUserProfile(@Body ProfileUser profileUser);
 }
