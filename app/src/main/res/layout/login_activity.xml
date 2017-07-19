@@ -60,7 +60,7 @@
                         android:inputType="textEmailAddress"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:textColorHint="#ffffff"/>
+                        android:textColorHint="#ffffff" />
 
                 </android.support.design.widget.TextInputLayout>
 

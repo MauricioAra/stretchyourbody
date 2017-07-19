@@ -49,7 +49,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.name = (TextView) itemView.findViewById(R.id.text_name);
+            this.name = (TextView) itemView.findViewById(R.id.text_name_recomended_dash);
         }
 
 

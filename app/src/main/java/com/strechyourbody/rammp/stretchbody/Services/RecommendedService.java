@@ -13,6 +13,7 @@ import retrofit2.http.GET;
  */
 
 public interface RecommendedService {
-    @GET("programsRecommended")
+    @GET("api/app/programsRecommended")
     Call<List<Recommended>> listRecommended();
+
 }

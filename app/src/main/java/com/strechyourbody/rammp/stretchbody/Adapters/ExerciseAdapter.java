@@ -50,20 +50,27 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView name;
         public TextView difficult;
+        public TextView repetitions;
+        public TextView time;
+        public TextView calification;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
             this.name = (TextView) itemView.findViewById(R.id.text_name);
-            this.difficult = (TextView) itemView.findViewById(R.id.text_difficult);
+            this.difficult = (TextView) itemView.findViewById(R.id.text_execise_difficulty_list);
+            this.repetitions = (TextView) itemView.findViewById(R.id.text_execise_repetitions_list);
+            this.time = (TextView) itemView.findViewById(R.id.text_execise_duation_list);
+            this.calification = (TextView) itemView.findViewById(R.id.text_execise_calification_list);
         }
 
 
         public void bind(final Exercise exercise ,final ExerciseAdapter.OnItemClickListener plistener){
             this.name.setText(exercise.getName());
-            //this.difficult.setText(exercise.getDifficulty());
-            //this.initDate.setText(program.getIntDate());
-            //this.finishDate.setText(program.getFinishDate());
+            this.difficult.setText(exercise.getDifficulty());
+            this.repetitions.setText(exercise.getRepetition().toString());
+            this.time.setText(exercise.getTime());
+            this.calification.setText(exercise.getCalification().toString());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

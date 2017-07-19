@@ -20,6 +20,8 @@ import com.strechyourbody.rammp.stretchbody.Entities.ProfileUser;
 import com.strechyourbody.rammp.stretchbody.R;
 import com.strechyourbody.rammp.stretchbody.Services.ProfileService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
+import com.strechyourbody.rammp.stretchbody.Services.SessionManager;
+import com.strechyourbody.rammp.stretchbody.Utils.AuthInterceptor;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -32,18 +34,20 @@ public class EditProfileActivity extends AppCompatActivity {
     private Button button_save;
     private ProfileUser profile;
     ProfileService profileService;
+    SessionManager sessionManager;
     boolean result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+        sessionManager = new SessionManager(EditProfileActivity.this);
         setToolbar();
         final Button button_save = (Button) findViewById(R.id.button_save);
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
-        Retrofit retrofit = builder.client(httpClient.build()).build();
+        Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(EditProfileActivity.this)).build()).build();
         profileService =  retrofit.create(ProfileService.class);
-        Call<ProfileUser> myprofile = profileService.findProfile(1);
+        Call<ProfileUser> myprofile = profileService.findProfile(sessionManager.getUserDetails().getUserId().intValue());
 
         myprofile.enqueue(new Callback<ProfileUser>() {
             @Override
@@ -189,10 +193,11 @@ public class EditProfileActivity extends AppCompatActivity {
             profile.setWeight(Double.parseDouble(weightText.getText().toString()));
             profile.setAge(ageText.getText().toString());
             profile.setGender(gender);
+            profile.setId(sessionManager.getUserDetails().getUserId());
 
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
             Retrofit.Builder builder = RetrofitCliente.getClient();
-            Retrofit retrofit = builder.client(httpClient.build()).build();
+            Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(EditProfileActivity.this)).build()).build();
             profileService = retrofit.create(ProfileService.class);
             Call<ProfileUser> save = profileService.saveUserProfile(profile);
 

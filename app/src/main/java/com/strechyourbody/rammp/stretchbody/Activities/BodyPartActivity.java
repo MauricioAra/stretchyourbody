@@ -1,5 +1,6 @@
 package com.strechyourbody.rammp.stretchbody.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import com.strechyourbody.rammp.stretchbody.R;
 import com.strechyourbody.rammp.stretchbody.Services.BodyPartService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
 import com.strechyourbody.rammp.stretchbody.Services.SubCategoryService;
+import com.strechyourbody.rammp.stretchbody.Utils.AuthInterceptor;
 
 import java.util.List;
 
@@ -34,6 +36,7 @@ public class BodyPartActivity extends AppCompatActivity implements AdapterView.O
     private String idCategory;
     private BodyPartAdapter bodyPartAdapter;
     private List<BodyPart> globalBodyParts;
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +44,21 @@ public class BodyPartActivity extends AppCompatActivity implements AdapterView.O
         setContentView(R.layout.activity_body_part);
         idSubCategory = getIntent().getStringExtra("id");
         idCategory = getIntent().getStringExtra("idCat");
-        //Toast.makeText(BodyPartActivity.this,idSubCategory,Toast.LENGTH_SHORT).show();
+
+        // Prgress
+        progress = new ProgressDialog(BodyPartActivity.this);
+        progress.setTitle("Cargando");
+        progress.setMessage("Obteniendo partes del cuerpo...");
+        progress.setCancelable(false);
+        progress.setIndeterminate(true);
+        progress.show();
+
+        // set Toolbar
         setToolbar();
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
-        Retrofit retrofit = builder.client(httpClient.build()).build();
+        Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(BodyPartActivity.this)).build()).build();
         BodyPartService bodyPartService =  retrofit.create(BodyPartService.class);
 
 
@@ -60,7 +72,7 @@ public class BodyPartActivity extends AppCompatActivity implements AdapterView.O
                 if(response != null){
                     globalBodyParts = response.body();
                     buildGrid(response.body());
-                    //progressDialog.dismiss();
+                    progress.dismiss();
                 }
                 // TODO: use the repository list and display it
             }

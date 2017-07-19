@@ -76,6 +76,12 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
                         drawerLayout.closeDrawers();
                         break;
 
+                    case R.id.menu_start_exercise:
+                        Intent category = new Intent(MainActivity.this,CategoryActivity.class);
+                        startActivity(category);
+                        drawerLayout.closeDrawers();
+                        break;
+
                     case R.id.log_out:
                         session.logOut();
                         break;

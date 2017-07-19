@@ -34,7 +34,7 @@ public class BasicRegisterActivity extends AppCompatActivity {
 
     //Network references
     private OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-    private Retrofit.Builder builder = RetrofitCliente.getClient("http://192.168.0.12:8080/");
+    private Retrofit.Builder builder = RetrofitCliente.getClient();
     private Retrofit retrofit = builder.client(httpClient.build()).build();
     private AuthService authService =  retrofit.create(AuthService.class);
 
@@ -162,6 +162,8 @@ public class BasicRegisterActivity extends AppCompatActivity {
         userReg.setLogin(login);
         userReg.setEmail(email);
         userReg.setPassword(password);
+        userReg.setFirstName(name);
+        userReg.setLastName(lastName);
 
         Call<Void> call = authService.simpleRegister(userReg);
         call.enqueue(new Callback<Void>() {

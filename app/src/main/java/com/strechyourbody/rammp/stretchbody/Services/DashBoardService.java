@@ -13,6 +13,6 @@ import retrofit2.http.GET;
  */
 
 public interface DashBoardService {
-    @GET("programsRecommended")
+    @GET("api/app/programsRecommended")
     Call<List<Recommended>> listRecommended();
 }

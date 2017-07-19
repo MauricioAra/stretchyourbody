@@ -15,6 +15,6 @@ import retrofit2.http.Path;
 
 public interface SubCategoryService {
 
-    @GET("subCategoryByCategory/{id}")
+    @GET("api/app/subCategoryByCategory/{id}")
     Call<List<SubCategory>> listSubcategory(@Path("id") int id);
 }
