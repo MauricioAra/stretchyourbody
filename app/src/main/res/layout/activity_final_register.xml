@@ -1,0 +1,153 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.strechyourbody.rammp.stretchbody.Activities.LoginActivity">
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="358dp"
+        android:layout_height="match_parent"
+        android:paddingTop="24dp"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:paddingTop="@dimen/activity_horizontal_margin">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/hours_worked"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:hint="Horas Trabajadas (Semanalmente)"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textColorHint="#55DAE1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/is_somker_Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¿Es fumador (a) ?"/>
+
+            <RadioGroup
+                android:id="@+id/radio_somkes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_below="@+id/user_age"
+                android:layout_alignStart="@+id/user_age"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/does_smoke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#55DAE1"
+                    android:text="Sí" />
+
+                <RadioButton
+                    android:id="@+id/radio_femenino"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#55DAE1"
+                    android:text="No" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/eats_healthy_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¿Come de manera saludable?"
+                android:layout_marginTop="40dp"/>
+
+            <RadioGroup
+                android:id="@+id/radio_grouup_healthy_food"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_below="@+id/user_age"
+                android:layout_alignStart="@+id/user_age"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_does_eat_healthy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#55DAE1"
+                    android:text="Sí" />
+
+                <RadioButton
+                    android:id="@+id/radio_does_not_eat_healthy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#55DAE1"
+                    android:text="No" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/wokrout_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¿Hace usted ejercicio?"
+                android:layout_marginTop="40dp"/>
+
+            <RadioGroup
+                android:id="@+id/radio_group_workout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_below="@+id/user_age"
+                android:layout_alignStart="@+id/user_age"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_does_workout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#55DAE1"
+                    android:text="Sí" />
+
+                <RadioButton
+                    android:id="@+id/radio_does_not_workout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#55DAE1"
+                    android:text="No" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+    </ScrollView>
+    <Button
+        android:id="@+id/final_register_btn"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Terminar"
+        android:background="#55DAE1"
+        android:textColor="#ffffff"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>

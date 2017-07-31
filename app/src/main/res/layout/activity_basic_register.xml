@@ -5,7 +5,11 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.strechyourbody.rammp.stretchbody.Activities.LoginActivity">
+    tools:context="com.strechyourbody.rammp.stretchbody.Activities.BasicRegisterActivity">
+
+    <include
+        android:id="@+id/toobar"
+        layout="@layout/toolbar"/>
 
         <ScrollView
             android:id="@+id/login_form"
@@ -20,7 +24,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                tools:paddingTop="@dimen/activity_horizontal_margin">
+                tools:paddingTop="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="60dp">
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -36,9 +41,8 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:textColorHint="#55DAE1"
-                    android:layout_marginBottom="30dp"/>
+                    android:layout_marginBottom="30dp" />
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -56,7 +60,6 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:textColorHint="#55DAE1"
                     android:layout_marginBottom="30dp"/>
 
@@ -76,7 +79,6 @@
                 android:imeOptions="actionUnspecified"
                 android:inputType="text"
                 android:maxLines="1"
-                android:singleLine="true"
                 android:textColorHint="#55DAE1"
                 android:layout_marginBottom="30dp" />
 
@@ -96,7 +98,6 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:layout_marginBottom="30dp"
                     android:textColorHint="#55DAE1" />
 
@@ -116,20 +117,19 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:textColorHint="#55DAE1" />
                 </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
         </ScrollView>
-    <Button
-        android:id="@+id/register_button"
-        style="?android:textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registrar"
-        android:background="#55DAE1"
-        android:textColor="#ffffff"
-        android:layout_alignParentBottom="true"
-        />
+        <Button
+            android:id="@+id/register_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrar"
+            android:background="#55DAE1"
+            android:textColor="#ffffff"
+            android:layout_alignParentBottom="true"
+            />
 </RelativeLayout>
