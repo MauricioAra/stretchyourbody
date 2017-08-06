@@ -26,6 +26,16 @@ public class Exercise {
 
     private Integer calification;
 
+    private Boolean isSelected;
+
+    public Boolean getSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(Boolean selected) {
+        isSelected = selected;
+    }
+
     public Exercise(){}
 
     public Long getId() {

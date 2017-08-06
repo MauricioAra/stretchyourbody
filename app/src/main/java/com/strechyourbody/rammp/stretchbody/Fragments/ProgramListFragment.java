@@ -13,11 +13,13 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 
+import com.strechyourbody.rammp.stretchbody.Activities.AddProgramActivity;
 import com.strechyourbody.rammp.stretchbody.Adapters.ProgramAdapter;
 import com.strechyourbody.rammp.stretchbody.Entities.Program;
 import com.strechyourbody.rammp.stretchbody.R;
 import com.strechyourbody.rammp.stretchbody.Services.ProgramService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
+import com.strechyourbody.rammp.stretchbody.Services.SessionManager;
 import com.strechyourbody.rammp.stretchbody.Utils.AuthInterceptor;
 
 
@@ -41,6 +43,7 @@ public class ProgramListFragment extends Fragment {
     private ProgramAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ProgressDialog progressDialog;
+    SessionManager sessionManager;
 
     static Context _context;
 
@@ -54,9 +57,10 @@ public class ProgramListFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_program_list,container,false);
         progressDialog = new ProgressDialog(view.getContext());
-        progressDialog.setTitle("Hola");
-        progressDialog.setMessage("Hola");
+        progressDialog.setTitle("Cargado..");
+        progressDialog.setMessage("cargando programas");
         progressDialog.show();
+        sessionManager = new SessionManager(getContext());
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
@@ -64,7 +68,7 @@ public class ProgramListFragment extends Fragment {
         ProgramService programService =  retrofit.create(ProgramService.class);
 
 
-        Call<List<Program>> call = programService.listMyPrograms(1);
+        Call<List<Program>> call = programService.listMyPrograms(sessionManager.getUserDetails().getUserId().intValue());
 
         call.enqueue(new Callback<List<Program>>() {
             @Override
