@@ -37,4 +37,7 @@ public interface AuthService {
 
     @GET("/api/noAuthResource/bodyParts")
     Call<List<BodyPart>> getBodyParts();
+
+    @POST("/api/account/change_password")
+    Call<Void> changePassword(@Body String newPassword);
 }
