@@ -14,8 +14,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
         <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -89,9 +88,14 @@
             android:name=".Activities.FinalRegisterActivity"
             android:label="@string/title_activity_final_register"
             android:theme="@style/AppTheme" />
-        <receiver android:name=".Services.NotificationReciever">
-        </receiver>
-        <receiver android:name=".Services.NotificationService">
-        </receiver>
+
+        <receiver android:name=".Services.NotificationReciever"></receiver>
+        <receiver android:name=".Services.NotificationService"></receiver>
+
+        <activity
+            android:name=".Activities.ChangePasswordActivity"
+            android:label="@string/title_activity_change_password"
+            android:theme="@style/AppTheme"></activity>
     </application>
+
 </manifest>

@@ -43,6 +43,7 @@ public class EditProfileActivity extends AppCompatActivity {
         sessionManager = new SessionManager(EditProfileActivity.this);
         setToolbar();
         final Button button_save = (Button) findViewById(R.id.button_save);
+        final Button changePassButton = (Button) findViewById(R.id.change_password);
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
         Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(EditProfileActivity.this)).build()).build();
@@ -75,6 +76,13 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
                 saveProfileInfo();
+            }
+        });
+
+        changePassButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changePassword();
             }
         });
 
@@ -227,10 +235,11 @@ public class EditProfileActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
-
+    private void changePassword() {
+        Intent i = new Intent(EditProfileActivity.this, ChangePasswordActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+    }
 }
 
