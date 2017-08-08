@@ -78,6 +78,14 @@ public class ChangePasswordActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Cambiar Contraseña");
         //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), EditProfileActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplicationContext().startActivity(i);
+            }
+        });
     }
 
     private void attemptChange() {

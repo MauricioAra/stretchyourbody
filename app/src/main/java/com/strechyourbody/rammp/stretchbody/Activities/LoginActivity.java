@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     // UI references.
     private EditText mEmailView;
     private EditText mPasswordView;
+    private Button mRecoverPasswordBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mRegisterButton.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
                 Intent i = new Intent(LoginActivity.this, BasicRegisterActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                LoginActivity.this.startActivity(i);
+            }
+        });
+
+        mRecoverPasswordBtn = (Button) findViewById(R.id.recover_password);
+        mRecoverPasswordBtn.setOnClickListener(new OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(LoginActivity.this, RecoverPasswordActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 LoginActivity.this.startActivity(i);
