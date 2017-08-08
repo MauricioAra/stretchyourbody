@@ -62,15 +62,31 @@ public class BasicRegisterActivity extends AppCompatActivity {
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordVerifyView = (EditText) findViewById(R.id.password_verify);
 
+        setToolbar();
         Button mRegisterButton = (Button) findViewById(R.id.register_button);
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 atemptRegister();
             }
         });
+
         progress = new ProgressDialog(BasicRegisterActivity.this);
     }
 
+    private void setToolbar(){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toobar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Regresar");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplicationContext().startActivity(i);
+            }
+        });
+    }
 
     private void atemptRegister() {
 
@@ -165,27 +181,40 @@ public class BasicRegisterActivity extends AppCompatActivity {
         userReg.setFirstName(name);
         userReg.setLastName(lastName);
 
-        Call<Void> call = authService.simpleRegister(userReg);
-        call.enqueue(new Callback<Void>() {
+        Call<Long> call = authService.simpleRegister(userReg);
+        call.enqueue(new Callback<Long>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<Long> call, Response<Long> response) {
                 // The network call was a success and we got a response
                 if(response != null) {
-                    CharSequence text = getString(R.string.register_success);
-                    int duration = Toast.LENGTH_LONG;
-                    Toast toast = Toast.makeText(getApplicationContext(), text, duration);
-                    toast.setGravity(Gravity.TOP|Gravity.RIGHT, 0, 0);
-                    toast.show();
-                    showProgress(false);
-                    Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    getApplicationContext().startActivity(i);
+                    if(response.code() != 400) {
+                        Long id = response.body();
+                        CharSequence text = getString(R.string.register_success);
+                        int duration = Toast.LENGTH_LONG;
+                        Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+                        toast.setGravity(Gravity.TOP|Gravity.RIGHT, 0, 0);
+                        toast.show();
+                        showProgress(false);
+                        Intent i = new Intent(getApplicationContext(), FullRegisterActivity.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        Bundle b = new Bundle();
+                        b.putLong("userId", id);
+                        i.putExtras(b);
+                        getApplicationContext().startActivity(i);
+                    } else {
+                        CharSequence text = "Usuario ya existe";
+                        int duration = Toast.LENGTH_LONG;
+                        Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+                        toast.setGravity(Gravity.TOP|Gravity.RIGHT, 0, 0);
+                        toast.show();
+                        showProgress(false);
+                    }
                 }
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<Long> call, Throwable t) {
                 CharSequence text = getString(R.string.error_network);
                 int duration = Toast.LENGTH_LONG;
                 Toast toast = Toast.makeText(getApplicationContext(), text, duration);

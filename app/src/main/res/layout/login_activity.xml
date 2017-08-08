@@ -8,38 +8,25 @@
     tools:context="com.strechyourbody.rammp.stretchbody.Activities.LoginActivity">
 
     <RelativeLayout
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/login_background"
-        tools:context=".MainActivity" >
-
-
-        <!-- Login progress -->
-
-        <!--<ProgressBar-->
-            <!--android:id="@+id/login_progress"-->
-            <!--style="?android:attr/progressBarStyleLarge"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="8dp"-->
-            <!--android:visibility="gone" />-->
+        tools:context=".MainActivity">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="255dp"
-            android:layout_height="115dp"
-            app:srcCompat="@drawable/bamboo"
+            android:layout_width="290dp"
+            android:layout_height="155dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="58dp" />
+            android:layout_marginTop="58dp"
+            app:srcCompat="@drawable/bamboo" />
 
         <ScrollView
             android:id="@+id/login_form"
             android:layout_width="358dp"
-            android:layout_height="294dp"
-            android:paddingTop="24dp"
-            android:layout_marginTop="260dp"
-            android:layout_centerHorizontal="true">
+            android:layout_height="450dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="210dp"
+            android:paddingTop="24dp">
 
             <LinearLayout
                 android:id="@+id/email_login_form"
@@ -59,7 +46,6 @@
                         android:hint="Correo"
                         android:inputType="textEmailAddress"
                         android:maxLines="1"
-                        android:singleLine="true"
                         android:textColorHint="#ffffff" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -78,7 +64,6 @@
                         android:imeOptions="actionUnspecified"
                         android:inputType="textPassword"
                         android:maxLines="1"
-                        android:singleLine="true"
                         android:textColorHint="#ffffff" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -89,9 +74,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Iniciar sesion"
                     android:background="#55DAE1"
-                    android:textColor="#ffffff"/>
+                    android:text="Iniciar sesion"
+                    android:textColor="#ffffff" />
 
                 <Button
                     android:id="@+id/getting_started_button"
@@ -99,9 +84,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:background="?attr/colorPrimary"
                     android:text="Comencemos"
-                    android:background="#ffffff"
-                    android:textColor="#55DAE1"/>
+                    android:textColor="#ffffff" />
+
+                <Button
+                    android:id="@+id/recover_password"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Recuperar contraseña"
+                    android:background="@android:color/transparent"
+                    android:textColor="#55DAE1" />
+
 
             </LinearLayout>
         </ScrollView>

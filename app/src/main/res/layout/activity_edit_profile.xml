@@ -130,6 +130,15 @@
                     android:text="Guardar"
                     android:layout_below="@+id/user_height"
                     android:layout_alignParentEnd="true" />
+
+                <Button
+                    android:id="@+id/change_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cambiar constaseña"
+                    android:layout_alignBaseline="@+id/button_save"
+                    android:layout_alignBottom="@+id/button_save"
+                    android:layout_alignStart="@+id/user_height" />
             </RelativeLayout>
 
         </ScrollView>

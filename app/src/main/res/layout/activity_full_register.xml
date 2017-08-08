@@ -1,0 +1,144 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.strechyourbody.rammp.stretchbody.Activities.LoginActivity">
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="358dp"
+        android:layout_height="match_parent"
+        android:paddingTop="24dp"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:paddingTop="@dimen/activity_horizontal_margin">
+
+            <TextView
+                android:id="@+id/tVMainText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tVStaticSmallLabel"
+                android:layout_marginTop="5dip"
+                android:textSize="18dp"
+                android:text="Seleccione su parte del cuerpo con mas dolor"
+                />
+
+            <Spinner
+                android:id="@+id/bodyPartSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:hint="Edad"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textColorHint="#55DAE1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:hint="Peso (Kg)"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textColorHint="#55DAE1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/height"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:hint="Altura (cm)"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textColorHint="#55DAE1" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/genero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tVStaticSmallLabel"
+                android:layout_marginTop="5dip"
+                android:text="Genero"
+                android:textSize="18dp"
+                />
+
+            <RadioGroup
+                android:id="@+id/radioGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_below="@+id/user_age"
+                android:layout_alignStart="@+id/user_age"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_hombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#55DAE1"
+                    android:text="Hombre" />
+
+                <RadioButton
+                    android:id="@+id/radio_femenino"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#55DAE1"
+                    android:text="Mujer" />
+
+                <RadioButton
+                    android:id="@+id/radio_otro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#55DAE1"
+                    android:text="Otro" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </ScrollView>
+    <Button
+        android:id="@+id/continue_register_button"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Continuar"
+        android:background="#55DAE1"
+        android:textColor="#ffffff"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>

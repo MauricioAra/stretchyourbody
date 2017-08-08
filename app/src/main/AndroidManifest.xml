@@ -94,6 +94,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.ProgramActivity" />
         </activity>
+
+
+        <activity
+            android:name=".Activities.FullRegisterActivity"
+            android:label="@string/title_activity_full_register"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activities.FinalRegisterActivity"
+            android:label="@string/title_activity_final_register"
+            android:theme="@style/AppTheme" />
+        <receiver android:name=".Services.NotificationReciever" />
+        <receiver android:name=".Services.NotificationService" />
+        <activity
+            android:name=".Activities.ChangePasswordActivity"
+            android:label="@string/title_activity_change_password"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activities.RecoverPasswordActivity"></activity>
     </application>
 
 </manifest>
