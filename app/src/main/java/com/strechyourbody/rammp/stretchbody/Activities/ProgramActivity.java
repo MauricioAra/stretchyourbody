@@ -45,7 +45,6 @@ public class ProgramActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toobar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Mis programas");
-        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

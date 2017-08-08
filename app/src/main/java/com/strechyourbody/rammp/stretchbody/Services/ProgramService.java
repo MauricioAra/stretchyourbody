@@ -17,4 +17,7 @@ public interface ProgramService {
 
     @POST("api/app/saveProgram")
     Call<Program> saveMyPrograms(@Body Program program);
+
+    @GET("api/app/my_program/{id}")
+    Call<Program> findOneProgram(@Path("id") int id);
 }

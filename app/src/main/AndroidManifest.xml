@@ -79,8 +79,15 @@
             android:label="@string/title_activity_basic_register"
             android:theme="@style/AppTheme" />
         <activity android:name=".Activities.ExerciseDetailActivity" />
-
-        <activity android:name=".Activities.AddProgramActivity"
+        <activity
+            android:name=".Activities.AddProgramActivity"
+            android:parentActivityName=".Activities.ProgramActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ProgramActivity" />
+        </activity>
+        <activity android:name=".Activities.ProgramDetailActivity"
             android:parentActivityName=".Activities.ProgramActivity"
             android:theme="@style/AppTheme">
             <meta-data
