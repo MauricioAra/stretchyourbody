@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="1dp"
+    android:layout_height="110dp"
+    android:background="#FFF"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#212121"
+        android:textSize="18sp"
+        android:text="Estiramieno de espalda reforce"
+        android:maxLength="30"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/viewtop"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/lbl_name_exercise_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NOMBRE"
+        android:textSize="11dp"
+        android:layout_below="@+id/text_name"
+        android:layout_alignStart="@+id/text_name" />
+
+    <TextView
+        android:id="@+id/text_execise_difficulty_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#212121"
+        android:textSize="14sp"
+        android:text="texto"
+        android:layout_below="@+id/lbl_name_exercise_list"
+        android:layout_alignStart="@+id/lbl_name_exercise_list"
+        android:layout_marginTop="11dp" />
+
+    <TextView
+        android:id="@+id/lbl_difficulty_exercise_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DIFICULTAD"
+        android:textSize="11dp"
+        android:layout_below="@+id/text_execise_difficulty_list"
+        android:layout_alignStart="@+id/text_execise_difficulty_list" />
+
+
+    <TextView
+        android:id="@+id/text_execise_calification_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#212121"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:text="Duration"
+        android:layout_above="@+id/lbl_difficulty_exercise_list"
+        android:layout_toEndOf="@+id/lbl_difficulty_exercise_list"
+        android:layout_marginStart="57dp" />
+
+    <TextView
+        android:id="@+id/lbl_calification_exercise_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CALIFICACION"
+        android:textSize="11dp"
+        android:layout_below="@+id/text_execise_calification_list"
+        android:layout_alignStart="@+id/text_execise_calification_list" />
+
+
+    <View android:layout_alignParentBottom="true"
+        android:layout_height="1dp"
+        android:background="#e5e5e5"
+        android:layout_width="match_parent"
+        android:id="@+id/view" />
+
+    <TextView
+        android:id="@+id/text_execise_duation_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#212121"
+        android:visibility="invisible"
+        android:textSize="18sp"
+        android:text="Duration"
+        android:layout_below="@+id/imageView"
+        android:layout_alignStart="@+id/lbl_difficulty_exercise_list"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/text_execise_repetitions_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#212121"
+        android:visibility="invisible"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="1"
+        android:layout_above="@+id/lbl_difficulty_exercise_list"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
+<!--<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:background="#fff"
+    android:clickable="true">
+
+    <View android:layout_alignParentTop="true"
+        android:layout_height="1dp"
+
+        android:layout_width="match_parent"
+        android:id="@+id/viewtop" />
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#212121"
+        android:textSize="18sp"
+        android:text="Estiramieno de espalda reforce"
+        android:maxLength="30"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/viewtop"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/lbl_name_exercise_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NOMBRE"
+        android:textSize="11dp"
+        android:layout_below="@+id/text_name"
+        android:layout_alignStart="@+id/text_name" />
+
+    <TextView
+        android:id="@+id/text_execise_difficulty_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#212121"
+        android:textSize="14sp"
+        android:text="texto"
+        android:layout_below="@+id/lbl_name_exercise_list"
+        android:layout_alignStart="@+id/lbl_name_exercise_list"
+        android:layout_marginTop="11dp" />
+
+    <TextView
+        android:id="@+id/lbl_difficulty_exercise_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DIFICULTAD"
+        android:textSize="11dp"
+        android:layout_below="@+id/text_execise_difficulty_list"
+        android:layout_alignStart="@+id/text_execise_difficulty_list" />
+
+
+    <TextView
+        android:id="@+id/text_execise_calification_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#212121"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:text="Duration"
+        android:layout_above="@+id/lbl_difficulty_exercise_list"
+        android:layout_toEndOf="@+id/lbl_difficulty_exercise_list"
+        android:layout_marginStart="57dp" />
+
+    <TextView
+        android:id="@+id/lbl_calification_exercise_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CALIFICACION"
+        android:textSize="11dp"
+        android:layout_below="@+id/text_execise_calification_list"
+        android:layout_alignStart="@+id/text_execise_calification_list" />
+
+
+    <View android:layout_alignParentBottom="true"
+        android:layout_height="1dp"
+        android:background="#e5e5e5"
+        android:layout_width="match_parent"
+        android:id="@+id/view" />
+
+    <TextView
+        android:id="@+id/text_execise_duation_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#212121"
+        android:visibility="invisible"
+        android:textSize="18sp"
+        android:text="Duration"
+        android:layout_below="@+id/imageView"
+        android:layout_alignStart="@+id/lbl_difficulty_exercise_list"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/text_execise_repetitions_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#212121"
+        android:visibility="invisible"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="1"
+        android:layout_above="@+id/lbl_difficulty_exercise_list"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>-->
+    <!--android:background="#ff45"-->

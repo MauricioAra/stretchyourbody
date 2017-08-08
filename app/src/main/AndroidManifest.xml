@@ -77,9 +77,25 @@
         <activity
             android:name=".Activities.BasicRegisterActivity"
             android:label="@string/title_activity_basic_register"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
+            android:theme="@style/AppTheme" />
         <activity android:name=".Activities.ExerciseDetailActivity" />
+        <activity
+            android:name=".Activities.AddProgramActivity"
+            android:parentActivityName=".Activities.ProgramActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ProgramActivity" />
+        </activity>
+        <activity android:name=".Activities.ProgramDetailActivity"
+            android:parentActivityName=".Activities.ProgramActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ProgramActivity" />
+        </activity>
+
+
         <activity
             android:name=".Activities.FullRegisterActivity"
             android:label="@string/title_activity_full_register"
@@ -88,10 +104,8 @@
             android:name=".Activities.FinalRegisterActivity"
             android:label="@string/title_activity_final_register"
             android:theme="@style/AppTheme" />
-
         <receiver android:name=".Services.NotificationReciever" />
         <receiver android:name=".Services.NotificationService" />
-
         <activity
             android:name=".Activities.ChangePasswordActivity"
             android:label="@string/title_activity_change_password"
