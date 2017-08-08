@@ -40,4 +40,7 @@ public interface AuthService {
 
     @POST("/api/account/change_password")
     Call<Void> changePassword(@Body String newPassword);
+
+    @POST("/api/account/reset_password/init")
+    Call<Void> recoverPassword(@Body String newPassword);
 }

@@ -89,13 +89,14 @@
             android:label="@string/title_activity_final_register"
             android:theme="@style/AppTheme" />
 
-        <receiver android:name=".Services.NotificationReciever"></receiver>
-        <receiver android:name=".Services.NotificationService"></receiver>
+        <receiver android:name=".Services.NotificationReciever" />
+        <receiver android:name=".Services.NotificationService" />
 
         <activity
             android:name=".Activities.ChangePasswordActivity"
             android:label="@string/title_activity_change_password"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activities.RecoverPasswordActivity"></activity>
     </application>
 
 </manifest>
