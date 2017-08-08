@@ -17,7 +17,7 @@
             android:title="Ejercicios"
             />
         <item
-            android:id="@+id/content_food"
+            android:id="@+id/menu_start_food"
             android:icon="@drawable/black_healthy_food"
             android:title="Comidas" />
     </group>

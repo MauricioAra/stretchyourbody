@@ -65,7 +65,6 @@ public class FoodListFragment extends Fragment {
 
 
         Call<List<Food>> call = foodService.listFood();
-
         call.enqueue(new Callback<List<Food>>() {
             @Override
             public void onResponse(Call<List<Food>> call, Response<List<Food>> response) {

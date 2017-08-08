@@ -55,7 +55,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.name = (TextView) itemView.findViewById(R.id.text_name);
+            this.name = (TextView) itemView.findViewById(R.id.food_name_activity);
             //this.initDate = (TextView) itemView.findViewById(R.id.text_init_date);
             //this.finishDate = (TextView) itemView.findViewById(R.id.text_end_date);
         }

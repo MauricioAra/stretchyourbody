@@ -78,7 +78,7 @@
             android:name=".Activities.BasicRegisterActivity"
             android:label="@string/title_activity_basic_register"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateVisible|adjustResize"/>
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity android:name=".Activities.ExerciseDetailActivity" />
         <activity
             android:name=".Activities.FullRegisterActivity"
@@ -87,7 +87,12 @@
         <activity
             android:name=".Activities.FinalRegisterActivity"
             android:label="@string/title_activity_final_register"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activities.FoodActivity"
+            android:label="comidas"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activities.FoodDetailActivity"></activity>
     </application>
 
 </manifest>
