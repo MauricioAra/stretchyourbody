@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.RadioButton;
 import android.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 import com.strechyourbody.rammp.stretchbody.Adapters.ExerciseAdapter;
@@ -48,6 +50,8 @@ public class AddProgramActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ExerciseCheckAdapter mAdapter;
     private List<Exercise> globalExercises;
+
+    private boolean validationForm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,52 +131,71 @@ public class AddProgramActivity extends AppCompatActivity {
 
     }
 
-    private void saveProgram(){
-        Program program = new Program();
-        List<Exercise> temporatList =  new ArrayList<>();
-
-        program.setName(name_text.getText().toString());
-        program.setCantRepetition(Integer.parseInt(cant_text.getText().toString()));
-        program.setIntDate("Init date");
-        program.setFinishDate("Finish date");
-        program.setRecommended(false);
-        program.setInterval(0);
-        program.setDairy(false);
-        program.setStatus(true);
-        program.setUserAppId(sessionManager.getUserDetails().getUserId());
-
-        for (Exercise exercise : globalExercises) {
-            if (exercise.getSelected()) {
-                temporatList.add(exercise);
-            }
+    private void validateData(){
+        if(name_text.getText().toString().length() == 0 ){
+            name_text.setError( "Nombre es requerido!" );
+            validationForm = false;
         }
 
-        program.setExercises(temporatList);
+        if(cant_text.getText().toString().length() == 0 ){
+            cant_text.setError( "Cantidad es requerido!" );
+            validationForm = false;
+        }
+    }
 
+    private void saveProgram(){
+        validationForm = true;
+        Program program = new Program();
+        List<Exercise> temporatList =  new ArrayList<>();
+        validateData();
 
-        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        Retrofit.Builder builder = RetrofitCliente.getClient();
-        Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(AddProgramActivity.this)).build()).build();
-        ProgramService programService =  retrofit.create(ProgramService.class);
-        Call<Program> programCall = programService.saveMyPrograms(program);
+        if(!validationForm){
+            Toast.makeText(AddProgramActivity.this, "Verifique que los campos esten completos", Toast.LENGTH_SHORT).show();
+        }else{
+            program.setName(name_text.getText().toString());
+            program.setCantRepetition(Integer.parseInt(cant_text.getText().toString()));
+            program.setIntDate("Init date");
+            program.setFinishDate("Finish date");
+            program.setRecommended(false);
+            program.setInterval(0);
+            program.setDairy(false);
+            program.setStatus(true);
+            program.setUserAppId(sessionManager.getUserDetails().getUserId());
 
-        programCall.enqueue(new Callback<Program>() {
-            @Override
-            public void onResponse(Call<Program> call, Response<Program> response) {
-                // The network call was a success and we got a response
-                if(response != null){
-                    Intent intent = new Intent(AddProgramActivity.this,ProgramActivity.class);
-                    startActivity(intent);
+            for (Exercise exercise : globalExercises) {
+                if (exercise.getSelected()) {
+                    temporatList.add(exercise);
                 }
-                // TODO: use the repository list and display it
             }
 
-            @Override
-            public void onFailure(Call<Program> call, Throwable t) {
-                // the network call was a failure
-                // TODO: handle error
-            }
-        });
+            program.setExercises(temporatList);
+
+
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+            Retrofit.Builder builder = RetrofitCliente.getClient();
+            Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(AddProgramActivity.this)).build()).build();
+            ProgramService programService =  retrofit.create(ProgramService.class);
+            Call<Program> programCall = programService.saveMyPrograms(program);
+
+            programCall.enqueue(new Callback<Program>() {
+                @Override
+                public void onResponse(Call<Program> call, Response<Program> response) {
+                    // The network call was a success and we got a response
+                    if(response != null){
+                        Intent intent = new Intent(AddProgramActivity.this,ProgramActivity.class);
+                        startActivity(intent);
+                    }
+                    // TODO: use the repository list and display it
+                }
+
+                @Override
+                public void onFailure(Call<Program> call, Throwable t) {
+                    // the network call was a failure
+                    // TODO: handle error
+                }
+            });
+
+        }
 
     }
 
