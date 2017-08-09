@@ -60,7 +60,7 @@ public class FoodDetailActivity extends AppCompatActivity {
             }
 
             private void buildObject(Food food){
-//                Picasso.with(this).load(food.getImage()).into(imageFood);
+                Picasso.with(FoodDetailActivity.this).load(food.getImage()).into(imageFood);
                 titleView.setText(food.getName());
                 descriptionView.setText(food.getDescription());
             }
