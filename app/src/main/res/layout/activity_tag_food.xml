@@ -17,17 +17,16 @@
         tools:layout_editor_absoluteY="8dp"
         android:paddingTop="70dp">
 
-
         <GridView
             android:id="@+id/grid_view_tag"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:columnWidth="90dp"
             android:gravity="center"
-            android:horizontalSpacing="10dp"
+            android:horizontalSpacing="5dp"
             android:numColumns="auto_fit"
             android:stretchMode="columnWidth"
-            android:verticalSpacing="15dp" />
+             />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

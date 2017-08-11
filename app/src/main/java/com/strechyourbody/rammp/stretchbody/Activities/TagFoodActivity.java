@@ -28,14 +28,16 @@ public class TagFoodActivity extends AppCompatActivity {
     private void buildGrid(){
 
         List<FoodTag> foodTags = new ArrayList<>();
-        foodTags.add(new FoodTag(1,"Rápido"));
-        foodTags.add(new FoodTag(1,"Fácil"));
+        foodTags.add(new FoodTag(1,"No sugar"));
+        foodTags.add(new FoodTag(1,"Ecnómico"));
         foodTags.add(new FoodTag(1,"Desayuno"));
         foodTags.add(new FoodTag(1,"Ecnómico"));
         foodTags.add(new FoodTag(1,"Energético"));
         foodTags.add(new FoodTag(1,"Gluten free"));
         foodTags.add(new FoodTag(1,"No sugar"));
         foodTags.add(new FoodTag(1,"Vegetariano"));
+        foodTags.add(new FoodTag(1,"Vegetariano"));
+
 
 
         foodTagAdapter = new FoodTagAdapter(this, R.layout.list_tag_food_item, foodTags);
