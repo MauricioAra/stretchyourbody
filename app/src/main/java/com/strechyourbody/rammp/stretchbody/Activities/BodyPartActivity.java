@@ -47,8 +47,7 @@ public class BodyPartActivity extends AppCompatActivity implements AdapterView.O
 
         // Prgress
         progress = new ProgressDialog(BodyPartActivity.this);
-        progress.setTitle("Cargando");
-        progress.setMessage("Obteniendo partes del cuerpo...");
+        progress.setTitle("Cargando...");
         progress.setCancelable(false);
         progress.setIndeterminate(true);
         progress.show();

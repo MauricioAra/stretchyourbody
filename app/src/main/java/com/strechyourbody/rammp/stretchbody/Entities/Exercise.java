@@ -26,7 +26,7 @@ public class Exercise {
 
     private Integer calification;
 
-    private Boolean isSelected;
+    private Boolean isSelected = false;
 
     public Boolean getSelected() {
         return isSelected;

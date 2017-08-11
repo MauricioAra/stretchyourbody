@@ -85,34 +85,31 @@
 
                 </android.support.v7.widget.CardView>
 
-                <android.support.v7.widget.CardView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    card_view:cardBackgroundColor="#fff"
-                    android:layout_marginTop="23dp"
-                    android:id="@+id/cardExercise"
-                    android:layout_below="@+id/cardstatus"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
                     android:layout_alignParentStart="true">
 
-                    <RelativeLayout
+                    <TextView
+                        android:id="@+id/no_result_exercise_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sin ejercicios :("
+                        android:textSize="22sp"
+                        android:visibility="invisible"
+                        android:layout_alignTop="@+id/exercise_recycler_detail_program"
+                        android:layout_centerHorizontal="true" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/exercise_recycler_detail_program"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp">
-
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/exercise_recycler_detail_program"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:scrollbars="vertical"
-                            android:layout_marginTop="11dp"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentStart="true" />
-
-
-                    </RelativeLayout>
-
-                </android.support.v7.widget.CardView>
+                        android:layout_height="wrap_content"
+                        android:scrollbars="vertical"
+                        android:layout_marginTop="221dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true" />
+                </RelativeLayout>
 
             </RelativeLayout>
 

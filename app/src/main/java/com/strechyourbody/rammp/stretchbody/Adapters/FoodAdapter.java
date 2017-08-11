@@ -6,8 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.strechyourbody.rammp.stretchbody.Entities.Food;
 import com.strechyourbody.rammp.stretchbody.R;
 
@@ -48,19 +51,28 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView name;
+        public ImageView letter;
         public TextView initDate;
         public TextView finishDate;
 
         public ViewHolder(View itemView) {
             super(itemView);
             this.name = (TextView) itemView.findViewById(R.id.food_name_activity);
+            this.letter = (ImageView) itemView.findViewById(R.id.avatar_food_letter);
             //this.initDate = (TextView) itemView.findViewById(R.id.text_init_date);
             //this.finishDate = (TextView) itemView.findViewById(R.id.text_end_date);
         }
 
 
         public void bind(final Food food,final OnItemClickListener plistener){
+            ColorGenerator colorGenerator = ColorGenerator.MATERIAL;
+            int color = colorGenerator.getRandomColor();
+
             this.name.setText(food.getName());
+
+            String firstLetter = String.valueOf(food.getName().charAt(0));
+            TextDrawable drawable = TextDrawable.builder().buildRound(firstLetter, color);
+            this.letter.setImageDrawable(drawable);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

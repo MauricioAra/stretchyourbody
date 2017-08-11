@@ -1,5 +1,6 @@
 package com.strechyourbody.rammp.stretchbody.Activities;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -14,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,10 +42,12 @@ public class ProgramDetailActivity extends AppCompatActivity {
     private TextView repeticiones_cant;
     private TextView status_program;
     private Switch switch_status;
+    private TextView no_result_text;
 
     private RecyclerView mRecyclerView;
     private ExerciseCheckAdapter mAdapter;
     private Program globalProgram;
+    private ProgressDialog getProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +57,18 @@ public class ProgramDetailActivity extends AppCompatActivity {
         repeticiones_cant = (TextView) findViewById(R.id.program_detail_repetition);
         status_program = (TextView) findViewById(R.id.program_detail_status_text);
         switch_status = (Switch) findViewById(R.id.program_detail_status_switch);
+        no_result_text = (TextView) findViewById(R.id.no_result_exercise_detail);
         loadProgram();
     }
 
     private void loadProgram(){
+
+        getProgress = new ProgressDialog(ProgramDetailActivity.this);
+        getProgress.setTitle("Cargando...");
+        getProgress.setCancelable(false);
+        getProgress.setIndeterminate(true);
+        getProgress.show();
+
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
         Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(ProgramDetailActivity.this)).build()).build();
@@ -72,6 +84,7 @@ public class ProgramDetailActivity extends AppCompatActivity {
                     globalProgram = response.body();
                     setToolbar(response.body());
                     setObject(response.body());
+                    getProgress.hide();
                 }
                 // TODO: use the repository list and display it
             }
@@ -96,15 +109,19 @@ public class ProgramDetailActivity extends AppCompatActivity {
     }
 
     private void exercises(List<Exercise> exercises){
-        for(int i = 0; i < exercises.size(); i++){
-            exercises.get(i).setSelected(false);
+        if(exercises.size() == 0){
+            no_result_text.setVisibility(View.VISIBLE);
+        }else{
+            for(int i = 0; i < exercises.size(); i++){
+                exercises.get(i).setSelected(false);
+            }
+            mRecyclerView = (RecyclerView) findViewById(R.id.exercise_recycler_detail_program);
+            mAdapter = new ExerciseCheckAdapter(exercises);
+            LinearLayoutManager manager = new LinearLayoutManager(ProgramDetailActivity.this);
+            mRecyclerView.setHasFixedSize(true);
+            mRecyclerView.setLayoutManager(manager);
+            mRecyclerView.setAdapter(mAdapter);
         }
-        mRecyclerView = (RecyclerView) findViewById(R.id.exercise_recycler_detail_program);
-        mAdapter = new ExerciseCheckAdapter(exercises);
-        LinearLayoutManager manager = new LinearLayoutManager(ProgramDetailActivity.this);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(manager);
-        mRecyclerView.setAdapter(mAdapter);
     }
     private void setToolbar(Program program){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toobar);
@@ -129,11 +146,17 @@ public class ProgramDetailActivity extends AppCompatActivity {
                         .show();
                 break;
             case R.id.edit_program:
-                Toast.makeText(this, "Skip selected", Toast.LENGTH_SHORT)
-                        .show();
+                Intent edit = new Intent(ProgramDetailActivity.this,ProgramEditActivity.class);
+                edit.putExtra("idProgram",idProgram);
+                startActivity(edit);
                 break;
             case R.id.delete_program:
                 deleteAlertProgram();
+                break;
+            case android.R.id.home:
+                Intent intent = new Intent(ProgramDetailActivity.this,ProgramActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
                 break;
             default:
                 break;
