@@ -28,4 +28,6 @@
     <string name="title_activity_full_register">FullRegister</string>
     <string name="title_activity_final_register">FinalRegister</string>
     <string name="body_part_prompt">¿Cuál parte del cuerpo le duele con más constancia?</string>
+    <string name="title_activity_edit_bienestar">EditBienestarActivity</string>
+    <string name="title_activity_bienestar">BienestarActivity</string>
 </resources>
