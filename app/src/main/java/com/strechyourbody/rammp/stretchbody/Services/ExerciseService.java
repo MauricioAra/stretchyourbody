@@ -22,4 +22,7 @@ public interface ExerciseService {
 
     @GET("api/app/all_exercise")
     Call<List<Exercise>> findAll();
+
+    @GET("api/user-apps/favorite-exercises/{id}")
+    Call<List<Exercise>> findFavorites(@Path("id") long id);
 }
