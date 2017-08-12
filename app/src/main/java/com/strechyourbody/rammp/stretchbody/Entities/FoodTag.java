@@ -8,6 +8,15 @@ public class FoodTag {
 
     private int id;
     private String name;
+    private Boolean selected = false;
+
+    public Boolean getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Boolean selected) {
+        this.selected = selected;
+    }
 
     public FoodTag(int id, String name) {
         this.id = id;

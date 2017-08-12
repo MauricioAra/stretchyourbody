@@ -8,13 +8,13 @@
 
     <com.robertlevonyan.views.chip.Chip
         android:id="@+id/food_tag_chip"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:minHeight="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_alignStart="@+id/textView7"
         android:layout_below="@+id/textView7"
-        app:backgroundColor="#55dae1"
         app:chipText=""
+
         app:textColor="#ffffff"/>
 </LinearLayout>

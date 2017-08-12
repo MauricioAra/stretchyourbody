@@ -45,12 +45,12 @@ public class ExerciseCheckAdapter extends RecyclerView.Adapter<ExerciseCheckAdap
         holder.repetitions.setText(exercise.getRepetition().toString());
         holder.time.setText(exercise.getTime());
         holder.calification.setText(exercise.getCalification().toString());
-        holder.view.setBackgroundColor(exercise.getSelected() ? Color.parseColor("#f4f4f4") : Color.WHITE);
+        holder.view.setBackgroundColor(exercise.getSelected() ? Color.parseColor("#ffffff") : Color.WHITE);
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 exercise.setSelected(!exercise.getSelected());
-                holder.view.setBackgroundColor(exercise.getSelected() ? Color.parseColor("#f4f4f4") : Color.WHITE);
+                holder.view.setBackgroundColor(exercise.getSelected() ? Color.parseColor("#ffffff") : Color.WHITE);
             }
         });
     }
