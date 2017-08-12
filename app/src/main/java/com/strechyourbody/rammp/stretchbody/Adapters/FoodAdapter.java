@@ -46,8 +46,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         return foods.size();
     }
 
-
-
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView name;
         public TextView initDate;
