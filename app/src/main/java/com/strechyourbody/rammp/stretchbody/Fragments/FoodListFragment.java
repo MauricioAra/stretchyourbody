@@ -3,10 +3,8 @@ package com.strechyourbody.rammp.stretchbody.Fragments;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ShareCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,14 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 
-import com.strechyourbody.rammp.stretchbody.Activities.AddProgramActivity;
-import com.strechyourbody.rammp.stretchbody.Activities.ProgramDetailActivity;
-import com.strechyourbody.rammp.stretchbody.Adapters.ProgramAdapter;
-import com.strechyourbody.rammp.stretchbody.Entities.Program;
+import com.strechyourbody.rammp.stretchbody.Adapters.FoodAdapter;
+import com.strechyourbody.rammp.stretchbody.Entities.Food;
 import com.strechyourbody.rammp.stretchbody.R;
-import com.strechyourbody.rammp.stretchbody.Services.ProgramService;
+import com.strechyourbody.rammp.stretchbody.Services.FoodService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
-import com.strechyourbody.rammp.stretchbody.Services.SessionManager;
 import com.strechyourbody.rammp.stretchbody.Utils.AuthInterceptor;
 
 
@@ -39,18 +34,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProgramListFragment extends Fragment {
+public class FoodListFragment extends Fragment {
 
-    private List<Program> programs;
+    private List<String> names;
     private RecyclerView mRecycler;
-    private ProgramAdapter mAdapter;
+    private FoodAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ProgressDialog progressDialog;
-    SessionManager sessionManager;
 
     static Context _context;
 
-    public ProgramListFragment() {
+    public FoodListFragment() {
         // Required empty public constructor
     }
 
@@ -58,27 +52,24 @@ public class ProgramListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_program_list,container,false);
+        final View view = inflater.inflate(R.layout.fragment_food_list,container,false);
         progressDialog = new ProgressDialog(view.getContext());
-        progressDialog.setTitle("Cargado..");
-        progressDialog.setMessage("cargando programas");
+        progressDialog.setTitle("Hola");
+        progressDialog.setMessage("Hola");
         progressDialog.show();
-        sessionManager = new SessionManager(getContext());
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
         Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(this.getActivity())).build()).build();
-        ProgramService programService =  retrofit.create(ProgramService.class);
+        FoodService foodService =  retrofit.create(FoodService.class);
 
 
-        Call<List<Program>> call = programService.listMyPrograms(sessionManager.getUserDetails().getUserId().intValue());
-
-        call.enqueue(new Callback<List<Program>>() {
+        Call<List<Food>> call = foodService.listFood();
+        call.enqueue(new Callback<List<Food>>() {
             @Override
-            public void onResponse(Call<List<Program>> call, Response<List<Program>> response) {
+            public void onResponse(Call<List<Food>> call, Response<List<Food>> response) {
                 // The network call was a success and we got a response
                 if(response != null){
-                    programs = response.body();
                     buildList(response.body(),view);
                     progressDialog.dismiss();
                 }
@@ -86,7 +77,7 @@ public class ProgramListFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Program>> call, Throwable t) {
+            public void onFailure(Call<List<Food>> call, Throwable t) {
                 // the network call was a failure
                 // TODO: handle error
             }
@@ -95,15 +86,13 @@ public class ProgramListFragment extends Fragment {
         return view;
     }
 
-    private void buildList(final List<Program> programs, View view){
-        mRecycler = (RecyclerView) view.findViewById(R.id.program_recycler);
+    private void buildList(List<Food> foods,View view){
+        mRecycler = (RecyclerView) view.findViewById(R.id.food_recycler);
         mLayoutManager = new LinearLayoutManager(getActivity());
-        mAdapter= new ProgramAdapter(programs, R.layout.list_item_program, new ProgramAdapter.OnItemClickListener() {
+        mAdapter= new FoodAdapter(foods, R.layout.list_item_food, new FoodAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(String name, int position) {
-                Intent intent = new Intent(getActivity(), ProgramDetailActivity.class);
-                intent.putExtra("idProgram",programs.get(position).getId().toString());
-                startActivity(intent);
+                Toast.makeText(getActivity(),name,Toast.LENGTH_SHORT).show();
             }
         });
         mRecycler.setLayoutManager(mLayoutManager);

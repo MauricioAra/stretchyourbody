@@ -19,4 +19,7 @@ public interface ExerciseService {
 
     @GET("api/app/exercise_by_id/{id}")
     Call<Exercise> findOne(@Path("id") int id);
+
+    @GET("api/app/all_exercise")
+    Call<List<Exercise>> findAll();
 }

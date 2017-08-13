@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,23 +11,13 @@
         android:layout_width="368dp"
         android:layout_height="551dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:paddingTop="70dp">
 
-        <FrameLayout
-            android:id="@+id/content_programs"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/food_recycler_activity"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab_add_program"
-                android:layout_width="56dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="12dp"
-                android:src="@drawable/add" />
-        </FrameLayout>
-
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical" />
     </LinearLayout>
 
     <include

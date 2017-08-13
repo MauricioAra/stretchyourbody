@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Activities.ProgramActivity"
             android:parentActivityName=".Activities.MainActivity">
@@ -29,6 +31,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
         </activity>
+
         <activity
             android:name=".Activities.ProfileUserActivity"
             android:label="@string/title_activity_profile_user"
@@ -38,7 +41,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
         </activity>
+
         <activity android:name=".Activities.CategoryActivity" />
+
         <activity
             android:name=".Activities.SubCategoryActivity"
             android:parentActivityName=".Activities.CategoryActivity"
@@ -55,6 +60,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.SubCategoryActivity" />
         </activity>
+
         <activity
             android:name=".Activities.ExerciseActivity"
             android:parentActivityName=".Activities.BodyPartActivity"
@@ -63,6 +69,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.BodyPartActivity" />
         </activity>
+
         <activity
             android:name=".Activities.EditProfileActivity"
             android:parentActivityName=".Activities.ProfileUserActivity"
@@ -71,15 +78,40 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.ProfileUserActivity" />
         </activity>
+
         <activity
             android:name=".Activities.LoginActivity"
             android:label="@string/title_activity_login" />
+
         <activity
             android:name=".Activities.BasicRegisterActivity"
             android:label="@string/title_activity_basic_register"
+<<<<<<< HEAD
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateVisible|adjustResize" />
+=======
+            android:theme="@style/AppTheme" />
+
+>>>>>>> 2c789e4ec50ec30b5a47080cabb60f72171898fc
         <activity android:name=".Activities.ExerciseDetailActivity" />
+
+        <activity
+            android:name=".Activities.AddProgramActivity"
+            android:parentActivityName=".Activities.ProgramActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ProgramActivity" />
+        </activity>
+
+        <activity android:name=".Activities.ProgramDetailActivity"
+            android:parentActivityName=".Activities.ProgramActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ProgramActivity" />
+        </activity>
+
         <activity
             android:name=".Activities.FullRegisterActivity"
             android:label="@string/title_activity_full_register"
@@ -88,11 +120,41 @@
             android:name=".Activities.FinalRegisterActivity"
             android:label="@string/title_activity_final_register"
             android:theme="@style/AppTheme" />
+<<<<<<< HEAD
         <activity
             android:name=".Activities.BienestarActivity"
             android:label="@string/title_activity_bienestar"
             android:theme="@style/AppTheme" />
         <activity android:name=".Activities.EditBienestarActivity"></activity>
+=======
+
+        <receiver android:name=".Services.NotificationReciever" />
+        <receiver android:name=".Services.NotificationService" />
+
+        <activity
+            android:name=".Activities.ChangePasswordActivity"
+            android:label="@string/title_activity_change_password"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activities.RecoverPasswordActivity"></activity>
+
+        <activity
+            android:name=".Activities.FoodActivity"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".Activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity" />
+        </activity>
+
+        <activity android:name=".Activities.FoodDetailActivity"
+            android:parentActivityName=".Activities.FoodDetailActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.FoodActivity" />
+        </activity>
+
+>>>>>>> 2c789e4ec50ec30b5a47080cabb60f72171898fc
     </application>
 
 </manifest>
