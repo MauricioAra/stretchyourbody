@@ -31,7 +31,7 @@
 
     <include
         android:id="@+id/toobar"
-        layout="@layout/toolbar"
+        layout="@layout/toolbar_light"
         tools:layout_editor_absoluteX="-32dp"
         tools:layout_editor_absoluteY="-30dp" />
 
