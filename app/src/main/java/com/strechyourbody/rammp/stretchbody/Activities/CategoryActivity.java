@@ -110,6 +110,12 @@ public class CategoryActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         break;
 
+                    case R.id.menu_favorite:
+                        Intent favorite = new Intent(CategoryActivity.this, FavoriteExcercisesActivity.class);
+                        startActivity(favorite);
+                        drawerLayout.closeDrawers();
+                        break;
+
                     case R.id.log_out:
                         session.logOut();
                         break;
