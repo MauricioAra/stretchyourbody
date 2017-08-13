@@ -1,82 +1,71 @@
 package com.strechyourbody.rammp.stretchbody.Adapters;
 
-import android.content.Context;
+
 import android.graphics.Color;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 
-import com.robertlevonyan.views.chip.Chip;
-import com.robertlevonyan.views.chip.OnSelectClickListener;
-import com.strechyourbody.rammp.stretchbody.Entities.BodyPart;
 import com.strechyourbody.rammp.stretchbody.Entities.FoodTag;
 import com.strechyourbody.rammp.stretchbody.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by paulasegura on 10/8/17.
  */
 
-public class FoodTagAdapter extends BaseAdapter {
-    private Context context;
-    private int layout;
-    private List<FoodTag> list;
+public class FoodTagAdapter extends  RecyclerView.Adapter<FoodTagAdapter.MyViewHolder> {
 
-    public FoodTagAdapter(Context context, int layout, List<FoodTag> list) {
-        this.context = context;
-        this.layout = layout;
-        this.list = list;
+    private List<FoodTag> tags;
+    private List<FoodTag> exercisesFilter;
+    private List<FoodTag> all;
+
+    public FoodTagAdapter(List<FoodTag> tags) {
+        this.tags = tags;
+        this.all = tags;
     }
 
     @Override
-    public int getCount() {
-        return list.size();
+    public FoodTagAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_tag_food_item, parent, false);
+        return new FoodTagAdapter.MyViewHolder(view);
     }
 
     @Override
-    public FoodTag getItem(int position) {
-        return list.get(position);
-    }
-
-    @Override
-    public long getItemId(int id) {
-        return id;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup viewGroup) {
-
-        final FoodTagAdapter.ViewHolder holder;
-
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(layout, null);
-            holder = new FoodTagAdapter.ViewHolder();
-            holder.tag = (Chip) convertView.findViewById(R.id.food_tag_chip);
-            convertView.setTag(holder);
-        } else {
-            holder = (FoodTagAdapter.ViewHolder) convertView.getTag();
-        }
-        final FoodTag currentTag = getItem(position);
-        holder.tag.setChipText(currentTag.getName());
-        holder.tag.changeSelectedBackgroundColor(currentTag.getSelected() ? Color.parseColor("#e81e63") : Color.parseColor("#ffff00") );
-        holder.tag.changeSelectedBackgroundColor(currentTag.getSelected() ? Color.parseColor("#e81e63") : Color.parseColor("#ffff00"));
-
-        holder.tag.setOnSelectClickListener(new OnSelectClickListener() {
+    public void onBindViewHolder(final FoodTagAdapter.MyViewHolder holder, int position) {
+        final FoodTag foodTag = tags.get(position);
+        holder.tag_name.setText(foodTag.getName());
+        holder.view.setBackgroundColor(foodTag.getSelected() ? Color.parseColor("#a5de37") : Color.parseColor("#55dae1"));
+        holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSelectClick(View v, boolean selected) {
-                currentTag.setSelected(!currentTag.getSelected());
-                holder.tag.changeSelectedBackgroundColor(currentTag.getSelected() ? Color.parseColor("#e81e63") : Color.parseColor("#ffff00"));
+            public void onClick(View v) {
+                foodTag.setSelected(!foodTag.getSelected());
+                holder.view.setBackgroundColor(foodTag.getSelected() ? Color.parseColor("#a5de37") : Color.parseColor("#55dae1"));
             }
         });
-
-        return convertView;
     }
 
-    static class ViewHolder {
-        private Chip tag;
-
+    @Override
+    public int getItemCount() {
+        return tags.size();
     }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        private TextView tag_name;
+        private View view;
+
+        private MyViewHolder(View itemView) {
+            super(itemView);
+            view = itemView;
+            tag_name = (TextView) itemView.findViewById(R.id.tag_name);
+        }
+    }
+
 }
+

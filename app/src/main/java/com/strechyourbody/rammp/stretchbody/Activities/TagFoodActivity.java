@@ -3,11 +3,15 @@ package com.strechyourbody.rammp.stretchbody.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.strechyourbody.rammp.stretchbody.Adapters.ExerciseAdapter;
 import com.strechyourbody.rammp.stretchbody.Adapters.FoodTagAdapter;
 import com.strechyourbody.rammp.stretchbody.Entities.BodyPart;
 import com.strechyourbody.rammp.stretchbody.Entities.FoodTag;
@@ -25,10 +29,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static android.R.attr.data;
+
 public class TagFoodActivity extends AppCompatActivity {
     private GridView gridViewTagFood;
     private FoodTagAdapter foodTagAdapter;
     private List<FoodTag> foodTagList;
+    private RecyclerView mRecycler;
+    private RecyclerView.LayoutManager mLayoutManager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,24 +79,12 @@ public class TagFoodActivity extends AppCompatActivity {
         for(int i = 0; i < ptags.size();i++){
             ptags.get(i).setSelected(false);
         }
-
-        foodTagAdapter = new FoodTagAdapter(this, R.layout.list_tag_food_item, ptags);
-        gridViewTagFood = (GridView) findViewById(R.id.grid_view_tag);
-        gridViewTagFood.setAdapter(foodTagAdapter);
-//        gridViewTagFood.setOnItemClickListener(this);
+        mRecycler = (RecyclerView) findViewById(R.id.grid_view_tag);
+        int numberOfColumns = 3;
+        mRecycler.setLayoutManager(new GridLayoutManager(TagFoodActivity.this, numberOfColumns));
+        foodTagAdapter= new FoodTagAdapter(ptags);
+        mRecycler.setAdapter(foodTagAdapter);
     }
-
-//    @Override
-//    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        this.clickBodyPart(foodTagList.get(position));
-//    }
-//
-//    private void clickBodyPart(FoodTag foodTag) {
-//        Intent intent = new Intent(TagFoodActivity.this,FoodActivity.class);
-//        intent.putExtra("idTag",foodTag.getId().toString());
-//        startActivity(intent);
-//    }
-
     private void setToolbar(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toobar);
         setSupportActionBar(toolbar);
