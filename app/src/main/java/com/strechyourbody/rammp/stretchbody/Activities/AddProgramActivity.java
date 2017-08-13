@@ -66,7 +66,7 @@ public class AddProgramActivity extends AppCompatActivity {
         sessionManager = new SessionManager(AddProgramActivity.this);
         cantidad_repeticiones = (TextView) findViewById(R.id.repetition_lbl);
         name_text = (EditText) findViewById(R.id.program_name_input);
-        cant_text = (EditText) findViewById(R.id.program_cant_input);
+        //cant_text = (EditText) findViewById(R.id.program_cant_input);
         btn_save_program = (Button) findViewById(R.id.button_save_program);
         seekBar = (SeekBar) findViewById(R.id.seek_bar_repetition);
 

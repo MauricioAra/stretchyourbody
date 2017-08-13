@@ -55,7 +55,7 @@ public class ProgramEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_program_edit);
         idProgram = getIntent().getStringExtra("idProgram");
         name_text = (EditText) findViewById(R.id.program_name_input);
-        cant_text = (EditText) findViewById(R.id.program_cant_input);
+        //cant_text = (EditText) findViewById(R.id.program_cant_input);
         btn_edit = (Button) findViewById(R.id.button_edit_program);
 
 

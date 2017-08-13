@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.strechyourbody.rammp.stretchbody.Entities.ProfileUser;
@@ -29,6 +30,7 @@ public class ProfileUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_user);
+
         sessionManager = new SessionManager(ProfileUserActivity.this);
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
@@ -46,6 +48,7 @@ public class ProfileUserActivity extends AppCompatActivity {
                     setSupportActionBar(toolbar);
                     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                     toolbar.setTitle(response.body().getName() +" "+ response.body().getLastName());
+
                 }
                 // TODO: use the repository list and display it
             }
@@ -65,7 +68,19 @@ public class ProfileUserActivity extends AppCompatActivity {
                 startActivity(editProfile);
             }
         });
+
+
+        Button bienestar = (Button) findViewById(R.id.btn_go_bienestar);
+        bienestar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent userBienestar = new Intent(ProfileUserActivity.this,BienestarActivity.class);
+                startActivity(userBienestar);
+            }
+        });
     }
+
+
 
     private void buildProfile(ProfileUser profileUser){
 
@@ -85,4 +100,8 @@ public class ProfileUserActivity extends AppCompatActivity {
         user_userEmail.setText(profileUser.getUserEmail());
 
     }
+
+
+
+
 }
