@@ -8,25 +8,21 @@ public class Exercise {
 
     private Long id;
 
-
     private String name;
-
 
     private String image;
 
-
     private String time;
-
 
     private Integer repetition;
 
-
     private String difficulty;
-
 
     private Integer calification;
 
     private Boolean isSelected = false;
+
+    private Long bodyPartId;
 
     public Boolean getSelected() {
         return isSelected;
@@ -93,4 +89,9 @@ public class Exercise {
     public void setCalification(Integer calification) {
         this.calification = calification;
     }
+
+    public Long getBodyPartId() { return bodyPartId; }
+
+    public void setBodyPartId(Long bodyPartId) { this.bodyPartId = bodyPartId; }
+
 }

@@ -77,11 +77,8 @@
         <activity
             android:name=".Activities.BasicRegisterActivity"
             android:label="@string/title_activity_basic_register"
-
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateVisible|adjustResize" />
-
-
         <activity android:name=".Activities.ExerciseDetailActivity" />
         <activity
             android:name=".Activities.AddProgramActivity"
@@ -139,9 +136,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.FoodActivity" />
         </activity>
-
         <activity android:name=".Activities.ProgramEditActivity"></activity>
-
+        <activity android:name=".Activities.FavoriteExcercisesActivity"></activity>
     </application>
 
 </manifest>
