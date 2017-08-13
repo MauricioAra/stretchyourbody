@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.Toast;
 
 import com.strechyourbody.rammp.stretchbody.Adapters.ExerciseAdapter;
@@ -41,13 +43,32 @@ public class FavoriteExcercisesActivity extends AppCompatActivity {
     private ExerciseAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private  List<Exercise> exerciseList;
+    //Toolbar
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite_excercises);
         requestFavorites();
+        setToolbar();
         progress = new ProgressDialog(FavoriteExcercisesActivity.this);
+    }
+
+    private void setToolbar(){
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Mis Favoritos");
+        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getApplicationContext().startActivity(i);
+            }
+        });
     }
 
     private void requestFavorites() {
@@ -88,7 +109,7 @@ public class FavoriteExcercisesActivity extends AppCompatActivity {
                 Long bodyId = exerciseList.get(position).getBodyPartId();
                 Intent intent = new Intent(FavoriteExcercisesActivity.this, ExerciseDetailActivity.class);
                 intent.putExtra("idExe", id.toString());
-                intent.putExtra("idBody", bodyId.toString());
+                intent.putExtra("idBody", "fromfav");
                 startActivity(intent);
             }
         });

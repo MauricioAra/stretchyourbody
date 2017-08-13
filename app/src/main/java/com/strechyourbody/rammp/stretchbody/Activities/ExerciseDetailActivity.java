@@ -42,12 +42,10 @@ public class ExerciseDetailActivity extends AppCompatActivity {
         counter = (TextView) findViewById(R.id.counter);
         time = (TextView) findViewById(R.id.time);
 
-
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
         Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(ExerciseDetailActivity.this)).build()).build();
         ExerciseService exerciseService =  retrofit.create(ExerciseService.class);
-
 
         Call<Exercise> call = exerciseService.findOne(Integer.parseInt(idExercise));
         call.enqueue(new Callback<Exercise>() {
@@ -86,9 +84,15 @@ public class ExerciseDetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Intent intent = new Intent(ExerciseDetailActivity.this,ExerciseActivity.class);
-                intent.putExtra("idBody",idBody);
-                startActivity(intent);
+                if (idBody.equals("fromfav")) {
+                    Intent intent = new Intent(ExerciseDetailActivity.this, FavoriteExcercisesActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(ExerciseDetailActivity.this,ExerciseActivity.class);
+                    intent.putExtra("idBody",idBody);
+                    startActivity(intent);
+                }
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
