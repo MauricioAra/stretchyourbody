@@ -7,6 +7,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 /**
@@ -25,4 +26,10 @@ public interface ExerciseService {
 
     @GET("api/user-apps/favorite-exercises/{userId}")
     Call<List<Exercise>> findFavorites(@Path("userId") long id);
+
+    @POST("api/users/add-to-favorites/{userId}/{exerciseId}")
+    Call<Void> addToFavorites(@Path("userId") long id, @Path("exerciseId") long exerciseId);
+
+    @POST("api/users/remove-from-favorites/{userId}/{exerciseId}")
+    Call<Void> removeFromFavorites(@Path("userId") long id, @Path("exerciseId") long exerciseId);
 }
