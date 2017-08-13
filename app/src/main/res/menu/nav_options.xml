@@ -3,27 +3,52 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_dash_board"
-            android:icon="@android:drawable/ic_dialog_info"
-            android:title="Inicio"
+            android:icon="@drawable/home"
+            android:title="Recomendaciones"
             />
         <item
+            android:id="@+id/menu_calendar"
+            android:icon="@drawable/ic_action_name"
+            android:title="Calendario" />
+        <item
+            android:id="@+id/menu_steps"
+            android:icon="@drawable/black_shoes_prints"
+            android:title="Contador de pasos" />
+        <item
+            android:id="@+id/menu_start_food"
+            android:icon="@drawable/black_healthy_food"
+            android:title="Comidas" />
+        <item
             android:id="@+id/menu_my_program"
-            android:icon="@android:drawable/ic_dialog_info"
+            android:icon="@drawable/list"
             android:title="Mis programas"
             />
+        <item
+            android:id="@+id/menu_start_exercise"
+            android:icon="@drawable/exercises"
+            android:title="Ejercicios"
+            />
+        <item
+            android:id="@+id/menu_favorite"
+            android:icon="@drawable/black_heart"
+            android:title="Mis favoritos" />
+        <item
+            android:id="@+id/menu_config"
+            android:icon="@drawable/black_settings"
+            android:title="Configuraciones" />
     </group>
     <item
-        android:title="Otras opciones">
+        android:title="Opciones generales">
         <menu>
             <item
-                android:id="@+id/menu_opcion_uno"
-                android:icon="@android:drawable/ic_dialog_info"
-                android:title="Opcion 1"
+                android:id="@+id/menu_my_profile"
+                android:icon="@drawable/profile"
+                android:title="Mi perfil"
                 />
             <item
-                android:id="@+id/menu_opcion_dos"
-                android:icon="@android:drawable/ic_dialog_info"
-                android:title="Opcion 2"
+                android:id="@+id/log_out"
+                android:icon="@drawable/logout"
+                android:title="Cerrar sesión"
                 />
         </menu>
     </item>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="60dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="800dp"
+                android:background="#f9f9f9"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:id="@+id/program_detail_repetition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="40dp"
+                    android:text="TextView"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CANTIDAD DE REPETICIONES"
+                    android:textSize="11dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_below="@+id/program_detail_repetition"
+                    android:layout_centerHorizontal="true" />
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    card_view:cardBackgroundColor="#fff"
+                    android:layout_marginTop="18dp"
+                    android:id="@+id/cardstatus"
+                    android:layout_below="@+id/textView2"
+                    android:layout_alignParentStart="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <TextView
+                        android:id="@+id/program_detail_status_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estado"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorAccent"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentStart="true" />
+
+                        <Switch
+                            android:id="@+id/program_detail_status_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="29dp"
+                            android:text=""
+                            android:layout_alignBaseline="@+id/program_detail_status_text"
+                            android:layout_alignBottom="@+id/program_detail_status_text"
+                            android:layout_alignParentEnd="true" />
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    card_view:cardBackgroundColor="#fff"
+                    android:layout_marginTop="23dp"
+                    android:id="@+id/cardExercise"
+                    android:layout_below="@+id/cardstatus"
+                    android:layout_alignParentStart="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/exercise_recycler_detail_program"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="vertical"
+                            android:layout_marginTop="11dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentStart="true" />
+
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
+
+
+<!--
+<android.support.v7.widget.RecyclerView
+android:id="@+id/exercise_recycler_add_program"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:scrollbars="vertical"
+android:layout_marginTop="74dp"
+android:layout_alignParentTop="true"
+android:layout_alignParentStart="true" />
+-->

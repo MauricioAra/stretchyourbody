@@ -50,15 +50,22 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView name;
+        public TextView initDate;
+        public TextView finishDate;
 
         public ViewHolder(View itemView) {
             super(itemView);
             this.name = (TextView) itemView.findViewById(R.id.text_name);
+            //this.initDate = (TextView) itemView.findViewById(R.id.text_init_date);
+            //this.finishDate = (TextView) itemView.findViewById(R.id.text_end_date);
         }
 
 
         public void bind(final Program program,final OnItemClickListener plistener){
             this.name.setText(program.getName());
+            //this.initDate.setText(program.getIntDate());
+            //this.finishDate.setText(program.getFinishDate());
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
