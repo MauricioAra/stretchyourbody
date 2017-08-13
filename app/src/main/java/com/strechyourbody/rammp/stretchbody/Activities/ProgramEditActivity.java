@@ -92,8 +92,7 @@ public class ProgramEditActivity extends AppCompatActivity {
                 // The network call was a success and we got a response
                 if(response != null){
                     Toast.makeText(ProgramEditActivity.this,"Se modificó el programa",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ProgramEditActivity.this, ProgramDetailActivity.class);
-                    intent.putExtra("idProgram",idProgram);
+                    Intent intent = new Intent(ProgramEditActivity.this, ProgramActivity.class);
                     startActivity(intent);
                 }
                 // TODO: use the repository list and display it

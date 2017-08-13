@@ -54,11 +54,52 @@ public class ProgramDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_program_detail);
         idProgram = getIntent().getStringExtra("idProgram");
-        repeticiones_cant = (TextView) findViewById(R.id.program_detail_repetition);
         status_program = (TextView) findViewById(R.id.program_detail_status_text);
         switch_status = (Switch) findViewById(R.id.program_detail_status_switch);
+        repeticiones_cant = (TextView) findViewById(R.id.program_detail_repetition);
         no_result_text = (TextView) findViewById(R.id.no_result_exercise_detail);
+
+        switch_status.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(globalProgram.getStatus()){
+                    globalProgram.setStatus(false);
+                }else if(!globalProgram.getStatus()){
+                    globalProgram.setStatus(true);
+                }
+                changeStatus();
+            }
+        });
         loadProgram();
+    }
+
+    private void changeStatus(){
+
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        Retrofit.Builder builder = RetrofitCliente.getClient();
+        Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(ProgramDetailActivity.this)).build()).build();
+        ProgramService programService =  retrofit.create(ProgramService.class);
+
+        Call<Program> call = programService.updateProgram(globalProgram);
+
+        call.enqueue(new Callback<Program>() {
+            @Override
+            public void onResponse(Call<Program> call, Response<Program> response) {
+                // The network call was a success and we got a response
+                if(response != null){
+                    loadProgram();
+                    Toast.makeText(ProgramDetailActivity.this,"Se cambio el estado",Toast.LENGTH_SHORT).show();
+                }
+                // TODO: use the repository list and display it
+            }
+
+            @Override
+            public void onFailure(Call<Program> call, Throwable t) {
+                // the network call was a failure
+                // TODO: handle error
+            }
+        });
+
     }
 
     private void loadProgram(){
@@ -81,7 +122,6 @@ public class ProgramDetailActivity extends AppCompatActivity {
             public void onResponse(Call<Program> call, Response<Program> response) {
                 // The network call was a success and we got a response
                 if(response != null){
-                    globalProgram = response.body();
                     setToolbar(response.body());
                     setObject(response.body());
                     getProgress.hide();
@@ -99,6 +139,8 @@ public class ProgramDetailActivity extends AppCompatActivity {
 
 
     private void setObject(Program program){
+        globalProgram = program;
+
         repeticiones_cant.setText(program.getCantRepetition().toString());
         if(program.getStatus()){
             status_program.setText("Activo");
@@ -106,6 +148,7 @@ public class ProgramDetailActivity extends AppCompatActivity {
             status_program.setText("Desativado");
         }
         exercises(program.getExercises());
+        switch_status.setChecked(program.getStatus());
     }
 
     private void exercises(List<Exercise> exercises){
