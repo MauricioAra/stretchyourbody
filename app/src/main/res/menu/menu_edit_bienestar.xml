@@ -1,16 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.strechyourbody.rammp.stretchbody.Activities.ProfileUserActivity">
+    tools:context="com.strechyourbody.rammp.stretchbody.Activities.EditBienestarActivity">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/action_bienestar"
-        android:orderInCategory="100"
-        android:title="Bienestar"
         app:showAsAction="never" />
 </menu>

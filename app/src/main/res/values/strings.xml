@@ -28,6 +28,8 @@
     <string name="title_activity_full_register">FullRegister</string>
     <string name="title_activity_final_register">FinalRegister</string>
     <string name="body_part_prompt">¿Cuál parte del cuerpo le duele con más constancia?</string>
+    <string name="title_activity_edit_bienestar">EditBienestarActivity</string>
+    <string name="title_activity_bienestar">BienestarActivity</string>
     <string name="title_activity_change_password">ChangePasswordActivity</string>
     <string name="forgotten_password">Ingresa tu correo electrónico para recuperar la contrseña</string>
     <string name="forgotten_password_title">¿Haz olvidado tu contraseña?</string>

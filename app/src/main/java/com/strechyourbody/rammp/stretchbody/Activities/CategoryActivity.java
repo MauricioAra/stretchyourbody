@@ -109,6 +109,11 @@ public class CategoryActivity extends AppCompatActivity {
                         startActivity(category);
                         drawerLayout.closeDrawers();
                         break;
+                    case R.id.menu_start_food:
+                        Intent food = new Intent(CategoryActivity.this,FoodActivity.class);
+                        startActivity(food);
+                        drawerLayout.closeDrawers();
+                        break;
 
                     case R.id.menu_favorite:
                         Intent favorite = new Intent(CategoryActivity.this, FavoriteExcercisesActivity.class);

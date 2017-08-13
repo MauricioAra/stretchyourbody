@@ -20,7 +20,7 @@ public class Exercise {
 
     private Integer calification;
 
-    private Boolean isSelected;
+    private Boolean isSelected = false;
 
     private Long bodyPartId;
 

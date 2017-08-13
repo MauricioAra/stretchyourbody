@@ -14,6 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -43,9 +45,12 @@ import retrofit2.Retrofit;
 public class AddProgramActivity extends AppCompatActivity {
     private EditText name_text;
     private EditText cant_text;
+    private TextView cantidad_repeticiones;
     private Button btn_save_program;
     private SessionManager sessionManager;
     private SearchView searchView;
+    private SeekBar seekBar;
+    private int cantidad_number = 1;
 
     private RecyclerView mRecyclerView;
     private ExerciseCheckAdapter mAdapter;
@@ -59,10 +64,12 @@ public class AddProgramActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_program);
         setToolbar();
         sessionManager = new SessionManager(AddProgramActivity.this);
-
+        cantidad_repeticiones = (TextView) findViewById(R.id.repetition_lbl);
         name_text = (EditText) findViewById(R.id.program_name_input);
-        cant_text = (EditText) findViewById(R.id.program_cant_input);
+        //cant_text = (EditText) findViewById(R.id.program_cant_input);
         btn_save_program = (Button) findViewById(R.id.button_save_program);
+        seekBar = (SeekBar) findViewById(R.id.seek_bar_repetition);
+
         searchView = (SearchView) findViewById(R.id.searchView);
         searchView.setIconified(false);
         btn_save_program.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +106,6 @@ public class AddProgramActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-
                 return false;
             }
 
@@ -109,6 +115,27 @@ public class AddProgramActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                cantidad_number = 1;
+                cantidad_repeticiones.setText("Repeticiones: "+cantidad_number);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                cantidad_number = seekBar.getProgress();
+                cantidad_repeticiones.setText("Repeticiones: "+cantidad_number);
+            }
+        });
+
+
     }
 
 
@@ -136,11 +163,6 @@ public class AddProgramActivity extends AppCompatActivity {
             name_text.setError( "Nombre es requerido!" );
             validationForm = false;
         }
-
-        if(cant_text.getText().toString().length() == 0 ){
-            cant_text.setError( "Cantidad es requerido!" );
-            validationForm = false;
-        }
     }
 
     private void saveProgram(){
@@ -153,7 +175,7 @@ public class AddProgramActivity extends AppCompatActivity {
             Toast.makeText(AddProgramActivity.this, "Verifique que los campos esten completos", Toast.LENGTH_SHORT).show();
         }else{
             program.setName(name_text.getText().toString());
-            program.setCantRepetition(Integer.parseInt(cant_text.getText().toString()));
+            program.setCantRepetition(cantidad_number);
             program.setIntDate("Init date");
             program.setFinishDate("Finish date");
             program.setRecommended(false);
