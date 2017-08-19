@@ -77,7 +77,12 @@
         <activity
             android:name=".Activities.BasicRegisterActivity"
             android:label="@string/title_activity_basic_register"
+<<<<<<< HEAD
             android:theme="@style/AppTheme" />
+=======
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+>>>>>>> 1ba396f1518e79317815c214fcabb7a8d7a218ca
         <activity android:name=".Activities.ExerciseDetailActivity" />
         <activity
             android:name=".Activities.AddProgramActivity"
@@ -104,6 +109,13 @@
             android:label="@string/title_activity_final_register"
             android:theme="@style/AppTheme" />
 
+        <activity
+            android:name=".Activities.BienestarActivity"
+            android:label="@string/title_activity_bienestar"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activities.EditBienestarActivity"></activity>
+
+
         <receiver android:name=".Services.NotificationReciever" />
         <receiver android:name=".Services.NotificationService" />
 
@@ -128,11 +140,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.FoodActivity" />
         </activity>
+<<<<<<< HEAD
         <activity
             android:name=".Activities.TagFoodActivity"
             android:parentActivityName=".Activities.FoodActivity"
             android:theme="@style/AppTheme">
         </activity>
+=======
+        <activity android:name=".Activities.ProgramEditActivity"></activity>
+        <activity android:name=".Activities.FavoriteExcercisesActivity"></activity>
+>>>>>>> 1ba396f1518e79317815c214fcabb7a8d7a218ca
     </application>
 
 </manifest>

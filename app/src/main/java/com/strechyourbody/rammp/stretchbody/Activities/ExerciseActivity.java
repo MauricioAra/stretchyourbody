@@ -117,12 +117,21 @@ public class ExerciseActivity extends AppCompatActivity {
                         startActivity(category);
                         drawerLayout.closeDrawers();
                         break;
-
+                    case R.id.menu_start_food:
+                        Intent food = new Intent(ExerciseActivity.this,FoodActivity.class);
+                        startActivity(food);
+                        drawerLayout.closeDrawers();
+                        break;
+                    case R.id.menu_favorite:
+                        Intent favorite = new Intent(ExerciseActivity.this,FavoriteExcercisesActivity.class);
+                        startActivity(favorite);
+                        drawerLayout.closeDrawers();
+                        break;
                     case R.id.log_out:
                         session.logOut();
                         break;
-                }
 
+                }
 
                 if(fragmentTransaction) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();

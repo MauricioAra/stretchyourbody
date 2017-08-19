@@ -11,8 +11,12 @@ public class RetrofitCliente {
 
     private static Retrofit.Builder retrofit = null;
 
+<<<<<<< HEAD
 
     private static String API_BASE_URL = "http://192.168.0.19:8080";
+=======
+    private static String API_BASE_URL = "http://192.168.0.12:8080/";
+>>>>>>> 1ba396f1518e79317815c214fcabb7a8d7a218ca
 
     public static Retrofit.Builder getClient(){
 
