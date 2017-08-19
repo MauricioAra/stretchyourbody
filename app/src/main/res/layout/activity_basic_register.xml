@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:background="@color/background"
     tools:context="com.strechyourbody.rammp.stretchbody.Activities.BasicRegisterActivity">
 
     <include
@@ -14,7 +15,7 @@
         <ScrollView
             android:id="@+id/login_form"
             android:layout_width="358dp"
-            android:layout_height="match_parent"
+            android:layout_height="800dp"
             android:paddingTop="24dp"
             android:layout_marginTop="0dp"
             android:layout_centerHorizontal="true">
@@ -22,76 +23,65 @@
             <LinearLayout
                 android:id="@+id/email_login_form"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="600dp"
                 android:orientation="vertical"
                 tools:paddingTop="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="60dp">
+                android:layout_marginTop="60dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+
 
                 <EditText
                     android:id="@+id/email"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:hint="Correo electrónico"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:textColorHint="#55DAE1"
+                    android:textColorHint="@color/placeholder"
+                    android:background="@drawable/bg_edittext_focused"
                     android:layout_marginBottom="30dp" />
 
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/bg_edittext_focused"
                     android:hint="Nombre"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:textColorHint="#55DAE1"
-                    android:layout_marginBottom="30dp"/>
+                    android:textColorHint="@color/placeholder" />
 
-            </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            <EditText
+                <EditText
                 android:id="@+id/last_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:hint="Apellido"
                 android:imeActionId="@+id/login"
                 android:imeActionLabel="@string/action_sign_in_short"
                 android:imeOptions="actionUnspecified"
                 android:inputType="text"
                 android:maxLines="1"
-                android:textColorHint="#55DAE1"
+                android:textColorHint="@color/placeholder"
+                android:background="@drawable/bg_edittext_focused"
                 android:layout_marginBottom="30dp" />
 
-        </android.support.design.widget.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:hint="Contraseña"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
@@ -99,26 +89,24 @@
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:layout_marginBottom="30dp"
-                    android:textColorHint="#55DAE1" />
+                    android:background="@drawable/bg_edittext_focused"
+                    android:textColorHint="@color/placeholder" />
 
-                </android.support.design.widget.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/password_verify"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:hint="Repetir contraseña"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:textColorHint="#55DAE1" />
-                </android.support.design.widget.TextInputLayout>
+                    android:background="@drawable/bg_edittext_focused"
+                    android:textColorHint="@color/placeholder" />
+
 
             </LinearLayout>
         </ScrollView>

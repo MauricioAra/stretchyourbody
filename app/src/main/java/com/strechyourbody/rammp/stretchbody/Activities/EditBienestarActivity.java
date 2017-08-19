@@ -40,8 +40,7 @@ public class EditBienestarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_bienestar);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setToolbar();
         sessionManager = new SessionManager(EditBienestarActivity.this);
         final Button button_save = (Button) findViewById(R.id.button_save);
         seekBarRange=(SeekBar)findViewById(R.id.seekBar);
@@ -155,5 +154,13 @@ public class EditBienestarActivity extends AppCompatActivity {
             Toast.makeText(EditBienestarActivity.this, "Verifique que los campos esten completos", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private void setToolbar(){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toobar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Agregar estado de bienestar");
+        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

@@ -64,7 +64,7 @@ public class RecoverPasswordActivity extends AppCompatActivity {
     private void setToolbar(){
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Regresar");
+        getSupportActionBar().setTitle("Recuperar contraseña");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

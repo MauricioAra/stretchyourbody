@@ -104,13 +104,17 @@
             android:name=".Activities.FinalRegisterActivity"
             android:label="@string/title_activity_final_register"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".Activities.BienestarActivity"
             android:label="@string/title_activity_bienestar"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".Activities.EditBienestarActivity"></activity>
-
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".Activities.EditBienestarActivity"
+            android:parentActivityName=".Activities.BienestarActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.BienestarActivity" />
+        </activity>
 
         <receiver android:name=".Services.NotificationReciever" />
         <receiver android:name=".Services.NotificationService" />
@@ -118,8 +122,17 @@
         <activity
             android:name=".Activities.ChangePasswordActivity"
             android:label="@string/title_activity_change_password"
-            android:theme="@style/AppTheme" />
+            android:parentActivityName=".Activities.SettingsActivity"
+            android:theme="@style/AppTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.SettingsActivity" />
+
+        </activity>
+
         <activity android:name=".Activities.RecoverPasswordActivity" />
+
+
         <activity
             android:name=".Activities.FoodActivity"
             android:parentActivityName=".Activities.MainActivity"
@@ -136,8 +149,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.FoodActivity" />
         </activity>
-        <activity android:name=".Activities.ProgramEditActivity"></activity>
-        <activity android:name=".Activities.FavoriteExcercisesActivity"></activity>
+        <activity android:name=".Activities.ProgramEditActivity" />
+        <activity android:name=".Activities.FavoriteExcercisesActivity" />
+        <activity android:name=".Activities.SettingsActivity"
+            android:parentActivityName=".Activities.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 import com.strechyourbody.rammp.stretchbody.Entities.Exercise;
 import com.strechyourbody.rammp.stretchbody.R;
@@ -74,7 +75,8 @@ public class ExerciseDetailActivity extends AppCompatActivity {
     }
 
     private void buildObject(Exercise exercise){
-        Picasso.with(this).load(exercise.getImage()).into(imageView);
+        Glide.with(this).load(exercise.getImage()).into(imageView);
+        //Picasso.with(this).load(exercise.getImage()).into(imageView);
         titleView.setText(exercise.getName());
         counter.setText(exercise.getRepetition().toString());
         time.setText(exercise.getTime());

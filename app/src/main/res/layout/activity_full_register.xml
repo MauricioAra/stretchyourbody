@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:background="@color/background"
     tools:context="com.strechyourbody.rammp.stretchbody.Activities.LoginActivity">
 
     <ScrollView
@@ -19,7 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            tools:paddingTop="@dimen/activity_horizontal_margin">
+            tools:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <TextView
                 android:id="@+id/tVMainText"
@@ -34,55 +37,46 @@
             <Spinner
                 android:id="@+id/bodyPartSpinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"/>
+                android:background="@drawable/bg_edittext_focused"
+                android:layout_height="50dp"
+                android:layout_marginBottom="30dp"
+                android:hint="Ejercicios"
+                android:textColorHint="@color/placeholder"/>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/age"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="30dp"
                     android:hint="Edad"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:textColorHint="#55DAE1" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    android:background="@drawable/bg_edittext_focused"
+                    android:textColorHint="@color/placeholder" />
 
                 <EditText
                     android:id="@+id/weight"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="30dp"
                     android:hint="Peso (Kg)"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:textColorHint="#55DAE1" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    android:background="@drawable/bg_edittext_focused"
+                    android:textColorHint="@color/placeholder"/>
 
                 <EditText
                     android:id="@+id/height"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="30dp"
                     android:hint="Altura (cm)"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:textColorHint="#55DAE1" />
-            </android.support.design.widget.TextInputLayout>
+                    android:background="@drawable/bg_edittext_focused"
+                    android:textColorHint="@color/placeholder" />
+
 
             <TextView
                 android:id="@+id/genero"
@@ -90,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tVStaticSmallLabel"
                 android:layout_marginTop="5dip"
-                android:text="Genero"
+                android:text="Género"
                 android:textSize="18dp"
                 />
 
@@ -100,7 +94,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 android:layout_below="@+id/user_age"
-                android:layout_alignStart="@+id/user_age"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -108,7 +101,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="#55DAE1"
+                    android:textColor="@color/placeholder"
                     android:text="Hombre" />
 
                 <RadioButton
@@ -116,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="#55DAE1"
+                    android:textColor="@color/placeholder"
                     android:text="Mujer" />
 
                 <RadioButton
@@ -124,7 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="#55DAE1"
+                    android:textColor="@color/placeholder"
                     android:text="Otro" />
             </RadioGroup>
 

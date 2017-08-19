@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/menu_dash_board"
-            android:icon="@drawable/home"
-            android:title="Recomendaciones"
-            />
+    <item
+        android:id="@+id/menu_dash_board"
+        android:icon="@drawable/price_tag"
+        android:title="Recomendaciones"
+        />
+    <item
+        android:id="@+id/menu_my_profile"
+        android:icon="@drawable/profile"
+        android:title="Mi perfil"
+        />
+    <item
+        android:id="@+id/menu_favorite"
+        android:icon="@drawable/star"
+        android:title="Favoritos" />
+    <item
+        android:id="@+id/menu_my_program"
+        android:icon="@drawable/view_list_button"
+        android:title="Mis programas"
+        />
+    <item
+        android:id="@+id/menu_bienstar"
+        android:icon="@drawable/bienestar"
+        android:title="Mi bienestar"
+        />
+    <item
+        android:id="@+id/menu_config"
+        android:icon="@drawable/settings"
+        android:title="Ajustes" />
+
+    <item
+        android:title="Opciones generales"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/menu_calendar"
-            android:icon="@drawable/ic_action_name"
+            android:icon="@drawable/calendar"
             android:title="Calendario" />
         <item
             android:id="@+id/menu_steps"
@@ -18,38 +44,16 @@
             android:id="@+id/menu_start_food"
             android:icon="@drawable/black_healthy_food"
             android:title="Comidas" />
-        <item
-            android:id="@+id/menu_my_program"
-            android:icon="@drawable/list"
-            android:title="Mis programas"
-            />
+
         <item
             android:id="@+id/menu_start_exercise"
-            android:icon="@drawable/exercises"
+            android:icon="@drawable/barbell"
             android:title="Ejercicios"
             />
         <item
-            android:id="@+id/menu_favorite"
-            android:icon="@drawable/black_heart"
-            android:title="Mis favoritos" />
-        <item
-            android:id="@+id/menu_config"
-            android:icon="@drawable/black_settings"
-            android:title="Configuraciones" />
-    </group>
-    <item
-        android:title="Opciones generales">
-        <menu>
-            <item
-                android:id="@+id/menu_my_profile"
-                android:icon="@drawable/profile"
-                android:title="Mi perfil"
-                />
-            <item
-                android:id="@+id/log_out"
-                android:icon="@drawable/logout"
-                android:title="Cerrar sesión"
-                />
-        </menu>
+            android:id="@+id/log_out"
+            android:icon="@drawable/logout"
+            android:title="Cerrar sesión"
+            />
     </item>
 </menu>

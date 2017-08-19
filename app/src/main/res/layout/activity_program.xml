@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context="com.strechyourbody.rammp.stretchbody.Activities.ProgramActivity">
 
     <LinearLayout
@@ -31,7 +32,7 @@
 
     <include
         android:id="@+id/toobar"
-        layout="@layout/toolbar_light"
+        layout="@layout/toolbar"
         tools:layout_editor_absoluteX="-32dp"
         tools:layout_editor_absoluteY="-30dp" />
 

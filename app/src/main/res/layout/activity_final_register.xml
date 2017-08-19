@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:background="@color/background"
     tools:context="com.strechyourbody.rammp.stretchbody.Activities.LoginActivity">
 
     <ScrollView
@@ -19,29 +20,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            tools:paddingTop="@dimen/activity_horizontal_margin">
+            tools:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/hours_worked"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="30dp"
                     android:hint="Horas Trabajadas (Semanalmente)"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:textColorHint="#55DAE1" />
+                    android:textColorHint="@color/placeholder"
+                    android:background="@drawable/bg_edittext_focused"/>
 
-            </android.support.design.widget.TextInputLayout>
 
             <TextView
                 android:id="@+id/is_somker_Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="¿Es fumador (a) ?"/>
+                android:text="¿Es fumador (a) ?" />
 
             <RadioGroup
                 android:id="@+id/radio_somkes"
@@ -49,7 +49,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 android:layout_below="@+id/user_age"
-                android:layout_alignStart="@+id/user_age"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -57,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="#55DAE1"
+                    android:textColor="@color/placeholder"
                     android:text="Sí" />
 
                 <RadioButton
@@ -65,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="#55DAE1"
+                    android:textColor="@color/placeholder"
                     android:text="No" />
 
             </RadioGroup>
@@ -83,7 +82,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 android:layout_below="@+id/user_age"
-                android:layout_alignStart="@+id/user_age"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -91,7 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="#55DAE1"
+                    android:textColor="@color/placeholder"
                     android:text="Sí" />
 
                 <RadioButton
@@ -99,7 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="#55DAE1"
+                    android:textColor="@color/placeholder"
                     android:text="No" />
 
             </RadioGroup>
@@ -117,7 +115,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 android:layout_below="@+id/user_age"
-                android:layout_alignStart="@+id/user_age"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -125,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="#55DAE1"
+                    android:textColor="@color/placeholder"
                     android:text="Sí" />
 
                 <RadioButton
@@ -133,7 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="#55DAE1"
+                    android:textColor="@color/placeholder"
                     android:text="No" />
 
             </RadioGroup>

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.strechyourbody.rammp.stretchbody.Entities.Exercise;
@@ -45,12 +46,27 @@ public class ExerciseCheckAdapter extends RecyclerView.Adapter<ExerciseCheckAdap
         holder.repetitions.setText(exercise.getRepetition().toString());
         holder.time.setText(exercise.getTime());
         holder.calification.setText(exercise.getCalification().toString());
+
+        if(exercise.getSelected()){
+            holder.view.setBackgroundColor(Color.parseColor("#f4f4f4"));
+            holder.imageView.setVisibility(View.VISIBLE);
+        }else{
+            holder.view.setBackgroundColor(Color.WHITE);
+            holder.imageView.setVisibility(View.INVISIBLE);
+        }
         holder.view.setBackgroundColor(exercise.getSelected() ? Color.parseColor("#f4f4f4") : Color.WHITE);
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 exercise.setSelected(!exercise.getSelected());
-                holder.view.setBackgroundColor(exercise.getSelected() ? Color.parseColor("#f4f4f4") : Color.WHITE);
+                if(exercise.getSelected()){
+                    holder.imageView.setVisibility(View.VISIBLE);
+                    holder.view.setBackgroundColor(Color.parseColor("#f4f4f4"));
+                }else{
+                    holder.view.setBackgroundColor(Color.WHITE);
+                    holder.imageView.setVisibility(View.INVISIBLE);
+                }
+
             }
         });
     }
@@ -113,6 +129,7 @@ public class ExerciseCheckAdapter extends RecyclerView.Adapter<ExerciseCheckAdap
         public TextView repetitions;
         public TextView time;
         public TextView calification;
+        public ImageView imageView;
 
         private MyViewHolder(View itemView) {
             super(itemView);
@@ -122,6 +139,7 @@ public class ExerciseCheckAdapter extends RecyclerView.Adapter<ExerciseCheckAdap
             this.repetitions = (TextView) itemView.findViewById(R.id.text_execise_repetitions_list);
             this.time = (TextView) itemView.findViewById(R.id.text_execise_duation_list);
             this.calification = (TextView) itemView.findViewById(R.id.text_execise_calification_list);
+            this.imageView = (ImageView) itemView.findViewById(R.id.img_check);
         }
     }
 }

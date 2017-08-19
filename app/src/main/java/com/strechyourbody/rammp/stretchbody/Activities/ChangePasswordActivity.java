@@ -75,7 +75,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private void setToolbar(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Cambiar Contraseña");
+        getSupportActionBar().setTitle("Cambiar contraseña");
         //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
