@@ -108,6 +108,13 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
                         drawerLayout.closeDrawers();
                         break;
 
+                    case R.id.menu_steps:
+                        Intent step = new Intent(MainActivity.this,PedometerActivity.class);
+                        startActivity(step);
+                        drawerLayout.closeDrawers();
+                        break;
+
+
                     case R.id.log_out:
                         session.logOut();
                         break;

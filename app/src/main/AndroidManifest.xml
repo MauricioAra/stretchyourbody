@@ -104,13 +104,11 @@
             android:name=".Activities.FinalRegisterActivity"
             android:label="@string/title_activity_final_register"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".Activities.BienestarActivity"
             android:label="@string/title_activity_bienestar"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Activities.EditBienestarActivity"></activity>
-
+        <activity android:name=".Activities.EditBienestarActivity" />
 
         <receiver android:name=".Services.NotificationReciever" />
         <receiver android:name=".Services.NotificationService" />
@@ -136,8 +134,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.FoodActivity" />
         </activity>
-        <activity android:name=".Activities.ProgramEditActivity"></activity>
-        <activity android:name=".Activities.FavoriteExcercisesActivity"></activity>
+
+        <activity
+            android:name=".Activities.PedometerActivity"
+            android:parentActivityName=".Activities.PedometerActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.PedometerActivity" />
+        </activity>
+
+        <activity android:name=".Activities.ProgramEditActivity" />
+        <activity android:name=".Activities.FavoriteExcercisesActivity" />
+
     </application>
 
 </manifest>
