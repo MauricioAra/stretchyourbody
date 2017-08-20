@@ -105,6 +105,17 @@
         android:layout_above="@+id/lbl_difficulty_exercise_list"
         android:layout_centerHorizontal="true" />
 
+    <ImageView
+        android:id="@+id/img_check"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/success"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp"
+        android:layout_alignBottom="@+id/text_execise_duation_list"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
 <!--<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"

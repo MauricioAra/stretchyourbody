@@ -7,5 +7,6 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.strechyourbody.rammp.stretchbody.Activities.ProfileUserActivity"
     tools:showIn="@layout/activity_profile_user">
+
     <include layout="@layout/content_info_profile" />
 </android.support.v4.widget.NestedScrollView>

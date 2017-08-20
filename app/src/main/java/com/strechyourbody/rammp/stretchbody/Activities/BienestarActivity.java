@@ -7,6 +7,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import retrofit2.Call;
+
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -44,10 +48,8 @@ public class BienestarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bienestar);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setToolbar();
         sessionManager = new SessionManager(BienestarActivity.this);
-
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
@@ -80,15 +82,6 @@ public class BienestarActivity extends AppCompatActivity {
         });
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.edit_Bienestar);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent editBienestar = new Intent(BienestarActivity.this,EditBienestarActivity.class);
-                startActivity(editBienestar);
-            }
-        });
-
         myuserVitality.enqueue(new Callback<ResultAverage>() {
             //@Override 
             public void onResponse(Call<ResultAverage> call, Response<ResultAverage> response) {
@@ -113,7 +106,9 @@ public class BienestarActivity extends AppCompatActivity {
             int malestar = 10;
 
             if(resultAverage.getAverage().equals(0)){
+
                 Toast.makeText(BienestarActivity.this,"No hay registros",Toast.LENGTH_SHORT).show();
+
             }else{
                 malestar = malestar - resultAverage.getAverage().intValue();
                 PieChart pieChart = (PieChart) findViewById(R.id.graph);
@@ -123,7 +118,8 @@ public class BienestarActivity extends AppCompatActivity {
                 pieEntries.add(new PieEntry(resultAverage.getAverage().intValue(),"Bienestar"));
                 pieEntries.add(new PieEntry(malestar,"Malestar"));
 
-                PieDataSet dataSet = new PieDataSet(pieEntries,"Bienestar de "+ userName);
+                PieDataSet dataSet = new PieDataSet(pieEntries,"");
+                
                 dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
                 PieData pieData = new PieData(dataSet);
 
@@ -134,11 +130,37 @@ public class BienestarActivity extends AppCompatActivity {
         }
 
 
-
-
-
-
-
+    private void setToolbar(){
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toobar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Bienestar");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.more_bienestar, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // action with ID action_refresh was selected
+            case R.id.add_bienestar:
+                Intent editBienestar = new Intent(BienestarActivity.this,EditBienestarActivity.class);
+                startActivity(editBienestar);
+                break;
+            case android.R.id.home:
+
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
+
+
+}
 
 

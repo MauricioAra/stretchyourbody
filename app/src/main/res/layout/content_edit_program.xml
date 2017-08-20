@@ -6,14 +6,13 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="@color/background">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="800dp"
         android:background="#ffffff"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentTop="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,17 +23,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="800dp"
                 android:background="#f9f9f9"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true">
+                android:layout_alignParentTop="true">
 
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    card_view:cardBackgroundColor="#fff"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="12dp"
-                    android:id="@+id/cardView3">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -57,16 +47,14 @@
                             android:inputType="text"
                             android:maxLines="1"
                             android:singleLine="true"
-                            android:textColorHint="#0D0E10" />
-
-
+                            android:textColorHint="@color/placeholder" />
 
                         <TextView
                             android:id="@+id/repetition_lbl"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Repeticiones"
-                            android:textSize="18sp"
+                            android:text=""
+                            android:textSize="22dp"
                             android:textColor="#0D0E10"
                             android:textStyle="bold"
                             android:layout_below="@+id/program_name_input"
@@ -78,22 +66,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/repetition_lbl"
-                            android:layout_alignParentStart="true"
                             android:progress="1"
                             android:layout_marginTop="14dp"
                             android:max="10"/>
 
                     </RelativeLayout>
-                </android.support.v7.widget.CardView>
 
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    card_view:cardBackgroundColor="#fff"
-                    android:layout_marginTop="18dp"
-                    android:layout_below="@+id/cardView3"
-                    android:layout_alignParentStart="true"
-                    android:id="@+id/cardView4">
+
+
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -108,29 +88,30 @@
                             android:text="Seleccione ejercicios"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            android:layout_above="@+id/searchView"
-                            android:layout_alignParentStart="true" />
+                            android:layout_above="@+id/searchView" />
 
                         <SearchView
                             android:id="@+id/searchView"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignStart="@+id/textView"
-                            android:layout_marginBottom="11dp" />
+                            android:layout_height="50dp"
+                            android:layout_marginTop="201dp"
+                            android:background="@drawable/bg_edittext_focused"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true" />
 
                     </RelativeLayout>
 
-                </android.support.v7.widget.CardView>
+
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/exercise_recycler_add_program"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="vertical"
-                    android:layout_below="@+id/cardView4"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="13dp" />
+                    android:layout_marginTop="267dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
 
             </RelativeLayout>
 
@@ -145,8 +126,7 @@
         android:text="Guardar"
         android:textColor="#ffffff"
         android:background="@color/colorAccent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
 

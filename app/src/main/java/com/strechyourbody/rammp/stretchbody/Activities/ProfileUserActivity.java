@@ -68,16 +68,6 @@ public class ProfileUserActivity extends AppCompatActivity {
                 startActivity(editProfile);
             }
         });
-
-
-        Button bienestar = (Button) findViewById(R.id.btn_go_bienestar);
-        bienestar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent userBienestar = new Intent(ProfileUserActivity.this,BienestarActivity.class);
-                startActivity(userBienestar);
-            }
-        });
     }
 
 

@@ -50,7 +50,7 @@ public class AddProgramActivity extends AppCompatActivity {
     private SessionManager sessionManager;
     private SearchView searchView;
     private SeekBar seekBar;
-    private int cantidad_number = 1;
+    private int cantidad_number;
 
     private RecyclerView mRecyclerView;
     private ExerciseCheckAdapter mAdapter;
@@ -78,6 +78,8 @@ public class AddProgramActivity extends AppCompatActivity {
                 saveProgram();
             }
         });
+
+        cantidad_repeticiones.setText(cantidad_number + " repeticion(es)");
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         Retrofit.Builder builder = RetrofitCliente.getClient();
@@ -119,8 +121,7 @@ public class AddProgramActivity extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                cantidad_number = 1;
-                cantidad_repeticiones.setText("Repeticiones: "+cantidad_number);
+
             }
 
             @Override
@@ -131,7 +132,7 @@ public class AddProgramActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 cantidad_number = seekBar.getProgress();
-                cantidad_repeticiones.setText("Repeticiones: "+cantidad_number);
+                cantidad_repeticiones.setText(cantidad_number + " repeticion(es)");
             }
         });
 
