@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:layout_editor_absoluteY="8dp"
     tools:layout_editor_absoluteX="8dp">
+
     <ImageView
         android:id="@+id/img_detail_exercise"
         android:layout_width="fill_parent"
@@ -100,6 +101,26 @@
         android:layout_alignBottom="@+id/durationfield"
         android:layout_toEndOf="@+id/durationfield"
         android:layout_marginStart="11dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:layout_below="@+id/durationfield"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/rank_button"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="12dp"
+        android:src="@drawable/star"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
 
 
 </RelativeLayout>

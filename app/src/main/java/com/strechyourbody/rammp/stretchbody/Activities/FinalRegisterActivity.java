@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -43,6 +44,8 @@ public class FinalRegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FinalRegisterActivity.this.getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         setContentView(R.layout.activity_final_register);
 
         mRadioGroupSmokes = (RadioGroup) findViewById(R.id.radio_somkes);
@@ -68,6 +71,12 @@ public class FinalRegisterActivity extends AppCompatActivity {
 
         boolean cancel = false;
         View focusView = null;
+
+        if(mWorkHours.getText().toString() == null || mWorkHours.getText().toString().isEmpty()) {
+            mWorkHours.setError(getString(R.string.error_field_required));
+            cancel = true;
+            focusView = mWorkHours;
+        }
 
         if (mRadioGroupSmokes.getCheckedRadioButtonId() == -1) {
             mRadioSmokes.setError(getString(R.string.error_field_required));
