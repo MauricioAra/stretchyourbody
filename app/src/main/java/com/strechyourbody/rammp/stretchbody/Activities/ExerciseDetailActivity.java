@@ -1,5 +1,6 @@
 package com.strechyourbody.rammp.stretchbody.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.Picasso;
 import com.strechyourbody.rammp.stretchbody.Entities.Exercise;
 import com.strechyourbody.rammp.stretchbody.R;
@@ -39,6 +41,7 @@ public class ExerciseDetailActivity extends AppCompatActivity {
     private  List<Exercise> exerciseList;
     private int favId = -1;
     private long userId;
+    private ProgressDialog progress;
 
     //Network
     OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -66,16 +69,22 @@ public class ExerciseDetailActivity extends AppCompatActivity {
 
         favorite.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                Toast.makeText(ExerciseDetailActivity.this,"Agregado a favoritos",Toast.LENGTH_LONG).show();
                 toggleFavorite();
             }
         });
-
+        progress = new ProgressDialog(ExerciseDetailActivity.this);
+        progress.setTitle("Cargando...");
+        progress.setCancelable(false);
+        progress.setIndeterminate(true);
+        progress.show();
         Call<Exercise> call = exerciseService.findOne(Integer.parseInt(idExercise));
         call.enqueue(new Callback<Exercise>() {
             @Override
             public void onResponse(Call<Exercise> call, Response<Exercise> response) {
                 // The network call was a success and we got a response
                 if(response != null){
+                    progress.hide();
                     Toolbar toolbar = (Toolbar) findViewById(R.id.toobar);
                     setSupportActionBar(toolbar);
                     getSupportActionBar().setTitle(response.body().getName());
@@ -97,11 +106,12 @@ public class ExerciseDetailActivity extends AppCompatActivity {
     }
 
     private void buildObject(Exercise exercise){
-        Glide.with(this).load(exercise.getImage()).into(imageView);
-        //Picasso.with(this).load(exercise.getImage()).into(imageView);
+        RequestOptions options = new RequestOptions();
+        options.centerCrop();
+        Glide.with(this).load(exercise.getImage()).apply(options).into(imageView);
         titleView.setText(exercise.getName());
-        counter.setText(exercise.getRepetition().toString());
-        time.setText(exercise.getTime());
+        counter.setText(exercise.getRepetition().toString()+" repeticiones");
+        time.setText("Duración de 1 minuto");
     }
 
     private void getFavorites() {
@@ -127,11 +137,7 @@ public class ExerciseDetailActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Exercise>> call, Throwable t) {
-                CharSequence text = getString(R.string.error_network);
-                int duration = Toast.LENGTH_LONG;
-                Toast toast = Toast.makeText(getApplicationContext(), text, duration);
-                toast.setGravity(Gravity.TOP|Gravity.RIGHT, 0, 0);
-                toast.show();
+                Toast.makeText(ExerciseDetailActivity.this,getString(R.string.error_network),Toast.LENGTH_LONG).show();
                 //showProgress(false);
             }
         });
@@ -155,20 +161,13 @@ public class ExerciseDetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 // The network call was a success and we got a response
-                CharSequence text = "Agregado a favoritos!";
-                int duration = Toast.LENGTH_LONG;
-                Toast toast = Toast.makeText(getApplicationContext(), text, duration);
-                toast.setGravity(Gravity.TOP|Gravity.RIGHT, 0, 0);
-                toast.show();
+                Toast.makeText(ExerciseDetailActivity.this,"Agregado a favoritos",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 CharSequence text = getString(R.string.error_network);
-                int duration = Toast.LENGTH_LONG;
-                Toast toast = Toast.makeText(getApplicationContext(), text, duration);
-                toast.setGravity(Gravity.TOP|Gravity.RIGHT, 0, 0);
-                toast.show();
+                Toast.makeText(ExerciseDetailActivity.this,text,Toast.LENGTH_LONG).show();
                 //showProgress(false);
             }
         });
@@ -179,16 +178,13 @@ public class ExerciseDetailActivity extends AppCompatActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-
+                Toast.makeText(ExerciseDetailActivity.this,"Removido de favoritos",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 CharSequence text = getString(R.string.error_network);
-                int duration = Toast.LENGTH_LONG;
-                Toast toast = Toast.makeText(getApplicationContext(), text, duration);
-                toast.setGravity(Gravity.TOP|Gravity.RIGHT, 0, 0);
-                toast.show();
+                Toast.makeText(ExerciseDetailActivity.this,text,Toast.LENGTH_LONG).show();
                 //showProgress(false);
             }
         });
