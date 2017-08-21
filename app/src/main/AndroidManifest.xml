@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.ProgramActivity"
             android:parentActivityName=".Activities.MainActivity">
             <meta-data
@@ -30,6 +31,7 @@
                 android:value=".Activities.MainActivity" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.ProfileUserActivity"
             android:label="@string/title_activity_profile_user"
             android:parentActivityName=".Activities.MainActivity"
@@ -38,8 +40,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
         </activity>
-        <activity android:name=".Activities.CategoryActivity" />
         <activity
+            android:screenOrientation="portrait"
+            android:name=".Activities.CategoryActivity" />
+        <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.SubCategoryActivity"
             android:parentActivityName=".Activities.CategoryActivity"
             android:theme="@style/AppTheme">
@@ -48,6 +53,7 @@
                 android:value=".Activities.MainActivity" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.BodyPartActivity"
             android:parentActivityName=".Activities.SubCategoryActivity"
             android:theme="@style/AppTheme">
@@ -56,6 +62,7 @@
                 android:value=".Activities.SubCategoryActivity" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.ExerciseActivity"
             android:parentActivityName=".Activities.BodyPartActivity"
             android:theme="@style/AppTheme">
@@ -72,15 +79,18 @@
                 android:value=".Activities.ProfileUserActivity" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.BasicRegisterActivity"
             android:label="@string/title_activity_basic_register"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity android:name=".Activities.ExerciseDetailActivity" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.AddProgramActivity"
             android:parentActivityName=".Activities.ProgramActivity"
             android:theme="@style/AppTheme">
@@ -89,6 +99,7 @@
                 android:value=".Activities.ProgramActivity" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.ProgramDetailActivity"
             android:parentActivityName=".Activities.ProgramActivity"
             android:theme="@style/AppTheme">
@@ -97,18 +108,22 @@
                 android:value=".Activities.ProgramActivity" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.FullRegisterActivity"
             android:label="@string/title_activity_full_register"
             android:theme="@style/AppTheme" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.FinalRegisterActivity"
             android:label="@string/title_activity_final_register"
             android:theme="@style/AppTheme" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.BienestarActivity"
             android:label="@string/title_activity_bienestar"
             android:theme="@style/AppTheme"></activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.EditBienestarActivity"
             android:parentActivityName=".Activities.BienestarActivity">
             <meta-data
@@ -116,10 +131,15 @@
                 android:value=".Activities.BienestarActivity" />
         </activity>
 
+
+
+
+
         <receiver android:name=".Services.NotificationReciever" />
         <receiver android:name=".Services.NotificationService" />
 
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.ChangePasswordActivity"
             android:label="@string/title_activity_change_password"
             android:parentActivityName=".Activities.SettingsActivity"
@@ -130,10 +150,13 @@
 
         </activity>
 
-        <activity android:name=".Activities.RecoverPasswordActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".Activities.RecoverPasswordActivity" />
 
 
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.FoodActivity"
             android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme">
@@ -142,6 +165,7 @@
                 android:value=".Activities.MainActivity" />
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.FoodDetailActivity"
             android:parentActivityName=".Activities.FoodDetailActivity"
             android:theme="@style/AppTheme">
@@ -149,15 +173,34 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.FoodActivity" />
         </activity>
-        <activity android:name=".Activities.ProgramEditActivity" />
-        <activity android:name=".Activities.FavoriteExcercisesActivity" />
-        <activity android:name=".Activities.SettingsActivity"
+
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".Activities.ProgramEditActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".Activities.FavoriteExcercisesActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".Activities.SettingsActivity"
             android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.MainActivity" />
         </activity>
+
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".Activities.PedometerActivity"
+            android:parentActivityName=".Activities.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity" />
+        </activity>
+
+
     </application>
 
 </manifest>

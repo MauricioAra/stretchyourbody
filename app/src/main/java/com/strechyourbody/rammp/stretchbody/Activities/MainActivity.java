@@ -107,7 +107,6 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
                         startActivity(favorite);
                         drawerLayout.closeDrawers();
                         break;
-
                     case R.id.menu_bienstar:
                         Intent userBienestar = new Intent(MainActivity.this,BienestarActivity.class);
                         startActivity(userBienestar);
@@ -116,6 +115,9 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
                     case R.id.menu_config:
                         Intent settings = new Intent(MainActivity.this,SettingsActivity.class);
                         startActivity(settings);
+                    case R.id.menu_steps:
+                        Intent step = new Intent(MainActivity.this,PedometerActivity.class);
+                        startActivity(step);
                         drawerLayout.closeDrawers();
                         break;
 
