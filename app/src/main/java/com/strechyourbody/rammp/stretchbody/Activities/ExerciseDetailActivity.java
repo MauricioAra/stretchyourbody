@@ -1,14 +1,24 @@
 package com.strechyourbody.rammp.stretchbody.Activities;
 
+import android.support.v7.app.AppCompatActivity;
 import android.app.ProgressDialog;
+
+import android.app.Dialog;
+import android.content.DialogInterface;
+
 import android.content.Intent;
+import android.os.Build;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +52,12 @@ public class ExerciseDetailActivity extends AppCompatActivity {
     private int favId = -1;
     private long userId;
     private ProgressDialog progress;
+    private RatingBar ratingBar;
+    private float userRating;
+    private RatingBar overallRatingBar;
+    private Dialog rankDialog;
+    private FloatingActionButton rateButton;
+
 
     //Network
     OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -57,6 +73,8 @@ public class ExerciseDetailActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_detail);
+        rateButton = (FloatingActionButton) findViewById(R.id.rank_button);
+        addListenerOnRatingBar();
         imageView = (ImageView) findViewById(R.id.img_detail_exercise);
         favorite = (ImageView) findViewById(R.id.fav);
         titleView = (TextView) findViewById(R.id.textTittle);
@@ -66,6 +84,13 @@ public class ExerciseDetailActivity extends AppCompatActivity {
         time = (TextView) findViewById(R.id.time);
 
         getFavorites();
+
+        rateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rate();
+            }
+        });
 
         favorite.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -105,6 +130,65 @@ public class ExerciseDetailActivity extends AppCompatActivity {
 
     }
 
+    private void setRating(float rate) {
+        userRating = rate;
+    }
+
+    private void rate() {
+        rateButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                rankDialog = new Dialog(ExerciseDetailActivity.this, R.style.FullHeightDialog);
+                rankDialog.setContentView(R.layout.rank_layout);
+                rankDialog.setCancelable(true);
+                ratingBar = (RatingBar) rankDialog.findViewById(R.id.dialog_ratingbar);
+                ratingBar.setRating(0);
+                ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                    public void onRatingChanged(RatingBar ratingBar, float rating,
+                                                boolean fromUser) {
+                        setRating(rating);
+                    }
+                });
+
+                TextView text = (TextView) rankDialog.findViewById(R.id.rank_dialog_text1);
+                text.setText("Te gusta este ejercicio?");
+
+                Button updateButton = (Button) rankDialog.findViewById(R.id.rank_dialog_button);
+                updateButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Call<Void> call = exerciseService.rateExercise(Long.parseLong(idExercise), userRating);
+                        call.enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                // The network call was a success and we got a response
+                                CharSequence text = "Se calificó correctamente";
+                                int duration = Toast.LENGTH_LONG;
+                                Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+                                toast.setGravity(Gravity.TOP|Gravity.RIGHT, 0, 0);
+                                toast.show();
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                CharSequence text = getString(R.string.error_network);
+                                Toast.makeText(ExerciseDetailActivity.this,text,Toast.LENGTH_SHORT).show();
+                                //showProgress(false);
+                            }
+                        });
+                        rankDialog.dismiss();
+                    }
+                });
+                //now that the dialog is set up, it's time to show it
+                rankDialog.show();
+            }
+        });
+    }
+
+    public void addListenerOnRatingBar() {
+        overallRatingBar = (RatingBar) findViewById(R.id.ratingBar);
+        overallRatingBar.setClickable(false);
+    }
+
     private void buildObject(Exercise exercise){
         RequestOptions options = new RequestOptions();
         options.centerCrop();
@@ -112,6 +196,8 @@ public class ExerciseDetailActivity extends AppCompatActivity {
         titleView.setText(exercise.getName());
         counter.setText(exercise.getRepetition().toString()+" repeticiones");
         time.setText("Duración de 1 minuto");
+        overallRatingBar.setRating(exercise.getCalification());
+
     }
 
     private void getFavorites() {

@@ -1,28 +1,18 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:background="@color/background"
-    tools:context="com.strechyourbody.rammp.stretchbody.Activities.LoginActivity">
+    tools:context="com.strechyourbody.rammp.stretchbody.Activities.FullRegisterActivity">
 
-    <ScrollView
-        android:id="@+id/login_form"
-        android:layout_width="358dp"
+    <LinearLayout
+        android:id="@+id/email_login_form"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="24dp"
-        android:layout_centerHorizontal="true">
-
-        <LinearLayout
-            android:id="@+id/email_login_form"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:paddingTop="@dimen/activity_horizontal_margin"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+        android:orientation="vertical"
+        android:layout_weight="1"
+        tools:paddingTop="@dimen/activity_horizontal_margin">
 
             <TextView
                 android:id="@+id/tVMainText"
@@ -32,6 +22,8 @@
                 android:layout_marginTop="5dip"
                 android:textSize="18dp"
                 android:text="Seleccione su parte del cuerpo con mas dolor"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 />
 
             <Spinner
@@ -41,7 +33,9 @@
                 android:layout_height="50dp"
                 android:layout_marginBottom="30dp"
                 android:hint="Ejercicios"
-                android:textColorHint="@color/placeholder"/>
+                android:textColorHint="@color/placeholder"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
 
 
                 <EditText
@@ -86,6 +80,8 @@
                 android:layout_marginTop="5dip"
                 android:text="Género"
                 android:textSize="18dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 />
 
             <RadioGroup
@@ -94,7 +90,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 android:layout_below="@+id/user_age"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <RadioButton
                     android:id="@+id/radio_hombre"
@@ -121,17 +119,21 @@
                     android:text="Otro" />
             </RadioGroup>
 
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center|bottom">
+            <Button
+                android:id="@+id/continue_register_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Continuar"
+                android:background="#55DAE1"
+                android:textColor="#ffffff"
+                android:layout_alignParentBottom="true"
+                />
         </LinearLayout>
-
-    </ScrollView>
-    <Button
-        android:id="@+id/continue_register_button"
-        style="?android:textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Continuar"
-        android:background="#55DAE1"
-        android:textColor="#ffffff"
-        android:layout_alignParentBottom="true"
-        />
-</RelativeLayout>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
