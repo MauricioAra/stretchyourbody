@@ -6,12 +6,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Toast;
+
 
 import com.strechyourbody.rammp.stretchbody.Adapters.FoodAdapter;
 import com.strechyourbody.rammp.stretchbody.Entities.Food;
-import com.strechyourbody.rammp.stretchbody.Fragments.FoodListFragment;
 import com.strechyourbody.rammp.stretchbody.R;
 import com.strechyourbody.rammp.stretchbody.Services.FoodService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;

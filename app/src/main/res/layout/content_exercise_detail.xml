@@ -5,101 +5,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    android:paddingTop="60dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="#fff"
+        android:id="@+id/cardView3"
+        android:minHeight="180dp"
+
     tools:layout_editor_absoluteY="8dp"
     tools:layout_editor_absoluteX="8dp">
-    <ImageView
-        android:id="@+id/img_detail_exercise"
-        android:layout_width="fill_parent"
-        android:layout_height="250dp"
-        android:layout_weight="1"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:layout_marginTop="61dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="20dp">
+
+            <ImageView
+                android:id="@+id/img_detail_exercise"
+                android:layout_width="fill_parent"
+                android:layout_height="250dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter" />
+
+            <ImageView
+                android:id="@+id/fav"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/img_detail_exercise"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="19dp"
+                app:srcCompat="@drawable/red_heart" />
+
+
+            <TextView
+                android:id="@+id/counter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/time"
+                android:layout_marginTop="15dp"
+                android:text="3"
+                android:textSize="20sp"
+                android:layout_alignLeft="@+id/ratingBar"
+                android:layout_alignStart="@+id/ratingBar" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:text="1 minuto"
+                android:textSize="20sp"
+                android:layout_below="@+id/fav"
+                android:layout_alignLeft="@+id/counter"
+                android:layout_alignStart="@+id/counter" />
+
+            <TextView
+                android:id="@+id/textTittle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/time"
+                android:layout_alignBottom="@+id/time"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="43dp"
+                android:layout_marginStart="43dp"
+                android:text="1 min."
+                android:textSize="16sp"
+                android:visibility="invisible" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="1.0"
+                android:isIndicator="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_below="@+id/counter"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="17dp" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/rank_button"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/star"
+        android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="11dp"
+        android:layout_alignBottom="@+id/cardView3"
+        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
-
-    <ImageView
-        android:id="@+id/imageLike"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="21dp"
-        app:srcCompat="@drawable/black_dislike"
-        android:layout_marginStart="35dp"
-        android:layout_below="@+id/img_detail_exercise"
-        android:layout_alignParentStart="true" />
-
-    <ImageView
-        android:id="@+id/fav"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/red_heart"
-        android:layout_marginStart="35dp"
-        android:layout_centerInParent="true"
-        android:layout_alignTop="@+id/imageLike"/>
-
-    <ImageView
-        android:id="@+id/imageDislike"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/black_like"
-        android:layout_marginEnd="30dp"
-        android:layout_alignTop="@+id/imageLike"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:id="@+id/textTittle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Torción de mano"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        android:maxLength="13"
-        android:ellipsize="end"
-        android:singleLine="true"
-        android:layout_alignBottom="@+id/imageLike"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:id="@+id/counterfield"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Repeticiones:"
-        android:textSize="16sp"
-        android:layout_below="@+id/textTittle"
-        android:layout_alignStart="@+id/textTittle"
-        android:layout_marginTop="14dp" />
-    <TextView
-        android:id="@+id/counter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3"
-        android:textSize="20sp"
-        android:layout_marginStart="12dp"
-        android:layout_alignBaseline="@+id/counterfield"
-        android:layout_alignBottom="@+id/counterfield"
-        android:layout_toEndOf="@+id/counterfield" />
-
-
-    <TextView
-        android:id="@+id/durationfield"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Duración:"
-        android:layout_marginTop="49dp"
-        android:textSize="16sp"
-        android:layout_below="@+id/textTittle"
-        android:layout_alignStart="@+id/textTittle" />
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1 min."
-        android:textSize="16sp"
-        android:layout_alignBaseline="@+id/durationfield"
-        android:layout_alignBottom="@+id/durationfield"
-        android:layout_toEndOf="@+id/durationfield"
-        android:layout_marginStart="11dp" />
 
 
 </RelativeLayout>

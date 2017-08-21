@@ -28,32 +28,33 @@
         android:id="@+id/menu_config"
         android:icon="@drawable/settings"
         android:title="Ajustes" />
-
     <item
-        android:title="Opciones generales"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/menu_calendar"
-            android:icon="@drawable/calendar"
-            android:title="Calendario" />
-        <item
-            android:id="@+id/menu_steps"
-            android:icon="@drawable/black_shoes_prints"
-            android:title="Contador de pasos" />
-        <item
-            android:id="@+id/menu_start_food"
-            android:icon="@drawable/black_healthy_food"
-            android:title="Comidas" />
+        android:title="Opciones generales">
+        <menu>
+            <item
+                android:id="@+id/menu_calendar"
+                android:icon="@drawable/calendar"
+                android:title="Calendario" />
+            <item
+                android:id="@+id/menu_steps"
+                android:icon="@drawable/black_shoes_prints"
+                android:title="Contador de pasos" />
+            <item
+                android:id="@+id/menu_start_food"
+                android:icon="@drawable/black_healthy_food"
+                android:title="Comidas" />
 
-        <item
-            android:id="@+id/menu_start_exercise"
-            android:icon="@drawable/barbell"
-            android:title="Ejercicios"
-            />
-        <item
-            android:id="@+id/log_out"
-            android:icon="@drawable/logout"
-            android:title="Cerrar sesión"
-            />
+            <item
+                android:id="@+id/menu_start_exercise"
+                android:icon="@drawable/barbell"
+                android:title="Ejercicios"
+                />
+            <item
+                android:id="@+id/log_out"
+                android:icon="@drawable/logout"
+                android:title="Cerrar sesión"
+                />
+        </menu>
     </item>
+
 </menu>

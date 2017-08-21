@@ -1,36 +1,20 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:background="@color/background"
     tools:context="com.strechyourbody.rammp.stretchbody.Activities.BasicRegisterActivity">
 
     <include
         android:id="@+id/toobar"
         layout="@layout/toolbar"/>
 
-        <ScrollView
-            android:id="@+id/login_form"
-            android:layout_width="358dp"
-            android:layout_height="800dp"
-            android:paddingTop="24dp"
-            android:layout_marginTop="0dp"
-            android:layout_centerHorizontal="true">
-
-            <LinearLayout
-                android:id="@+id/email_login_form"
-                android:layout_width="match_parent"
-                android:layout_height="600dp"
-                android:orientation="vertical"
-                tools:paddingTop="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="60dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
-
-
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="80dp"
+            android:layout_weight="1">
 
                 <EditText
                     android:id="@+id/email"
@@ -92,8 +76,6 @@
                     android:background="@drawable/bg_edittext_focused"
                     android:textColorHint="@color/placeholder" />
 
-
-
                 <EditText
                     android:id="@+id/password_verify"
                     android:layout_width="match_parent"
@@ -107,17 +89,21 @@
                     android:background="@drawable/bg_edittext_focused"
                     android:textColorHint="@color/placeholder" />
 
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center|bottom">
+                <Button
+                    android:id="@+id/register_button"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Registrar"
+                    android:background="#55DAE1"
+                    android:textColor="#ffffff"
+                    android:layout_alignParentBottom="true"/>
+            </LinearLayout>
 
             </LinearLayout>
-        </ScrollView>
-        <Button
-            android:id="@+id/register_button"
-            style="?android:textAppearanceSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Registrar"
-            android:background="#55DAE1"
-            android:textColor="#ffffff"
-            android:layout_alignParentBottom="true"
-            />
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
