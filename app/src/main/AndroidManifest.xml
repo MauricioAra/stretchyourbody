@@ -86,8 +86,8 @@
             android:screenOrientation="portrait"
             android:name=".Activities.BasicRegisterActivity"
             android:label="@string/title_activity_basic_register"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
+            android:theme="@style/AppTheme" />
+
         <activity android:name=".Activities.ExerciseDetailActivity" />
         <activity
             android:screenOrientation="portrait"
@@ -131,10 +131,6 @@
                 android:value=".Activities.BienestarActivity" />
         </activity>
 
-
-
-
-
         <receiver android:name=".Services.NotificationReciever" />
         <receiver android:name=".Services.NotificationService" />
 
@@ -174,6 +170,7 @@
                 android:value=".Activities.FoodActivity" />
         </activity>
 
+
         <activity
             android:screenOrientation="portrait"
             android:name=".Activities.ProgramEditActivity" />
@@ -200,7 +197,11 @@
                 android:value=".Activities.MainActivity" />
         </activity>
 
-
+        <activity
+            android:name=".Activities.TagFoodActivity"
+            android:parentActivityName=".Activities.FoodActivity"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>

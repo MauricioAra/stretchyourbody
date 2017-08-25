@@ -1,11 +1,13 @@
 package com.strechyourbody.rammp.stretchbody.Activities;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 
 import com.strechyourbody.rammp.stretchbody.Adapters.FoodAdapter;
@@ -30,6 +32,7 @@ import retrofit2.Retrofit;
 
 public class FoodActivity extends AppCompatActivity {
 
+    private FloatingActionButton search_food_btn;
     private RecyclerView mRecycler;
     private FoodAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -40,6 +43,16 @@ public class FoodActivity extends AppCompatActivity {
         setContentView(R.layout.activity_food_content);
         setToolbar();
         connection();
+
+        search_food_btn = (FloatingActionButton) findViewById(R.id.search_food_float);
+
+        search_food_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FoodActivity.this,TagFoodActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void connection(){
@@ -56,6 +69,7 @@ public class FoodActivity extends AppCompatActivity {
                 // The network call was a success and we got a response
                 if(response != null){
                     buildList(response.body());
+//                    buildTags();
                 }
                 // TODO: use the repository list and display it
             }
@@ -85,6 +99,9 @@ public class FoodActivity extends AppCompatActivity {
         mRecycler.setLayoutManager(mLayoutManager);
         mRecycler.setAdapter(mAdapter);
     }
+//    private void buildTags(List){
+//
+//    }
 
 
     private void setToolbar(){

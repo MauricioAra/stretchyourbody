@@ -18,6 +18,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="vertical" />
+        <FrameLayout
+            android:id="@+id/content_programs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/search_food_float"
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="12dp"
+                android:src="@drawable/search" />
+        </FrameLayout>
+
     </LinearLayout>
 
     <include
@@ -25,6 +39,4 @@
         layout="@layout/toolbar"
         tools:layout_editor_absoluteX="-32dp"
         tools:layout_editor_absoluteY="-30dp" />
-
-
 </android.support.constraint.ConstraintLayout>
