@@ -39,14 +39,10 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginEnd="23dp"
-        app:srcCompat="@drawable/ic_chev_left"
-        android:visibility="invisible"/>
 
-
-    <View android:layout_alignParentBottom="true"
-        android:layout_height="1dp"
-        android:background="#e5e5e5"
-        android:layout_width="match_parent"
-        android:id="@+id/view" />
-
+        app:srcCompat="@drawable/ic_chev_left" />
 </RelativeLayout>
+
+
+
+
