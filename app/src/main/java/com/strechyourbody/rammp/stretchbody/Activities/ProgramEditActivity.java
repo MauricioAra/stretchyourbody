@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +43,11 @@ public class ProgramEditActivity extends AppCompatActivity {
     private Program globalProgram;
     private List<Exercise> globalExercises;
     private Button btn_edit;
+    private SeekBar cant_seekbar;
     private ProgressDialog progress;
+    private TextView repetition_lbl;
+    private int cantidad_number = 0;
+
 
     // Iniciacion de retrofit
     OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -55,8 +60,9 @@ public class ProgramEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_program_edit);
         idProgram = getIntent().getStringExtra("idProgram");
         name_text = (EditText) findViewById(R.id.program_name_input);
-        //cant_text = (EditText) findViewById(R.id.program_cant_input);
+        repetition_lbl = (TextView) findViewById(R.id.repetition_lbl);
         btn_edit = (Button) findViewById(R.id.button_edit_program);
+        cant_seekbar = (SeekBar) findViewById(R.id.seek_bar_repetition);
 
 
         btn_edit.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +86,7 @@ public class ProgramEditActivity extends AppCompatActivity {
         progress.show();
 
         globalProgram.setName(name_text.getText().toString());
-        globalProgram.setCantRepetition(Integer.parseInt(cant_text.getText().toString()));
+        globalProgram.setCantRepetition(cantidad_number);
         List<Exercise> exercises = filterExercises();
         globalProgram.setExercises(exercises);
 
@@ -151,8 +157,10 @@ public class ProgramEditActivity extends AppCompatActivity {
 
     // Charge data
     private void setObject(final Program program){
-        cant_text.setText(program.getCantRepetition().toString());
+        cantidad_number = program.getCantRepetition();
+        cant_seekbar.setProgress(program.getCantRepetition());
         name_text.setText(program.getName());
+        repetition_lbl.setText(program.getCantRepetition().toString() + " repeticion(es)");
 
         ExerciseService exerciseService = retrofit.create(ExerciseService.class);
         Call<List<Exercise>> call = exerciseService.findAll();
@@ -167,6 +175,24 @@ public class ProgramEditActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<Exercise>> call, Throwable t) {
 
+            }
+        });
+
+        cant_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                cantidad_number = seekBar.getProgress();
+                repetition_lbl.setText(cantidad_number + " repeticion(es)");
             }
         });
 

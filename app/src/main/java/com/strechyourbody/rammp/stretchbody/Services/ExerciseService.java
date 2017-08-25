@@ -32,4 +32,7 @@ public interface ExerciseService {
 
     @POST("api/users/remove-from-favorites/{userId}/{exerciseId}")
     Call<Void> removeFromFavorites(@Path("userId") long id, @Path("exerciseId") long exerciseId);
+
+    @POST("api/users/rate-exercise/{exerciseId}/{rating}")
+    Call<Void> rateExercise(@Path("exerciseId") long id, @Path("rating") float rating);
 }

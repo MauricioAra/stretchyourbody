@@ -149,7 +149,7 @@ public class ExerciseActivity extends AppCompatActivity {
     private void buildList(List<Exercise> exercises){
         mRecycler = (RecyclerView) findViewById(R.id.exercise_recycler);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter= new ExerciseAdapter(exercises, R.layout.list_item_exercise, new ExerciseAdapter.OnItemClickListener() {
+        mAdapter = new ExerciseAdapter(exercises, R.layout.list_item_exercise, new ExerciseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(String name, int position) {
                 Long id = globalExercises.get(position).getId();
