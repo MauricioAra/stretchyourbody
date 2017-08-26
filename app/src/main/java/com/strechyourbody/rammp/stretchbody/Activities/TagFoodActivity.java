@@ -15,6 +15,7 @@ import android.widget.GridView;
 import com.strechyourbody.rammp.stretchbody.Adapters.ExerciseAdapter;
 import com.strechyourbody.rammp.stretchbody.Adapters.FoodTagAdapter;
 import com.strechyourbody.rammp.stretchbody.Entities.BodyPart;
+import com.strechyourbody.rammp.stretchbody.Entities.Food;
 import com.strechyourbody.rammp.stretchbody.Entities.FoodTag;
 import com.strechyourbody.rammp.stretchbody.Entities.TagId;
 import com.strechyourbody.rammp.stretchbody.R;
@@ -42,6 +43,33 @@ public class TagFoodActivity extends AppCompatActivity {
     private List<FoodTag> global = new ArrayList<>();
     private Button btn_search;
 
+
+    private void connection(List<TagId> tagsId){
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        Retrofit.Builder builder = RetrofitCliente.getClient();
+        Retrofit retrofit = builder.client(httpClient.addInterceptor(new AuthInterceptor(TagFoodActivity.this)).build()).build();
+        FoodTagService foodService =  retrofit.create(FoodTagService.class);
+
+
+        Call<List<Food>> call = foodService.searchFood(tagsId);
+        call.enqueue(new Callback<List<Food>>() {
+            @Override
+            public void onResponse(Call<List<Food>> call, Response<List<Food>> response) {
+                // The network call was a success and we got a response
+                if(response != null){
+//                    buildList(response.body());
+//                    buildTags();
+                }
+                // TODO: use the repository list and display it
+            }
+
+            @Override
+            public void onFailure(Call<List<Food>> call, Throwable t) {
+                // the network call was a failure
+                // TODO: handle error
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

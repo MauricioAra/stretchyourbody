@@ -1,5 +1,6 @@
 package com.strechyourbody.rammp.stretchbody.Services;
 
+import com.strechyourbody.rammp.stretchbody.Entities.Food;
 import com.strechyourbody.rammp.stretchbody.Entities.FoodTag;
 import com.strechyourbody.rammp.stretchbody.Entities.Program;
 import com.strechyourbody.rammp.stretchbody.Entities.TagId;
@@ -20,5 +21,5 @@ public interface FoodTagService {
     Call<List<FoodTag>> listTags();
 
     @POST("api/app/foodtagsearch")
-    Call<List<FoodTag>> searchFood(@Body List<TagId> tagIds);
+    Call<List<Food>> searchFood(@Body List<TagId> tagIds);
 }

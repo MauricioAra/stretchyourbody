@@ -12,29 +12,67 @@
         android:layout_width="0dp"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="0dp" />
+   <RelativeLayout
+       android:layout_width="0dp"
+       android:layout_height="wrap_content"
+       android:background="#fe7e00"
+       tools:layout_editor_absoluteY="0dp"
+       tools:layout_editor_absoluteX="0dp">
+       <TextView
+           android:id="@+id/textView6"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentEnd="true"
+           android:layout_alignParentRight="true"
+           android:layout_alignParentTop="true"
+           android:layout_marginEnd="120dp"
+           android:layout_marginRight="120dp"
+           android:paddingTop="20dp"
+           android:textColor="#ffffff"
+           android:textSize="20sp"
+           android:paddingBottom="12dp"
+           android:text="Búsqueda de comida"/>
+   </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingTop="90dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="0dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/grid_view_tag"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="50dp"/>
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
+
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="#3dd9d6"
+                android:text="Buscar"
+                android:textColor="#ffffff"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="519dp" />
+        </RelativeLayout>
     </RelativeLayout>
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteY="519dp"
-        tools:layout_editor_absoluteX="8dp"
-        android:text="Buscar"
-        android:id="@+id/btn_search"/>
 
 </android.support.constraint.ConstraintLayout>
