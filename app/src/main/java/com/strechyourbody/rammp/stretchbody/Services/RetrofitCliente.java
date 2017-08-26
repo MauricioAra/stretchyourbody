@@ -12,7 +12,7 @@ public class RetrofitCliente {
     private static Retrofit.Builder retrofit = null;
 
 
-    private static String API_BASE_URL = "http://192.168.0.7:8080/";
+    private static String API_BASE_URL = "http://192.168.0.6:8080/";
 
 
     public static Retrofit.Builder getClient(){
