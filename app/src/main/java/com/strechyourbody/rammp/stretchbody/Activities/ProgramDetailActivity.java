@@ -185,8 +185,11 @@ public class ProgramDetailActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // action with ID action_refresh was selected
             case R.id.calendar_program:
-                Toast.makeText(this, "Skip selected", Toast.LENGTH_SHORT)
-                        .show();
+                Intent calendar = new Intent(ProgramDetailActivity.this, ProgramCalendar.class);
+                calendar.putExtra("nameProgram",globalProgram.getName());
+                calendar.putExtra("idProgram",globalProgram.getId().toString());
+                startActivity(calendar);
+
                 break;
             case R.id.edit_program:
                 Intent edit = new Intent(ProgramDetailActivity.this,ProgramEditActivity.class);

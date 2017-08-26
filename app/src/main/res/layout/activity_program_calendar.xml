@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.strechyourbody.rammp.stretchbody.Activities.ProgramCalendar">
+    <include
+        android:id="@+id/toobar"
+        layout="@layout/toolbar" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="60dp">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp">
+
+                <DatePicker
+                    android:id="@+id/datePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+
+                <TimePicker
+                    android:id="@+id/timePicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="38dp"
+                    android:layout_below="@+id/datePicker"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <Button
+                    android:id="@+id/btn_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    tools:layout_editor_absoluteY="414dp"
+                    tools:layout_editor_absoluteX="28dp"
+                    android:text="Comenzar"
+                    android:layout_alignTop="@+id/timePicker"
+                    android:layout_marginTop="397dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:background="@color/colorAccent"
+                    android:textColor="#ffff"/>
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
+
+
+
+
+<!--<TimePicker-->
+<!--android:id="@+id/timePicker"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content" />-->
+
+<!--<Button-->
+<!--android:id="@+id/btn_start"-->
+<!--android:layout_width="100dp"-->
+<!--android:layout_height="50dp"-->
+<!--tools:layout_editor_absoluteY="414dp"-->
+<!--tools:layout_editor_absoluteX="28dp"-->
+<!--android:text="start"-->
+<!--android:layout_marginLeft="47dp"-->
+<!--android:layout_marginStart="47dp"-->
+<!--android:layout_alignBaseline="@+id/btn_end"-->
+<!--android:layout_alignBottom="@+id/btn_end"-->
+<!--android:layout_alignParentLeft="true"-->
+<!--android:layout_alignParentStart="true" />-->
+
+<!--<Button-->
+<!--android:id="@+id/btn_end"-->
+<!--android:layout_width="100dp"-->
+<!--android:layout_height="50dp"-->
+<!--tools:layout_editor_absoluteY="414dp"-->
+<!--tools:layout_editor_absoluteX="245dp"-->
+<!--android:text="stop"-->
+<!--android:layout_marginTop="41dp"-->
+<!--android:layout_below="@+id/timePicker"-->
+<!--android:layout_alignParentRight="true"-->
+<!--android:layout_alignParentEnd="true"-->
+<!--android:layout_marginRight="52dp"-->
+<!--android:layout_marginEnd="52dp" />-->
+
+<!--<TextView-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:text="Estado"-->
+<!--android:textSize="20dp"-->
+<!--android:id="@+id/satus"-->
+<!--android:layout_alignParentBottom="true"-->
+<!--android:layout_toLeftOf="@+id/btn_end"-->
+<!--android:layout_toStartOf="@+id/btn_end"-->
+<!--android:layout_marginBottom="26dp" />-->

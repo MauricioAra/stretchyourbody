@@ -186,14 +186,14 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
         PendingIntent pendingIntent  = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE); //Crea una nueva notificacion despues de un tiempo
-        am.set(AlarmManager.RTC_WAKEUP, 1000 , pendingIntent); //tiempo
+        //am.set(AlarmManager.RTC_WAKEUP, 1000 , pendingIntent); //tiempo
     }
 
     //Sends user notification if app has not been used after 1 week
     public void scheduleNotification(Context context, long delay, int notificationId) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setContentTitle("Stretch your body!")
-                .setContentText("Acurdate de hacer ejercicio!")
+                .setContentText("Acuerdate de hacer ejercicio!")
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.red_heart);
 
