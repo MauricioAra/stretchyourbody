@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.strechyourbody.rammp.stretchbody.Activities.TagFoodActivity">
+    <include
+        android:id="@+id/toobar"
+        layout="@layout/toolbar"
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="90dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/grid_view_tag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="519dp"
+        tools:layout_editor_absoluteX="8dp"
+        android:text="Buscar"
+        android:id="@+id/btn_search"/>
+
+</android.support.constraint.ConstraintLayout>
