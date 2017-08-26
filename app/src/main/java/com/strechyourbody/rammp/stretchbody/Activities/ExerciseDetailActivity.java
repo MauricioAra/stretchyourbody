@@ -1,5 +1,8 @@
 package com.strechyourbody.rammp.stretchbody.Activities;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.app.ProgressDialog;
 
@@ -142,6 +145,7 @@ public class ExerciseDetailActivity extends AppCompatActivity {
                 rankDialog.setCancelable(true);
                 ratingBar = (RatingBar) rankDialog.findViewById(R.id.dialog_ratingbar);
                 ratingBar.setRating(0);
+
                 ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
                     public void onRatingChanged(RatingBar ratingBar, float rating,
                                                 boolean fromUser) {
@@ -186,7 +190,7 @@ public class ExerciseDetailActivity extends AppCompatActivity {
 
     public void addListenerOnRatingBar() {
         overallRatingBar = (RatingBar) findViewById(R.id.ratingBar);
-        overallRatingBar.setClickable(false);
+        overallRatingBar.setClickable(true);
     }
 
     private void buildObject(Exercise exercise){

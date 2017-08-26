@@ -21,6 +21,10 @@
         <item name="colorControlNormal">@color/colorPrimaryDark</item>
         <item name="colorControlActivated">@color/placeholder</item>
     </style>
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#939393</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
 
 
 </resources>
