@@ -33,4 +33,9 @@
     <string name="title_activity_change_password">ChangePasswordActivity</string>
     <string name="forgotten_password">Ingresa tu correo electrónico para recuperar la contrseña</string>
     <string name="forgotten_password_title">¿Haz olvidado tu contraseña?</string>
+    <string name="title_activity_malestar">MalestarActivity</string>
+    <string name="title_activity_edit_body_point">EditBodyPointActivity</string>
+    <string name="title_activity_improvement_points">ImprovementPointsActivity</string>
+    <string name="title_activity_edit_body_point_registries">EditBodyPointRegistriesActivity
+    </string>
 </resources>

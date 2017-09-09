@@ -108,6 +108,12 @@ public class MainActivity extends AppCompatActivity implements DashBoardFragment
                         drawerLayout.closeDrawers();
                         break;
 
+                    case R.id.menu_maletares:
+                        Intent malestares = new Intent(MainActivity.this,MalestarActivity.class);
+                        startActivity(malestares);
+                        drawerLayout.closeDrawers();
+                        break;
+
                     case R.id.log_out:
                         session.logOut();
                         break;

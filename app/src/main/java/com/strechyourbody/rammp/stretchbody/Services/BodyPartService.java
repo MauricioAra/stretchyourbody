@@ -17,4 +17,7 @@ public interface BodyPartService {
 
     @GET("api/app/bodyPartBySubcategory/{id}")
     Call<List<BodyPart>> listBodyPart(@Path("id") int id);
+
+    @GET("api/app/bodyPartByUser/{id}")
+    Call<List<BodyPart>> listUserBodyPart(@Path("id") int id);
 }

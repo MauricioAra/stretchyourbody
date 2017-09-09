@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.strechyourbody.rammp.stretchbody.Services.AuthService;
+import com.strechyourbody.rammp.stretchbody.Services.BodyPointService;
 import com.strechyourbody.rammp.stretchbody.Services.RetrofitCliente;
 
 import okhttp3.OkHttpClient;
@@ -43,6 +44,7 @@ public class FullRegisterActivity extends AppCompatActivity {
     private RadioButton mRadioMale;
     private ProgressDialog progress;
     private Spinner bodyPartSpinner;
+
     private List<BodyPart> bodyPartList;
 
     OkHttpClient.Builder httpClient = new OkHttpClient.Builder();

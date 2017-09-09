@@ -241,5 +241,4 @@ public class BasicRegisterActivity extends AppCompatActivity {
             progress.dismiss();
         }
     }
-
 }

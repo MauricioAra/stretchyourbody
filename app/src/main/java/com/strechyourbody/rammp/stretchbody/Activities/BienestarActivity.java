@@ -40,6 +40,8 @@ public class BienestarActivity extends AppCompatActivity {
     SessionManager sessionManager;
     String userName ="";
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,6 +112,7 @@ public class BienestarActivity extends AppCompatActivity {
 
         private void buildPieChart(ResultAverage resultAverage){
 
+
             int malestar = 10;
 
             if(resultAverage.getAverage().equals(0)){
@@ -117,14 +120,16 @@ public class BienestarActivity extends AppCompatActivity {
             }else{
                 malestar = malestar - resultAverage.getAverage().intValue();
                 PieChart pieChart = (PieChart) findViewById(R.id.graph);
-
+                pieChart.getDescription().setEnabled(false);
                 List<PieEntry> pieEntries = new ArrayList<>();
 
                 pieEntries.add(new PieEntry(resultAverage.getAverage().intValue(),"Bienestar"));
                 pieEntries.add(new PieEntry(malestar,"Malestar"));
 
                 PieDataSet dataSet = new PieDataSet(pieEntries,"Bienestar de "+ userName);
-                dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                //dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                //setComp1.setColors(new int[] { R.color.red1, R.color.red2, R.color.red3, R.color.red4 }, Context);
+
                 PieData pieData = new PieData(dataSet);
 
                 pieChart.setData(pieData);
