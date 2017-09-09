@@ -36,6 +36,10 @@
             android:id="@+id/menu_config"
             android:icon="@drawable/black_settings"
             android:title="Configuraciones" />
+        <item
+            android:id="@+id/menu_maletares"
+            android:icon="@drawable/black_settings"
+            android:title="Malestares" />
     </group>
     <item
         android:title="Opciones generales">
